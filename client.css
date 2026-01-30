@@ -1,0 +1,97 @@
+/* css/client.css */
+
+/* Reset basique */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-client);
+    color: var(--text-main);
+    font-family: var(--font-main);
+    line-height: 1.6;
+}
+
+/* --- HEADER & NAVIGATION --- */
+header {
+    background-color: var(--card-bg-client); /* Fond Rose Pâle */
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--border-color); /* Touche graphique */
+}
+
+.logo {
+    font-family: var(--font-title);
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--text-main);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--text-main);
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #e63946; /* Petit effet au survol */
+}
+
+/* --- BOUTONS (Style Yumland) --- */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--primary-client); /* Rose Bonbon */
+    color: var(--text-main);
+    text-decoration: none;
+    border-radius: 30px; /* Arrondi */
+    border: 2px solid var(--text-main); /* Bordure pour contraste */
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 2px 4px 0px var(--text-main); /* Effet "Pop" */
+}
+
+/* --- HERO SECTION (Bannière) --- */
+.hero {
+    text-align: center;
+    padding: 4rem 1rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero h1 {
+    font-family: var(--font-title);
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+/* --- FOOTER --- */
+footer {
+    text-align: center;
+    padding: 2rem;
+    background-color: var(--accent-client); /* Mauve Poudré */
+    margin-top: 4rem;
+    border-top: 1px solid var(--border-color);
+}
