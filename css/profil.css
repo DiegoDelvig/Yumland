@@ -1,1 +1,132 @@
-test
+.container {
+    display: grid;
+    grid-template-columns: clamp(200px, 22%, 290px) auto; 
+    
+    grid-template-areas:
+        "sidebar-perso contenu-profil"
+        "sidebar-perso footer";
+    
+    grid-template-rows: 1fr auto; 
+    min-height: 100vh;
+}
+
+.sidebar-perso { 
+    grid-area: sidebar-perso;
+    background-color: var(--card-bg-client);
+    border-right: 2px solid var(--text-main);
+    padding: 30px 10px; 
+    height: 100%;
+}
+
+.contenu-profil {
+    grid-area: contenu-profil;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.carte-info {
+    background-color: var(--card-bg-client);
+    padding: 20px;
+    border-radius: 15px;
+    border: 2px solid var(--text-main);
+    max-width: 800px;
+    width: 100%;
+}
+
+.barre { 
+    background: #eee;
+    border-radius: 10px;
+    height: 15px;
+    width: 100%;
+    margin: 10px 0;
+}
+
+.avancee {
+    background: #ad115c;
+    height: 100%;
+    border-radius: 10px;
+}
+
+
+.commande {
+    margin-bottom: 20px; 
+    padding-bottom: 10px; 
+    border-bottom: 1px dashed var(--text-main);
+}
+
+.numero {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    margin-bottom: 5px;
+}
+
+.titre-modif {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.marge-bas { 
+    margin-bottom: 20px;
+}
+
+.texte-emphase {
+    font-size: 1.2rem;
+}
+
+.derniere-ligne {
+    border-bottom: none;
+}
+
+.carre-crayon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background-color: var(--primary-client); 
+    border: 2px solid var(--text-main);
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: transform 0.2s;
+    cursor: pointer;
+}
+
+footer {
+    grid-area: footer;
+    text-align: center;
+    padding: 2rem;
+    background-color: var(--accent-client);
+    border-top: 1px solid var(--border-color);
+    margin-top: 0; 
+}
+
+@media screen and (max-width: 768px) { 
+    .container {
+        display: grid; 
+        grid-template-areas:
+            "sidebar-perso"
+            "contenu-profil"
+            "footer";
+        grid-template-columns: 100%; 
+        grid-template-rows: auto auto auto; 
+    }
+    .sidebar-perso {
+        width: 100%;
+        border-right: none;
+        border-bottom: 2px solid var(--text-main); 
+        padding: 20px;
+    }
+
+    .contenu-profil {
+        padding: 1rem;
+    }
+
+
+    
+}
