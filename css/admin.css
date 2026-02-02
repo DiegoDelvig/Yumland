@@ -14,10 +14,14 @@
         text-transform: capitalize;
         padding-top: 10px;
         padding-bottom: 10px;
+        padding-left: 10px;
+        border: 1px solid black;
     }
 
     td{
         background-color: #cbd9dc;
+        padding-left: 10px;
+        border: 1px solid black;
     }
 
     a{
