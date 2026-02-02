@@ -1,0 +1,58 @@
+.rect_bleu{
+    width: 350px;
+    height: 350px;
+    background-color: #9ACBD5;
+    border-radius: 20px;
+}
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center; 
+    align-items: center;   
+    min-height: 100vh;    
+    background-color: #E2ECE9; 
+}
+.logo_login{
+    margin: 0px 100px 0px 90px;
+    width: 175px;
+    height: 175px;  
+}
+.login_case_email{
+    margin: 0px 100px 15px 90px;
+    border: 0px;
+    border-radius: 5px;
+    width: 175px;
+    height: 25px; 
+    color: black;
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+}
+.login_case_code{
+    margin: 0px 100px 0px 90px;
+    border: 0px;
+    border-radius: 5px;
+    width: 175px;
+    height: 25px; 
+    color: black;
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+}
+.login_submit{
+    margin: 20px 100px 15px 105px;
+    border: 0px;
+    border-radius: 5px;
+    width: 150px;
+    height: 30px; 
+    color:white;
+    background-color: #F3C6BC;
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+}
+.mdp_oublie{
+    color: white;
+    margin: 0px 0px 0px 20px;
+}
+.pas_de_compte{
+    color: white;
+    margin: 0px 0px 0px 115px;
+}
+a{
+    text-decoration: none;
+}
