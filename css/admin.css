@@ -40,10 +40,6 @@
     flex-direction: column;
     }
 
-    .contenu-profil h1{
-        margin-bottom: 20px;
-    }
-
     .filtres-admin {
         display: flex;
         justify-content: flex-end; 
