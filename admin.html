@@ -26,8 +26,18 @@
 
 <section class="contenu-profil">
     <h1>Utilisateurs</h1>
-</section>
 
+    <div class="filtres-admin">
+        <label for="filtres-choix">Filtrer :</label>
+        <select name="type-utilisateur" id="filtres-choix">
+            <option value="tous">Tous</option>
+            <option value="clients">Tous les clients</option>
+            <option value="commandes">Clients ayant déjà commandé</option>
+            <option value="livreurs">Livreurs</option>
+        </select>
+    </div>
+</section>
+    
 <table border="1">
     <tr>
         <th>E-mail</th><th>Nom</th><th>Rôle</th><th>Statut</th><th>Actions</th>
