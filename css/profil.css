@@ -12,7 +12,7 @@
 
 .sidebar-perso { 
     grid-area: sidebar-perso;
-    background-color: var(--card-bg-client);
+    background-color: #fff0f5;
     border-right: 2px solid var(--text-main);
     padding: 30px 10px; 
     height: 100%;
@@ -27,16 +27,15 @@
 }
 
 .carte-info {
-    background-color: var(--card-bg-client);
+    background-color:  #bcdae0;
     padding: 20px;
-    border-radius: 15px;
     border: 2px solid var(--text-main);
     max-width: 800px;
     width: 100%;
 }
 
 .barre { 
-    background: #eee;
+    background: #9ACBD5;
     border-radius: 10px;
     height: 15px;
     width: 100%;
@@ -44,9 +43,10 @@
 }
 
 .avancee {
-    background: #ad115c;
+    background: #ead0d8;
     height: 100%;
     border-radius: 10px;
+    width: 75%;
 }
 
 
@@ -97,13 +97,30 @@
     cursor: pointer;
 }
 
+
 footer {
-    grid-area: footer;
     text-align: center;
     padding: 2rem;
     background-color: var(--accent-client);
     border-top: 1px solid var(--border-color);
     margin-top: 0; 
+}
+
+.bouton-recommande {
+    background: var(--primary-client); /* Rose */
+
+    padding: 5px 10px;
+    color: var(--text-main);
+    border-radius: 8px;
+    border: 2px solid var(--border-color); 
+    transition: transform 0.2s, box-shadow 0.2s;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.bouton-recommande:hover {
+    transform: translateY(-2px);
+    box-shadow: 2px 2px 0px var(--border-color); /* Effet relief */
 }
 
 @media screen and (max-width: 768px) { 
@@ -130,3 +147,4 @@ footer {
 
     
 }
+
