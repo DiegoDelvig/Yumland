@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Carte - Les Croquettes du Chef</title>
+    
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/client.css">
+    <link rel="stylesheet" href="css/accueil.css"> <link rel="stylesheet" href="css/menu.css">    </head>
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="assets/Logo projet.png" alt="Logo" class="header-logo">
+            Les croquettes du chef 
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="menu.html" class="active">La Carte</a></li>
+                <li><a href="login.html" class="btn">Connexion</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero-menu">
+            <h1>Notre Carte <span class="text-primary">Gourmande</span> 🦴</h1>
+            <p>Sélectionnez le meilleur pour sa santé : sans céréales, frais et équilibré.</p>
+        </section>
+
+        <section class="menu-container">
+            
+            <aside class="filters-sidebar">
+                <div class="filter-group">
+                    <h3>🐕 Âge</h3>
+                    <label><input type="checkbox"> Chiots (Junior)</label>
+                    <label><input type="checkbox" checked> Adultes</label>
+                    <label><input type="checkbox"> Seniors</label>
+                </div>
+
+                <div class="filter-group">
+                    <h3>🥩 Saveurs</h3>
+                    <label><input type="checkbox"> Volaille</label>
+                    <label><input type="checkbox"> Bœuf / Gibier</label>
+                    <label><input type="checkbox"> Poisson</label>
+                    <label><input type="checkbox"> Végétarien</label>
+                </div>
+
+                <div class="filter-group">
+                    <h3>⚠️ Spécifique</h3>
+                    <label><input type="checkbox"> Sans Céréales</label>
+                    <label><input type="checkbox"> Hypoallergénique</label>
+                    <label><input type="checkbox"> Digestion Sensible</label>
+                </div>
+
+                <button class="btn-filter">Appliquer les filtres</button>
+            </aside>
+
+            <div class="products-area">
+                
+                <div class="search-bar-menu">
+                    <input type="text" placeholder="Rechercher une croquette précise...">
+                    <button>🔍</button>
+                </div>
+
+                <div class="products-grid">
+                    
+                    <article class="product-card">
+                        <div class="card-img">
+                            <img src="https://images.unsplash.com/photo-1589927986089-35812388d1f4?w=400" alt="Croc Poulet">
+                            <span class="badge-new">Nouveau</span>
+                        </div>
+                        <div class="card-content">
+                            <h4>Croc' Poulet Fermier</h4>
+                            <p class="desc">Riche en protéines pour les chiens actifs.</p>
+                            <div class="card-footer">
+                                <span class="price">12.50€</span>
+                                <button class="btn-cart">+</button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <div class="card-img">
+                            <img src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?w=400" alt="Pâtée Boeuf">
+                        </div>
+                        <div class="card-content">
+                            <h4>Mijoté de Bœuf</h4>
+                            <p class="desc">Morceaux tendres en sauce.</p>
+                            <div class="card-footer">
+                                <span class="price">4.90€</span>
+                                <button class="btn-cart">+</button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <div class="card-img">
+                            <img src="https://images.unsplash.com/photo-1599084993091-1cb5c0721cc6?w=400" alt="Saumon">
+                        </div>
+                        <div class="card-content">
+                            <h4>Saumon & Patate Douce</h4>
+                            <p class="desc">Idéal pour un poil brillant.</p>
+                            <div class="card-footer">
+                                <span class="price">14.90€</span>
+                                <button class="btn-cart">+</button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="product-card">
+                        <div class="card-img">
+                            <img src="https://images.unsplash.com/photo-1548029960-695d127f4543?w=400" alt="Friandises">
+                        </div>
+                        <div class="card-content">
+                            <h4>Os à mâcher Bio</h4>
+                            <p class="desc">Hygiène dentaire naturelle.</p>
+                            <div class="card-footer">
+                                <span class="price">3.50€</span>
+                                <button class="btn-cart">+</button>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Les Croquettes du Chef - Projet Creative Yumland</p>
+    </footer>
+
+</body>
+</html>

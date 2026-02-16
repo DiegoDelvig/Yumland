@@ -3,50 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Les croquettes du chef</title>
+    <title>Les Croquettes du Chef - Pour Chiens</title>
     
     <link rel="stylesheet" href="css/variables.css">
     <link rel="stylesheet" href="css/client.css">
+    <link rel="stylesheet" href="css/accueil.css">
 </head>
 <body>
 
     <header>
-        <div class="logo">Les croquettes du chef</div>
-        <nav>
-            <ul>
-                <li><a href="index.html">Accueil</a></li>
-                <li><a href="menu.html">La Carte</a></li>
-                <li><a href="connexion.html" class="btn">Connexion</a></li>
-            </ul>
-        </nav>
+    <div class="logo">
+        <img src="assets/Logo projet.png" alt="Logo Yumland" class="header-logo">
+        Les croquettes du chef
+    </div>
+    <nav>
+        <ul>
+            <li><a href="index.html" class="active">Accueil</a></li>
+            <li><a href="menu.html">La Carte</a></li>
+            <li><a href="login.html" class="btn">Connexion</a></li>
+        </ul>
+    </nav>
     </header>
 
     <main>
-        <section class="hero">
-            <h1>Bienvenue dans notre univers gourmand</h1>
-            <p>
-                Découvrez une expérience culinaire unique, sur place ou à emporter.
-                Inscrivez-vous pour profiter de nos offres exclusives !
-            </p>
-            <a href="menu.html" class="btn" style="font-size: 1.2rem; padding: 15px 30px;">
-                Voir la Carte & Commander
-            </a>
+        <section class="hero-center">
+            <div class="hero-content">
+                <h1>La gastronomie canine <br><span class="text-primary">livrée dans sa gamelle</span></h1>
+                <p class="subtitle">Fini les croquettes industrielles. Offrez-lui des recettes fraîches, saines et validées par les vétérinaires.</p>
+            </div>
         </section>
 
-        <section style="display: flex; gap: 20px; padding: 2rem; justify-content: center; flex-wrap: wrap;">
-            <div style="background: var(--card-bg-client); padding: 20px; border-radius: 15px; border: 2px solid var(--text-main); width: 300px;">
-                <h3>🥡 À Emporter</h3>
-                <p>Commandez en ligne et récupérez votre repas sans attente.</p>
-            </div>
-            <div style="background: var(--card-bg-client); padding: 20px; border-radius: 15px; border: 2px solid var(--text-main); width: 300px;">
-                <h3>🛵 Livraison</h3>
-                <p>Vos plats préférés livrés directement chez vous.</p>
+        <section class="content-area">
+            <div class="container-left">
+                
+                <div class="search-wrapper">
+                    <form action="menu.html" method="get" class="search-box">
+                        <span class="icon">🦴</span> <input type="text" name="search" placeholder="Race, âge, saveur (ex: Agneau, Senior...)">
+                        <button type="submit">Wouf !</button>
+                    </form>
+                </div>
+
+                <div class="capsule-list">
+                    <h3 class="section-title">Les favoris</h3>
+
+                    <article class="capsule">
+                        <div class="capsule-img">
+                            <img src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?w=200" alt="Croc Poulet">
+                        </div>
+                        <div class="capsule-info">
+                            <h4>L'Instinct du Chasseur</h4>
+                            <p>Poulet Fermier & Riz • Haute digestibilité</p>
+                        </div>
+                        <div class="capsule-action">
+                            <span class="price">12.50€</span>
+                            <a href="#" class="btn-add">+</a>
+                        </div>
+                    </article>
+
+                    <article class="capsule">
+                        <div class="capsule-img">
+                            <img src="https://images.unsplash.com/photo-1599084993091-1cb5c0721cc6?w=200" alt="Croc Saumon">
+                        </div>
+                        <div class="capsule-info">
+                            <h4>Océan & Brillance</h4>
+                            <p>Saumon & Patate douce • Poil soyeux</p>
+                        </div>
+                        <div class="capsule-action">
+                            <span class="price">14.90€</span>
+                            <a href="#" class="btn-add">+</a>
+                        </div>
+                    </article>
+
+                    <article class="capsule">
+                        <div class="capsule-img">
+                            <img src="https://images.unsplash.com/photo-1627308595229-7830a5c91f9f?w=200" alt="Croc Boeuf">
+                        </div>
+                        <div class="capsule-info">
+                            <h4>Le Festin du Molosse</h4>
+                            <p>Bœuf Angus & Carottes • Énergie Max</p>
+                        </div>
+                        <div class="capsule-action">
+                            <span class="price">13.00€</span>
+                            <a href="#" class="btn-add">+</a>
+                        </div>
+                    </article>
+
+                </div>
             </div>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2026 Creative Yumland - Projet Étudiant CY Tech</p>
+        <p>&copy; 2026 Les Croquettes du Chef - Projet Creative Yumland</p>
     </footer>
 
 </body>
