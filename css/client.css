@@ -1,6 +1,6 @@
 /* css/client.css */
 
-/* Reset basique */
+/* --- RESET & GLOBAL --- */
 * {
     margin: 0;
     padding: 0;
@@ -10,88 +10,94 @@
 body {
     background-color: var(--bg-client);
     color: var(--text-main);
-    font-family: var(--font-main);
+    font-family: var(--font-main, sans-serif);
     line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
-/* --- HEADER & NAVIGATION --- */
+/* --- HEADER (Barre de Navigation) --- */
 header {
-    background-color: var(--card-bg-client); /* Fond Rose Pâle */
-    padding: 1rem 2rem;
+    background: white; /* Fond Blanc */
+    padding: 15px 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 2px solid var(--border-color); /* Touche graphique */
+    border-bottom: 2px solid var(--border-color); /* Bordure Yumland */
+    position: sticky; /* Optionnel : garde le menu en haut */
+    top: 0;
+    z-index: 1000;
 }
 
-.logo {
-    font-family: var(--font-title);
-    font-size: 1.8rem;
+/* Conteneur Logo (Texte + Image) */
+header .logo {
+    display: flex;
+    align-items: center;
+    font-family: var(--font-title, sans-serif);
     font-weight: bold;
+    font-size: 1.4rem;
     color: var(--text-main);
 }
 
-nav ul {
+/* Image du Logo */
+.header-logo {
+    height: 35px; /* Taille ajustée pour être propre */
+    width: auto;
+    margin-right: 10px;
+}
+
+/* Navigation */
+header nav ul {
     list-style: none;
     display: flex;
     gap: 20px;
+    align-items: center;
 }
 
-nav a {
+/* Liens du menu */
+header a {
     text-decoration: none;
     color: var(--text-main);
-    font-weight: bold;
-    font-size: 1.1rem;
+    font-weight: 600;
+    font-size: 1rem;
     transition: color 0.3s;
 }
 
-nav a:hover {
-    color: #e63946; /* Petit effet au survol */
+/* Lien Actif (Souligné Rose) */
+header a.active {
+    color: #ad115c;
+    text-decoration: underline;
+    text-underline-offset: 4px;
 }
 
-/* --- BOUTONS (Style Yumland) --- */
-.btn {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: var(--primary-client); /* Rose Bonbon */
-    color: var(--text-main);
-    text-decoration: none;
-    border-radius: 30px; /* Arrondi */
-    border: 2px solid var(--text-main); /* Bordure pour contraste */
-    font-weight: bold;
-    cursor: pointer;
+header a:hover {
+    color: #ad115c;
+}
+
+/* --- BOUTON CONNEXION (.btn) --- */
+/* Style spécifique utilisé dans le header */
+header .btn {
+    background: var(--primary-client); /* Rose */
+    color: var(--text-main) !important;
+    padding: 8px 15px;
+    border-radius: 8px;
+    border: 2px solid var(--border-color); /* Bordure cartoon */
     transition: transform 0.2s, box-shadow 0.2s;
+    font-weight: bold;
+    text-decoration: none; /* Sécurité */
 }
 
-.btn:hover {
+header .btn:hover {
     transform: translateY(-2px);
-    box-shadow: 2px 4px 0px var(--text-main); /* Effet "Pop" */
-}
-
-/* --- HERO SECTION (Bannière) --- */
-.hero {
-    text-align: center;
-    padding: 4rem 1rem;
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.hero h1 {
-    font-family: var(--font-title);
-    font-size: 3rem;
-    margin-bottom: 1rem;
-}
-
-.hero p {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
+    box-shadow: 2px 2px 0px var(--border-color); /* Effet relief */
 }
 
 /* --- FOOTER --- */
 footer {
     text-align: center;
     padding: 2rem;
-    background-color: var(--accent-client); /* Mauve Poudré */
-    margin-top: 4rem;
-    border-top: 1px solid var(--border-color);
+    background-color: var(--accent-client);
+    margin-top: auto;
+    border-top: 2px solid var(--border-color);
 }
