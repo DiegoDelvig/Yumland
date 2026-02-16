@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion Commandes - Les Croquettes du Chef</title>
+    
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/client.css">
+    <link rel="stylesheet" href="css/accueil.css"> <link rel="stylesheet" href="css/commandes.css"> </head>
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="assets/Logo projet.png" alt="Logo" class="header-logo" style="height: 35px;">
+            Espace Cuisine 👨‍🍳
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Voir le site</a></li>
+                <li><a href="commandes.html" class="active">Commandes</a></li>
+                <li><a href="index.html" class="btn">Déconnexion</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="dashboard-header">
+            <h1>Suivi du Service 🛎️</h1>
+            <p>Gérez la préparation et le départ des commandes en temps réel.</p>
+        </section>
+
+        <div class="dashboard-container">
+            
+            <section class="column-orders to-do">
+                <div class="column-header">
+                    <h2>🔥 À Préparer (3)</h2>
+                </div>
+                
+                <div class="orders-list">
+                    <article class="order-card">
+                        <div class="order-head">
+                            <span class="order-id">#CMD-8542</span>
+                            <span class="timer">🕒 5 min</span>
+                        </div>
+                        <div class="customer-info">
+                            <strong>Client :</strong> Maxime Dupont
+                        </div>
+                        <ul class="order-items">
+                            <li>1x L'Instinct du Chasseur (Poulet)</li>
+                            <li>1x Os à mâcher Bio</li>
+                        </ul>
+                        <div class="order-actions">
+                            <button class="btn-action ready">✅ Prête à partir</button>
+                        </div>
+                    </article>
+
+                    <article class="order-card">
+                        <div class="order-head">
+                            <span class="order-id">#CMD-8543</span>
+                            <span class="timer alert">🕒 15 min</span>
+                        </div>
+                        <div class="customer-info">
+                            <strong>Client :</strong> Sophie Martin
+                        </div>
+                        <ul class="order-items">
+                            <li>2x Océan & Brillance (Saumon)</li>
+                        </ul>
+                        <div class="order-actions">
+                            <button class="btn-action ready">✅ Prête à partir</button>
+                        </div>
+                    </article>
+
+                     <article class="order-card">
+                        <div class="order-head">
+                            <span class="order-id">#CMD-8544</span>
+                            <span class="timer">🕒 2 min</span>
+                        </div>
+                        <div class="customer-info">
+                            <strong>Client :</strong> Lucas Bernard
+                        </div>
+                        <ul class="order-items">
+                            <li>1x Festin du Molosse (Boeuf)</li>
+                            <li>1x Friandises Dressage</li>
+                        </ul>
+                        <div class="order-actions">
+                            <button class="btn-action ready">✅ Prête à partir</button>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <section class="column-orders delivery">
+                <div class="column-header">
+                    <h2>🚀 En Livraison (2)</h2>
+                </div>
+
+                <div class="orders-list">
+                    <article class="order-card delivering">
+                        <div class="order-head">
+                            <span class="order-id">#CMD-8540</span>
+                            <span class="status-badge">🛵 En route</span>
+                        </div>
+                        <div class="customer-info">
+                            <strong>Livreur :</strong> Nathan E.
+                        </div>
+                        <div class="delivery-address">
+                            📍 12 rue des Lilas, Pontoise
+                        </div>
+                        <div class="order-actions">
+                            <button class="btn-action info">Voir détails</button>
+                        </div>
+                    </article>
+
+                    <article class="order-card delivering">
+                        <div class="order-head">
+                            <span class="order-id">#CMD-8539</span>
+                            <span class="status-badge">🛵 En route</span>
+                        </div>
+                        <div class="customer-info">
+                            <strong>Livreur :</strong> Imane B.
+                        </div>
+                        <div class="delivery-address">
+                            📍 45 Bd du Port, Cergy
+                        </div>
+                        <div class="order-actions">
+                            <button class="btn-action info">Voir détails</button>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Espace Pro - Les Croquettes du Chef</p>
+    </footer>
+
+</body>
+</html>
