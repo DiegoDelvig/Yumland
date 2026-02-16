@@ -13,12 +13,14 @@
 
 <body>
 
- <header>
-        <div class="logo">Les croquettes du chef 🍔</div>
+<header>
+        <div class="logo">
+            <img src="assets/Logo projet.png" alt="Logo" class="header-logo" style="height: 35px;">
+            Espace Administrateur 
+        </div>
         <nav>
             <ul>
                 <li><a href="index.html">Accueil</a></li>
-                <li><a href="menu.html">La Carte</a></li>
                 <li><a href="index.html" class="btn">Déconnexion</a></li>
             </ul>
         </nav>
@@ -34,23 +36,39 @@
             <option value="clients">Tous les clients</option>
             <option value="commandes">Clients ayant déjà commandé</option>
             <option value="livreurs">Livreurs</option>
+            <option value="administrateurs">Administrateurs</option>
         </select>
     </div>
 </section>
-    
+
+
+<main>
+    <div class="zone-tableau">
 <table border="1">
     <tr>
-        <th>E-mail</th><th>Nom</th><th>Rôle</th><th>Statut</th><th>Actions</th>
+        <th>Email</th><th>Nom</th><th>Rôle</th><th>Statut</th><th>Actions</th>
     </tr>
     <tr>
-        <td>diego.delvig@gmail.com</td><td>Delvig Diego</td><td>Client</td><td>Actif</td><td><p><a href="">Aller sur le profil</a></p><p><a href="">Bloquer</a></p></td>
+        <td>diego.delvig@gmail.com</td><td>Delvig Diego</td><td>Client</td><td>Actif</td><td><p><a href="">Aller sur le profil</a></p><p><a href="">Bloquer</a></p><p><a href="">Supprimer</a></p></td>
     </tr>
     <tr>
-    <td>nathanevina@gmail.com</td><td>Evsina Nathan</td><td>Livreur</td><td>En livraison</td><td><p><a href="">Aller sur le profil</a></p><p><a href="">Bloquer</a></p></td>
+    <td>nathanevina@gmail.com</td><td>Evsina Nathan</td><td>Livreur</td><td>En livraison</td><td><p><a href="">Aller sur le profil</a></p><p><a href="">Bloquer</a></p><p><a href="">Supprimer</a></p></td>
     </tr>
     <tr>
-    <td>imane-bateoui@hotmail.com</td><td>Bateoui Imane</td><td>Client</td><td>Actif</td><td><p><a href="">Aller sur le profil</a></p><p><a href="">Bloquer</a></p></td>
+    <td>imane-bateoui@hotmail.com</td><td>Bateoui Imane</td><td>Client</td><td>Actif</td><td><p><a href="">Aller sur le profil</a></p><p><a href="">Bloquer</a></p><p><a href="">Supprimer</a></p></td>
     </tr>
+    <tr>
+    <td>jb@hotmail.com</td><td>Jean B</td><td>Admin</td><td>Actif</td><td><p><a href="">Bloquer</a></p><p><a href="">Supprimer</a></p></td>
+    </tr>
+
+</table>
+</div>
+</main>
+
+<footer>
+        <p>&copy; 2026 Espace Pro - Les Croquettes du Chef</p>
+</footer>
+
 </body>
 
 </html>
