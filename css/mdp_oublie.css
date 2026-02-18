@@ -1,5 +1,5 @@
 .rect_bleu{
-    width:800px;
+    width:75%;
     height: 400px;
     background-color: #9ACBD5;
     border-radius: 20px;
@@ -14,6 +14,26 @@ body {
     background-color: #E2ECE9; 
 }
 .logo_login{
-    width: 100px;
-    height: 100px;  
+    margin: 0px 0px 0px 450px;
+    width: 240px;
+    height: 240px;  
+}
+.login_case_email{
+    margin: 0px 0px 0px 275px;
+    border: 0px;
+    border-radius: 5px;
+    width: 600px;
+    height: 40px; 
+    color: black;
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+}
+.login_submit{
+    margin: 20px 100px 15px 130px;
+    border: 0px;
+    border-radius: 5px;
+    width: 150px;
+    height: 30px; 
+    color:white;
+    background-color: #F3C6BC;
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
 }
