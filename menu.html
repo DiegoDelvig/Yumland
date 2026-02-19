@@ -25,22 +25,22 @@
     </header>
 
     <main>
-        <section class="hero-menu">
+        <section class="banniere-menu">
             <h1>Notre Carte <span class="text-primary">Gourmande</span> 🦴</h1>
             <p>Sélectionnez le meilleur pour sa santé : sans céréales, frais et équilibré.</p>
         </section>
 
-        <section class="menu-container">
+        <section class="conteneur-menu">
             
-            <aside class="filters-sidebar">
-                <div class="filter-group">
+            <aside class="colonne-filtres">
+                <div class="groupe-filtres">
                     <h3>🐕 Âge</h3>
                     <label><input type="checkbox"> Chiots (Junior)</label>
                     <label><input type="checkbox" checked> Adultes</label>
                     <label><input type="checkbox"> Seniors</label>
                 </div>
 
-                <div class="filter-group">
+                <div class="groupe-filtres">
                     <h3>🥩 Saveurs</h3>
                     <label><input type="checkbox"> Volaille</label>
                     <label><input type="checkbox"> Bœuf / Gibier</label>
@@ -48,78 +48,235 @@
                     <label><input type="checkbox"> Végétarien</label>
                 </div>
 
-                <div class="filter-group">
+                <div class="groupe-filtres">
                     <h3>⚠️ Spécifique</h3>
                     <label><input type="checkbox"> Sans Céréales</label>
                     <label><input type="checkbox"> Hypoallergénique</label>
                     <label><input type="checkbox"> Digestion Sensible</label>
                 </div>
 
-                <button class="btn-filter">Appliquer les filtres</button>
+                <button class="btn-filtres">Appliquer les filtres</button>
             </aside>
 
-            <div class="products-area">
+            <div class="zone-plats">
                 
-                <div class="search-bar-menu">
+                <div class="barre-recherche-menu">
                     <input type="text" placeholder="Rechercher une croquette précise...">
                     <button>🔍</button>
                 </div>
 
-                <div class="products-grid">
+                <div class="grille-plats">
                     
-                    <article class="product-card">
-                        <div class="card-img">
+                    <article class="carte-plat">
+                        <div class="carte-img">
                             <img src="https://images.unsplash.com/photo-1589927986089-35812388d1f4?w=400" alt="Croc Poulet">
-                            <span class="badge-new">Nouveau</span>
+                            <span class="etiquette-nouveau">Nouveau</span>
                         </div>
-                        <div class="card-content">
+                        <div class="carte-contenu">
                             <h4>Croc' Poulet Fermier</h4>
-                            <p class="desc">Riche en protéines pour les chiens actifs.</p>
-                            <div class="card-footer">
-                                <span class="price">12.50€</span>
-                                <button class="btn-cart">+</button>
+                            <p class="description">Riche en protéines pour les chiens actifs.</p>
+                            <div class="carte-footer">
+                                <span class="prix">12.50€</span>
+                                <button class="btn-carte">+</button>
                             </div>
                         </div>
                     </article>
 
-                    <article class="product-card">
-                        <div class="card-img">
+                    <article class="carte-plat">
+                        <div class="carte-img">
+                            <img src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?w=400" alt="Mijoté Boeuf">
+                        </div>
+                        <div class="carte-contenu">
+                            <h4>Mijoté de Bœuf & Carottes</h4>
+                            <p class="description">Morceaux tendres en sauce, idéal pour l'énergie au quotidien.</p>
+                            <div class="carte-footer">
+                                <span class="prix">14.90€</span>
+                                <button class="btn-carte">+</button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="carte-plat">
+                        <div class="carte-img">
+                            <img src="https://images.unsplash.com/photo-1599084993091-1cb5c0721cc6?w=400" alt="Saumon">
+                            <span class="etiquette-nouveau">Nouveau</span>
+                        </div>
+                        <div class="carte-contenu">
+                            <h4>Délice de Saumon Frais</h4>
+                            <p class="description">Riche en Oméga-3 pour un poil soyeux et une peau saine.</p>
+                            <div class="carte-footer">
+                                <span class="prix">16.50€</span>
+                                <button class="btn-carte">+</button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="carte-plat">
+                        <div class="carte-img">
+                            <img src="https://images.unsplash.com/photo-1588168333986-5078d3ae3976?w=400" alt="Agneau">
+                        </div>
+                        <div class="carte-contenu">
+                            <h4>Agneau Rôti aux Herbes</h4>
+                            <p class="description">Une viande douce et digeste, parfaite pour les estomacs sensibles.</p>
+                            <div class="carte-footer">
+                                <span class="prix">15.20€</span>
+                                <button class="btn-carte">+</button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="carte-plat">
+                        <div class="carte-img">
+                            <img src="https://images.unsplash.com/photo-1516467508483-a7212febe31a?w=400" alt="Canard">
+                        </div>
+                        <div class="carte-contenu">
+                            <h4>Canard Confit & Lentilles</h4>
+                            <p class="description">Recette hypoallergénique sans céréales aux saveurs rustiques.</p>
+                            <div class="carte-footer">
+                                <span class="prix">17.00€</span>
+                                <button class="btn-carte">+</button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="carte-plat">
+                        <div class="carte-img">
+                            <img src="https://images.unsplash.com/photo-1598514982205-f36b96d1e8d4?w=400" alt="Dinde">
+                        </div>
+                        <div class="carte-contenu">
+                            <h4>Dinde Douceur & Petits Pois</h4>
+                            <p class="description">Faible en matières grasses, le choix numéro un des seniors.</p>
+                            <div class="carte-footer">
+                                <span class="prix">13.80€</span>
+                                <button class="btn-carte">+</button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="carte-plat">
+                        <div class="carte-img">
+                            <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=400" alt="Cerf">
+                            <span class="etiquette-nouveau">Nouveau</span>
+                        </div>
+                        <div class="carte-contenu">
+                            <h4>Terrine de Cerf Sauvage</h4>
+                            <p class="description">Viande giboyeuse et myrtilles antioxydantes. Un vrai festin.</p>
+                            <div class="carte-footer">
+                                <span class="prix">18.50€</span>
+                                <button class="btn-carte">+</button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="carte-plat">
+                        <div class="carte-img">
+                            <img src="https://images.unsplash.com/photo-1602491453631-e2a5ad90a131?w=400" alt="Porc">
+                        </div>
+                        <div class="carte-contenu">
+                            <h4>Porc Ibérique & Pommes</h4>
+                            <p class="description">Un goût irrésistible qui séduira même les chiens les plus difficiles.</p>
+                            <div class="carte-footer">
+                                <span class="prix">14.00€</span>
+                                <button class="btn-carte">+</button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="carte-plat">
+                        <div class="carte-img">
+                            <img src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=400" alt="Poisson blanc">
+                        </div>
+                        <div class="carte-contenu">
+                            <h4>Duo de Poissons Blancs</h4>
+                            <p class="description">Cabillaud et colin accompagnés d'épinards frais pour la vitalité.</p>
+                            <div class="carte-footer">
+                                <span class="prix">15.90€</span>
+                                <button class="btn-carte">+</button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="carte-plat">
+                        <div class="carte-img">
+                            <img src="https://images.unsplash.com/photo-1486580971033-6593a109a1f2?w=400" alt="Végétarien">
+                        </div>
+                        <div class="carte-contenu">
+                            <h4>Recette Végétale Potiron</h4>
+                            <p class="description">Quinoa, potiron et courgettes. 100% végétarien et équilibré.</p>
+                            <div class="carte-footer">
+                                <span class="prix">12.00€</span>
+                                <button class="btn-carte">+</button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="carte-plat">
+                        <div class="carte-img">
+                            <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?w=400" alt="Veau chiot">
+                        </div>
+                        <div class="carte-contenu">
+                            <h4>Festin du Chiot au Veau</h4>
+                            <p class="description">Petites bouchées de veau tendres pour une croissance harmonieuse.</p>
+                            <div class="carte-footer">
+                                <span class="prix">13.50€</span>
+                                <button class="btn-carte">+</button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="carte-plat">
+                        <div class="carte-img">
+                            <img src="https://images.unsplash.com/photo-1544025162-831518f972b9?w=400" alt="Sanglier">
+                            <span class="etiquette-nouveau">Nouveau</span>
+                        </div>
+                        <div class="carte-contenu">
+                            <h4>Boulettes de Sanglier</h4>
+                            <p class="description">Une recette d'hiver aux éclats de châtaignes. Très gourmand.</p>
+                            <div class="carte-footer">
+                                <span class="prix">17.90€</span>
+                                <button class="btn-carte">+</button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="carte-plat">
+                        <div class="carte-img">
                             <img src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?w=400" alt="Pâtée Boeuf">
                         </div>
-                        <div class="card-content">
+                        <div class="carte-contenu">
                             <h4>Mijoté de Bœuf</h4>
-                            <p class="desc">Morceaux tendres en sauce.</p>
-                            <div class="card-footer">
-                                <span class="price">4.90€</span>
-                                <button class="btn-cart">+</button>
+                            <p class="description">Morceaux tendres en sauce.</p>
+                            <div class="carte-footer">
+                                <span class="prix">4.90€</span>
+                                <button class="btn-carte">+</button>
                             </div>
                         </div>
                     </article>
 
-                    <article class="product-card">
-                        <div class="card-img">
+                    <article class="carte-plat">
+                        <div class="carte-img">
                             <img src="https://images.unsplash.com/photo-1599084993091-1cb5c0721cc6?w=400" alt="Saumon">
                         </div>
-                        <div class="card-content">
+                        <div class="carte-contenu">
                             <h4>Saumon & Patate Douce</h4>
-                            <p class="desc">Idéal pour un poil brillant.</p>
-                            <div class="card-footer">
-                                <span class="price">14.90€</span>
-                                <button class="btn-cart">+</button>
+                            <p class="description">Idéal pour un poil brillant.</p>
+                            <div class="carte-footer">
+                                <span class="prix">14.90€</span>
+                                <button class="btn-carte">+</button>
                             </div>
                         </div>
                     </article>
 
-                    <article class="product-card">
-                        <div class="card-img">
+                    <article class="carte-plat">
+                        <div class="carte-img">
                             <img src="https://images.unsplash.com/photo-1548029960-695d127f4543?w=400" alt="Friandises">
                         </div>
-                        <div class="card-content">
+                        <div class="carte-contenu">
                             <h4>Os à mâcher Bio</h4>
-                            <p class="desc">Hygiène dentaire naturelle.</p>
-                            <div class="card-footer">
-                                <span class="price">3.50€</span>
-                                <button class="btn-cart">+</button>
+                            <p class="description">Hygiène dentaire naturelle.</p>
+                            <div class="carte-footer">
+                                <span class="prix">3.50€</span>
+                                <button class="btn-carte">+</button>
                             </div>
                         </div>
                     </article>
