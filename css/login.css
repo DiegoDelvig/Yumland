@@ -19,7 +19,7 @@ body {
 }
 .login_case_email{
     margin: 0px 100px 15px 90px;
-    border: 0px;
+    border: 1px solid black;
     border-radius: 5px;
     width: 225px;
     height: 25px; 
@@ -28,7 +28,7 @@ body {
 }
 .login_case_code{
     margin: 0px 90px 0px 90px;
-    border: 0px;
+    border: 1px solid black;
     border-radius: 5px;
     width: 225px;
     height: 25px; 
@@ -37,7 +37,7 @@ body {
 }
 .login_submit{
     margin: 20px 100px 15px 130px;
-    border: 0px;
+    border: 1px solid black;
     border-radius: 5px;
     width: 150px;
     height: 30px; 
@@ -45,10 +45,20 @@ body {
     background-color: #F3C6BC;
     font-family: "Comic Sans MS", "Comic Sans", cursive;
 }
+.login_submit:hover{
+    transform: translateY(-2px);
+    box-shadow: 2px 2px 0px black;
+}
 .mdp_oublie{
     color: white;
     margin: 0px 0px 0px 20px;
     font-family: "Comic Sans MS", "Comic Sans", cursive;
+}
+.mdp_oublie:hover{
+    color: #F3C6BC;
+}
+.pas_de_compte:hover{
+    color: #F3C6BC;
 }
 .pas_de_compte{
     color: white;
