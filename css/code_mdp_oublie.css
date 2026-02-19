@@ -1,0 +1,49 @@
+.rect_bleu{
+    width:60%;
+    height: 400px;
+    background-color: #9ACBD5;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;   
+    justify-content: center;
+    
+}
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center; 
+    align-items: center;   
+    min-height: 100vh;    
+    background-color: #E2ECE9; 
+}
+.logo_login{
+    margin-top: -5%;
+    width: 240px;
+    height: 240px;  
+}
+.login_case_code{
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;   
+    border: solid 1px black;
+    border-radius: 5px;
+    width: 600px;
+    height: 40px; 
+    color: black;
+    font-size: large;
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+}
+.login_submit{
+    border: solid 1px black;
+    border-radius: 5px;
+    width: 150px;
+    height: 30px; 
+    align-self: center;
+    color:white;
+    background-color: #F3C6BC;
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+    display: block;
+    margin: 15px auto 0px auto;
+}
