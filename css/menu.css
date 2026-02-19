@@ -1,27 +1,24 @@
-/* css/menu.css */
-
-/* --- HERO MENU --- */
-.hero-menu {
+/* Banniere menu */
+.banniere-menu {
     background-color: var(--bg-client); /* Crème */
     text-align: center;
     padding: 60px 20px;
     border-bottom: 2px solid var(--border-color);
 }
 
-.hero-menu h1 {
+.banniere-menu h1 {
     font-family: var(--font-title, sans-serif);
     font-size: 2.5rem;
     color: var(--text-main);
     margin-bottom: 10px;
 }
 
-.hero-menu p {
+.banniere-menu p {
     color: var(--text-main);
     opacity: 0.8;
 }
 
-/* --- LAYOUT PRINCIPAL (Sidebar + Grid) --- */
-.menu-container {
+.conteneur-menu {
     display: flex;
     background-color: var(--card-bg-client); /* Bleu Yumland */
     min-height: 80vh;
@@ -29,8 +26,8 @@
     gap: 40px;
 }
 
-/* --- SIDEBAR FILTRES --- */
-.filters-sidebar {
+/* Colonne filtres */
+.colonne-filtres {
     width: 250px;
     background: white;
     padding: 25px;
@@ -42,17 +39,17 @@
     top: 20px;
 }
 
-.filter-group {
+.groupe-filtres {
     margin-bottom: 25px;
     border-bottom: 1px dashed #ccc;
     padding-bottom: 15px;
 }
 
-.filter-group:last-of-type {
+.groupe-filtres:last-of-type {
     border-bottom: none;
 }
 
-.filter-group h3 {
+.groupe-filtres h3 {
     font-size: 1.1rem;
     margin-bottom: 15px;
     color: var(--text-main);
@@ -60,7 +57,7 @@
     font-weight: 800;
 }
 
-.filter-group label {
+.groupe-filtres label {
     display: block;
     margin-bottom: 10px;
     color: var(--text-main);
@@ -68,13 +65,13 @@
     font-size: 0.95rem;
 }
 
-.filter-group input[type="checkbox"] {
+.groupe-filtres input[type="checkbox"] {
     margin-right: 10px;
     accent-color: var(--primary-client); /* Checkbox rose */
     transform: scale(1.2);
 }
 
-.btn-filter {
+.btn-filtres {
     width: 100%;
     padding: 12px;
     background: var(--text-main);
@@ -86,22 +83,22 @@
     transition: background 0.2s;
 }
 
-.btn-filter:hover {
+.btn-filtres:hover {
     background: #444;
 }
 
-/* --- ZONE DROITE --- */
-.products-area {
+/* Zone droite */
+.zone-plats {
     flex-grow: 1;
 }
 
 /* Barre de recherche spécifique au menu */
-.search-bar-menu {
+.barre-recherche-menu {
     display: flex;
     margin-bottom: 30px;
 }
 
-.search-bar-menu input {
+.barre-recherche-menu input {
     width: 100%;
     padding: 15px;
     border: 2px solid var(--border-color);
@@ -110,7 +107,7 @@
     outline: none;
 }
 
-.search-bar-menu button {
+.barre-recherche-menu button {
     padding: 0 25px;
     background: var(--primary-client);
     border: 2px solid var(--border-color);
@@ -120,14 +117,14 @@
     font-size: 1.2rem;
 }
 
-/* --- GRILLE PRODUITS --- */
-.products-grid {
+/* Grille plats */
+.grille-plats {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
     gap: 25px;
 }
 
-.product-card {
+.carte-plat {
     background: white;
     border: 2px solid var(--border-color);
     border-radius: 15px;
@@ -138,25 +135,25 @@
     flex-direction: column;
 }
 
-.product-card:hover {
+.carte-plat:hover {
     transform: translateY(-5px);
     box-shadow: 6px 6px 0px var(--border-color);
 }
 
-.card-img {
+.carte-img {
     height: 180px;
     background: #eee;
     position: relative;
     border-bottom: 2px solid var(--border-color);
 }
 
-.card-img img {
+.carte-img img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-.badge-new {
+.etiquette-nouveau {
     position: absolute;
     top: 10px;
     right: 10px;
@@ -169,40 +166,40 @@
     border: 1px solid var(--border-color);
 }
 
-.card-content {
+.carte-contenu {
     padding: 15px;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
 }
 
-.card-content h4 {
+.carte-contenu h4 {
     margin: 0 0 5px 0;
     color: var(--text-main);
     font-size: 1.1rem;
 }
 
-.card-content .desc {
+.carte-contenu .description {
     font-size: 0.85rem;
     color: #666;
     margin-bottom: 15px;
     flex-grow: 1;
 }
 
-.card-footer {
+.carte-footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-top: auto;
 }
 
-.card-footer .price {
+.carte-footer .price {
     font-weight: 800;
     font-size: 1.2rem;
     color: var(--text-main);
 }
 
-.btn-cart {
+.btn-carte {
     width: 35px;
     height: 35px;
     border-radius: 50%;
@@ -214,19 +211,19 @@
     transition: transform 0.2s;
 }
 
-.btn-cart:hover {
+.btn-carte:hover {
     transform: scale(1.1);
     background: var(--primary-client);
     color: var(--text-main);
 }
 
-/* Responsive Mobile */
+/* Adapté pour téléphone */
 @media (max-width: 768px) {
-    .menu-container {
+    .conteneur-menu {
         flex-direction: column;
         padding: 20px;
     }
-    .filters-sidebar {
+    .colonne-filtres {
         width: 100%;
         position: static;
     }
