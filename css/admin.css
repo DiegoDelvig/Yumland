@@ -60,3 +60,19 @@
         background-color: white;
         cursor: pointer;
     }
+
+    @media screen and (max-width: 768px) {
+    .filtres-admin {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    main {
+        display: block; 
+        overflow-x: auto; 
+    }
+
+    table {
+        min-width: 500px;
+    }
+}
