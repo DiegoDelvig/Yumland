@@ -1,7 +1,7 @@
 .rect_bleu{
     width:60%;
     height: 400px;
-    background-color: #9ACBD5;
+    background-color: var(--card-bg-client);
     border-radius: 20px;
     display: flex;
     flex-direction: column; 
@@ -51,4 +51,5 @@ body {
     transform: translateY(-2px);
     box-shadow: 2px 2px 0px black;
 }
+
 
