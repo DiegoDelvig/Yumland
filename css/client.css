@@ -1,6 +1,3 @@
-/* css/client.css */
-
-/* --- RESET & GLOBAL --- */
 * {
     margin: 0;
     padding: 0;
@@ -17,20 +14,18 @@ body {
     min-height: 100vh;
 }
 
-/* --- HEADER (Barre de Navigation) --- */
 header {
-    background: white; 
+    background: white;
     padding: 15px 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-bottom: 2px solid var(--border-color);
-    position: sticky; 
+    position: sticky;
     top: 0;
     z-index: 1000;
 }
 
-/* Conteneur Logo (Texte + Image) */
 header .logo {
     display: flex;
     align-items: center;
@@ -42,7 +37,7 @@ header .logo {
 
 /* Image du Logo */
 .header-logo {
-    height: 35px; /* Taille ajustée pour être propre */
+    height: 35px;
     width: auto;
     margin-right: 10px;
 }
@@ -64,7 +59,6 @@ header a {
     transition: color 0.3s;
 }
 
-/* Lien Actif  */
 header a.active {
     color: #ad115c;
     text-decoration: underline;
@@ -75,17 +69,15 @@ header a:hover {
     color: #ad115c;
 }
 
-/* --- BOUTON CONNEXION (.btn) --- */
-/* Style spécifique utilisé dans le header */
 header .btn {
-    background: var(--primary-client); 
+    background: var(--primary-client);
     color: var(--text-main) !important;
     padding: 8px 15px;
     border-radius: 8px;
     border: 2px solid var(--border-color);
     transition: transform 0.2s, box-shadow 0.2s;
     font-weight: bold;
-    text-decoration: none; /* Sécurité */
+    text-decoration: none;
 }
 
 header .btn:hover {
@@ -93,7 +85,6 @@ header .btn:hover {
     box-shadow: 2px 2px 0px var(--border-color);
 }
 
-/* --- FOOTER --- */
 footer {
     text-align: center;
     padding: 2rem;
@@ -102,55 +93,30 @@ footer {
     border-top: 2px solid var(--border-color);
 }
 
-
-
-html{
-    width: 100%;
-    margin: 0;
-    overflow-x: hidden; 
-}
-
-body {
-    width: 100%;
-    margin: 0;
-    overflow-x: hidden; 
-}
-
-header{
-    width: 100%;
-    box-sizing: border-box; 
-}
-
-footer {
-    width: 100%;
-    box-sizing: border-box; 
-}
-
-@media screen and (max-width: 768px) {
+/* Adapté pour telephones/tablettes */
+@media (max-width: 768px) {
+    
     header {
-        padding: 10px 15px; 
-        display: flex;
-        flex-direction: row; 
-        justify-content: space-between;
-    }
-
-    header .logo {
-        font-size: 1.1rem; 
-    }
-
-    .header-logo {
-        height: 25px; 
+        flex-direction: column;
+        padding: 15px 20px;
+        gap: 15px;
     }
 
     header nav ul {
-        gap: 8px; 
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
     }
 
-    header a {
-        font-size: 0.85rem ; 
+    header .logo {
+        font-size: 1.2rem;
     }
 
-    header .btn {
-        padding: 5px 10px; 
+    .conteneur-tableau {
+        flex-direction: column;
+    }
+    .colonne-commandes {
+        border-right: none;
+        border-bottom: 2px solid var(--border-color);
     }
 }

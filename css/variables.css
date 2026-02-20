@@ -1,21 +1,16 @@
-/* css/variables.css */
 :root {
-    /* --- TYPOGRAPHIE --- */
+    /* Fonts */
     --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    --font-title: 'Georgia', serif; /* Ou une Google Font comme 'Pacifico' plus tard */
+    --font-title: 'Georgia', serif;
 
-    /* --- COULEURS GLOBALES --- */
-    --text-main: #2C3E50;       /* Bleu nuit foncé pour la lisibilité sur fond clair */
-    --text-light: #ffffff;      /* Blanc (rarement utilisé sur vos pastels) */
+    --text-main: #2C3E50;
+    --text-light: #ffffff;
 
-    /* --- PALETTE CLIENT (Tons Chauds / Gourmands) --- */
-    /* Basé sur votre fichier palette.pdf */
-    --bg-client: #E2ECE9;       /* Crème - Fond principal */
-    --primary-client: #FAD2E1;  /* Rose Bonbon - Boutons & Accents forts */
-    --card-bg-client: #9ACBD5;  /* Rose Pâle - Fond des blocs/cartes */
-    --accent-client: #E2ECE9;   /* Mauve Poudré - Détails ou Footer */
+    --bg-client: #E2ECE9;
+    --primary-client: #FAD2E1;
+    --card-bg-client: #9ACBD5;
+    --accent-client: #E2ECE9;
     
-    /* --- BORDURES & OMBRES --- */
-    --border-color: #2C3E50;    /* Bordure foncée pour le style "Cartoon/Yumland" */
+    --border-color: #2C3E50;
     --shadow-soft: 0 4px 6px rgba(0,0,0,0.1);
 }

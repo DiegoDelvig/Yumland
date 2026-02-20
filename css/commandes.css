@@ -1,7 +1,7 @@
 
 /* En-tête */
 .en-tete-tableau {
-    background-color: var(--bg-client); /* Crème */
+    background-color: var(--bg-client);
     padding: 40px 20px;
     text-align: center;
     border-bottom: 2px solid var(--border-color);
@@ -16,11 +16,11 @@
 .conteneur-tableau {
     display: flex;
     min-height: 80vh;
-    background-color: #f4f6f8; /* Gris neutre de fond */
+    background-color: #f4f6f8;
 }
 
 .colonne-commandes {
-    flex: 1; /* Chaque colonne prend 50% */
+    flex: 1;
     padding: 20px;
     border-right: 2px solid var(--border-color);
 }
@@ -37,8 +37,8 @@
 
 /* Colonne de droite */
 .livraison {
-    background-color: var(--card-bg-client); /* <-- C'est ici qu'on met le BLEU */
-    border-left: 2px solid var(--border-color); /* Ajout d'une bordure à gauche pour bien séparer */
+    background-color: var(--card-bg-client); 
+    border-left: 2px solid var(--border-color);
 }
 
 .en-tete-colonne h2 {
@@ -53,7 +53,6 @@
     color: var(--text-main);
 }
 
-/* --- CARTES COMMANDES --- */
 .liste-commandes {
     display: flex;
     flex-direction: column;
@@ -65,7 +64,7 @@
     border: 2px solid var(--border-color);
     border-radius: 12px;
     padding: 20px;
-    box-shadow: 3px 3px 0px rgba(0,0,0,0.1); /* Effet cartoon */
+    box-shadow: 3px 3px 0px rgba(0,0,0,0.1);
     transition: transform 0.2s;
 }
 
@@ -74,7 +73,6 @@
     box-shadow: 5px 5px 0px var(--border-color);
 }
 
-/* En-tête de la carte (ID + Timer) */
 .en-tete-commande {
     display: flex;
     justify-content: space-between;
@@ -101,11 +99,11 @@
 
 .timer.alert {
     color: white;
-    background: #e74c3c; /* Rouge alerte si temps long */
+    background: #e74c3c;
 }
 
 .badge-statut {
-    background: #9ACBD5; /* Bleu Yumland */
+    background: #9ACBD5;
     color: var(--text-main);
     padding: 5px 10px;
     border-radius: 20px;
@@ -114,7 +112,6 @@
     border: 1px solid var(--border-color);
 }
 
-/* Contenu carte */
 .infos-client {
     font-size: 1rem;
     margin-bottom: 10px;
@@ -139,7 +136,7 @@
     content: '•';
     position: absolute;
     left: 0;
-    color: var(--primary-client); /* Puce rose */
+    color: var(--primary-client);
     font-weight: bold;
 }
 
@@ -153,7 +150,6 @@
     border: 1px solid #eee;
 }
 
-/* Boutons d'action */
 .actions-commande {
     display: flex;
     justify-content: flex-end;
@@ -169,7 +165,7 @@
 }
 
 .btn-action.ready {
-    background-color: #2ecc71; /* Vert validation */
+    background-color: #2ecc71;
     color: white;
     box-shadow: 2px 2px 0px var(--border-color);
 }
@@ -189,7 +185,7 @@
     background-color: #eee;
 }
 
-/* Responsive Tablette/Mobile */
+/* Adapté pour telephones/tablettes */
 @media (max-width: 768px) {
     .conteneur-tableau {
         flex-direction: column;
