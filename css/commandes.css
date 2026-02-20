@@ -103,7 +103,7 @@
 }
 
 .badge-statut {
-    background: #9ACBD5;
+    background: var(--card-bg-client);
     color: var(--text-main);
     padding: 5px 10px;
     border-radius: 20px;
