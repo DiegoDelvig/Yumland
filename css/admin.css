@@ -35,7 +35,7 @@
     }
 
     a:hover{
-        color: #db7396;
+        color: var(--couleur-curseur-bouton);
     }
 
     .titre-admin {
