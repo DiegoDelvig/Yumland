@@ -38,7 +38,7 @@
         color: #db7396;
     }
 
-    .contenu-profil {
+    .titre-admin {
     grid-area: contenu-profil;
     padding: 2rem;
     display: flex;
