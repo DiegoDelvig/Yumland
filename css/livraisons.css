@@ -13,7 +13,7 @@ a{
 
 
 a:hover{
-    color: #db7396;
+    color: var(--couleur-curseur-bouton);
 }
 
 .zone-boutons {
@@ -66,6 +66,7 @@ a:hover{
 .btn-livraison:hover {
     transform: translateY(-2px);
     box-shadow: 2px 4px 0px var(--text-main);
+    color: var(--couleur-curseur-bouton);
 }
 
 
