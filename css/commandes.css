@@ -1,51 +1,47 @@
-/* css/commandes.css */
 
-/* --- HEADER DASHBOARD --- */
-.dashboard-header {
+/* En-tête */
+.en-tete-tableau {
     background-color: var(--bg-client); /* Crème */
     padding: 40px 20px;
     text-align: center;
     border-bottom: 2px solid var(--border-color);
 }
 
-.dashboard-header h1 {
+.en-tete-tableau h1 {
     font-family: var(--font-title, sans-serif);
     color: var(--text-main);
     margin-bottom: 10px;
 }
 
-/* --- LAYOUT DASHBOARD (2 Colonnes) --- */
-.dashboard-container {
+.conteneur-tableau {
     display: flex;
     min-height: 80vh;
     background-color: #f4f6f8; /* Gris neutre de fond */
 }
 
-.column-orders {
+.colonne-commandes {
     flex: 1; /* Chaque colonne prend 50% */
     padding: 20px;
     border-right: 2px solid var(--border-color);
 }
 
-.column-orders:last-child {
+.colonne-commandes:last-child {
     border-right: none;
 }
 
 /* Couleurs de fond des colonnes */
-.to-do {
-    background-color: var(--primary-client); /* Rose pale pour "A faire" */
-    background-opascity: 0.2; /* Note: opacity marche pas en css pur comme ça, on utilise une teinte claire */
-    background-color: #fff0f5; /* Rose très clair */
+.a-preparer {
+    background-color: var(--primary-client);
 }
 
 
-/* Colonne de droite : En Livraison */
-.delivery {
+/* Colonne de droite */
+.livraison {
     background-color: var(--card-bg-client); /* <-- C'est ici qu'on met le BLEU */
     border-left: 2px solid var(--border-color); /* Ajout d'une bordure à gauche pour bien séparer */
 }
 
-.column-header h2 {
+.en-tete-colonne h2 {
     text-align: center;
     background: white;
     padding: 15px;
@@ -58,13 +54,13 @@
 }
 
 /* --- CARTES COMMANDES --- */
-.orders-list {
+.liste-commandes {
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
-.order-card {
+.carte-commande {
     background: white;
     border: 2px solid var(--border-color);
     border-radius: 12px;
@@ -73,13 +69,13 @@
     transition: transform 0.2s;
 }
 
-.order-card:hover {
+.carte-commande:hover {
     transform: translateY(-3px);
     box-shadow: 5px 5px 0px var(--border-color);
 }
 
 /* En-tête de la carte (ID + Timer) */
-.order-head {
+.en-tete-commande {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -88,7 +84,7 @@
     border-bottom: 2px dashed #eee;
 }
 
-.order-id {
+.numero-commande {
     font-weight: 900;
     font-size: 1.1rem;
     color: var(--text-main);
@@ -108,7 +104,7 @@
     background: #e74c3c; /* Rouge alerte si temps long */
 }
 
-.status-badge {
+.badge-statut {
     background: #9ACBD5; /* Bleu Yumland */
     color: var(--text-main);
     padding: 5px 10px;
@@ -119,19 +115,19 @@
 }
 
 /* Contenu carte */
-.customer-info {
+.infos-client {
     font-size: 1rem;
     margin-bottom: 10px;
     color: var(--text-main);
 }
 
-.order-items {
+.liste-articles {
     list-style: none;
     padding-left: 0;
     margin-bottom: 20px;
 }
 
-.order-items li {
+.liste-articles li {
     padding-left: 20px;
     position: relative;
     margin-bottom: 5px;
@@ -139,7 +135,7 @@
     color: #444;
 }
 
-.order-items li::before {
+.liste-articles li::before {
     content: '•';
     position: absolute;
     left: 0;
@@ -147,7 +143,7 @@
     font-weight: bold;
 }
 
-.delivery-address {
+.adresse-livraison {
     background: #f9f9f9;
     padding: 10px;
     border-radius: 8px;
@@ -158,7 +154,7 @@
 }
 
 /* Boutons d'action */
-.order-actions {
+.actions-commande {
     display: flex;
     justify-content: flex-end;
 }
@@ -195,10 +191,10 @@
 
 /* Responsive Tablette/Mobile */
 @media (max-width: 768px) {
-    .dashboard-container {
+    .conteneur-tableau {
         flex-direction: column;
     }
-    .column-orders {
+    .colonne-commandes {
         border-right: none;
         border-bottom: 2px solid var(--border-color);
     }

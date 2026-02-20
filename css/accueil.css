@@ -28,14 +28,14 @@
 }
 
 
-.content-area {
+.zone-contenu {
     background-color: var(--card-bg-client); /* Fond Bleu */
     padding: 60px 40px;
     min-height: 60vh;
     border-top: 2px solid var(--border-color);
 }
 
-.zone-contenu {
+.conteneur-gauche {
     max-width: 900px;
     margin: 0 auto;
     display: flex;
@@ -99,7 +99,7 @@
 }
 
 /* Capsules */
-.capsule-list {
+.capsule-liste {
     width: 100%;
     max-width: 650px;
 }
