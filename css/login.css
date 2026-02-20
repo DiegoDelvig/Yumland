@@ -5,6 +5,7 @@
     border-radius: 20px;
     border: solid black 1px;
 }
+
 body {
     margin: 0;
     display: flex;
@@ -69,6 +70,7 @@ body {
 a{
     text-decoration: none;
 }
+
 
 
 
