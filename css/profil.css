@@ -12,7 +12,7 @@
 
 .sidebar-perso { 
     grid-area: sidebar-perso;
-    background-color: #fff0f5;
+    background-color: var(--text-light);
     border-right: 2px solid var(--text-main);
     padding: 30px 10px; 
     height: 100%;
@@ -35,7 +35,7 @@
 }
 
 .barre { 
-    background: #9ACBD5;
+    background: var(--card-bg-client);
     border-radius: 10px;
     height: 15px;
     width: 100%;
@@ -107,7 +107,7 @@ footer {
 }
 
 .bouton-recommande {
-    background: var(--primary-client); /* Rose */
+    background: var(--primary-client); 
 
     padding: 5px 10px;
     color: var(--text-main);
@@ -120,7 +120,7 @@ footer {
 
 .bouton-recommande:hover {
     transform: translateY(-2px);
-    box-shadow: 2px 2px 0px var(--border-color); /* Effet relief */
+    box-shadow: 2px 2px 0px var(--border-color); 
 }
 
 @media screen and (max-width: 768px) { 
