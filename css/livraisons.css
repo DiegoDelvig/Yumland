@@ -94,13 +94,6 @@ main {
 }
 
 
-.bloc-blanc p:first-child {
-    display: flex;
-    justify-content: space-between; 
-    align-items: center; 
-}
-
-
 @media screen and (max-width: 768px) {
     .livreur-info {
         padding: 15px;
