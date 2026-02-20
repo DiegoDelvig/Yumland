@@ -105,6 +105,11 @@ main {
         padding: 20px;
     }
 
+    .bloc-blanc{
+        padding: 40px 30px; 
+        min-height: 400px; 
+    }
+
     .zone-boutons {
         flex-direction: column; 
         gap: 15px;
