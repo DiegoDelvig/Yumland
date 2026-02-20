@@ -111,14 +111,9 @@ main {
         min-height: auto;
     }
 
-    .bloc-blanc p:first-child {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 20px;
-    }
 
     .maps {
-        padding: 15px;
+        padding: 60px;
         justify-content: center;
         font-size: 1.2rem;
         text-align: center;
