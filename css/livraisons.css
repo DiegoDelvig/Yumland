@@ -100,26 +100,35 @@ main {
     align-items: center; 
 }
 
-@media screen and (max-width: 768px) { 
+@media screen and (max-width: 768px) {
     .livreur-info {
-        padding: 20px;
+        padding: 15px;
     }
 
     .bloc-blanc {
-        padding: 20px 15px;
-        min-height: auto; 
-        font-size: 1rem; 
-    }
-
-    .btn-livraison {
-        margin-left: 5%;
-        width: 90%;
-        padding: 15px;
+        padding: 30px 20px; /* Plus d'espace interne */
+        gap: 30px; /* Plus d'espace entre chaque ligne d'info */
+        font-size: 1.4rem; /* Texte beaucoup plus grand */
+        min-height: auto;
     }
 
     .bloc-blanc p:first-child {
         flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
+        align-items: stretch;
+        gap: 20px;
+    }
+
+    .maps {
+        padding: 15px;
+        justify-content: center;
+        font-size: 1.1rem;
+    }
+    .btn-livraison {
+        margin: 40px auto; 
+        width: 100%; 
+        padding: 25px; 
+        font-size: 1.5rem;
+        border-radius: 20px; 
+        box-shadow: 0px 6px 0px var(--text-main); 
     }
 }
