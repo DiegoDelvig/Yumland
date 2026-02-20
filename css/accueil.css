@@ -222,3 +222,27 @@
 .bouton-ajouter:hover {
     background: white;
 }
+
+@media (max-width: 768px) {
+    
+    .barre-recherche {
+        flex-direction: column; 
+        padding: 15px;
+        gap: 10px;
+    }
+    
+    .barre-recherche .icone {
+        display: none; 
+    }
+
+    .barre-recherche input {
+        width: 100%;
+        text-align: center;
+        padding: 10px 0;
+    }
+
+    .barre-recherche button {
+        width: 100%;
+        padding: 15px;
+    }
+}
