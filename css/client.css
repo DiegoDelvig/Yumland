@@ -102,14 +102,55 @@ footer {
     border-top: 2px solid var(--border-color);
 }
 
+
+
+html{
+    width: 100%;
+    margin: 0;
+    overflow-x: hidden; 
+}
+
+body {
+    width: 100%;
+    margin: 0;
+    overflow-x: hidden; 
+}
+
+header{
+    width: 100%;
+    box-sizing: border-box; 
+}
+
+footer {
+    width: 100%;
+    box-sizing: border-box; 
+}
+
 @media screen and (max-width: 768px) {
     header {
         padding: 10px 15px; 
-        flex-direction: column; 
-        gap: 10px;
+        display: flex;
+        flex-direction: row; 
+        justify-content: space-between;
     }
-    
+
+    header .logo {
+        font-size: 1.1rem; 
+    }
+
+    .header-logo {
+        height: 25px; 
+    }
+
     header nav ul {
-        gap: 10px;
+        gap: 8px; 
+    }
+
+    header a {
+        font-size: 0.85rem ; 
+    }
+
+    header .btn {
+        padding: 5px 10px; 
     }
 }
