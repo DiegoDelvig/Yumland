@@ -61,7 +61,7 @@
         cursor: pointer;
     }
 
-    @media screen and (max-width: 768px) {
+@media screen and (max-width: 768px) {
     .filtres-admin {
         display: flex;
         flex-direction: row; 
@@ -89,10 +89,12 @@
     td {
         padding: 12px 10px;
     }
+    
     th:last-child {
         min-width: 160px;
         padding-right: 20px;
     }
+    
     td:last-child {
         min-width: 160px;
         padding-right: 20px;
