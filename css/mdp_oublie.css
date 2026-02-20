@@ -15,7 +15,7 @@ body {
     justify-content: center; 
     align-items: center;   
     min-height: 100vh;    
-    background-color: #E2ECE9; 
+    background-color: var(--bg-client); 
 }
 .logo_login{
     margin-top: -5%;
@@ -51,5 +51,6 @@ body {
     transform: translateY(-2px);
     box-shadow: 2px 2px 0px black;
 }
+
 
 
