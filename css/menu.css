@@ -1,6 +1,6 @@
 /* Banniere menu */
 .banniere-menu {
-    background-color: var(--bg-client); /* Crème */
+    background-color: var(--bg-client); 
     text-align: center;
     padding: 60px 20px;
     border-bottom: 2px solid var(--border-color);
@@ -20,7 +20,7 @@
 
 .conteneur-menu {
     display: flex;
-    background-color: var(--card-bg-client); /* Bleu Yumland */
+    background-color: var(--card-bg-client);
     min-height: 80vh;
     padding: 40px;
     gap: 40px;
@@ -34,7 +34,7 @@
     border-radius: 15px;
     border: 2px solid var(--border-color);
     box-shadow: 4px 4px 0px rgba(0,0,0,0.1);
-    height: fit-content; /* S'arrête à la fin du contenu */
+    height: fit-content;
     position: sticky;
     top: 20px;
 }
@@ -67,7 +67,7 @@
 
 .groupe-filtres input[type="checkbox"] {
     margin-right: 10px;
-    accent-color: var(--primary-client); /* Checkbox rose */
+    accent-color: var(--primary-client); 
     transform: scale(1.2);
 }
 
