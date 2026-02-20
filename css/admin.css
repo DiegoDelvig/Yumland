@@ -70,9 +70,11 @@
     main {
         display: block; 
         overflow-x: auto; 
+        width:100%;
     }
 
     table {
-        min-width: 500px;
+        min-width: 100%;
+        font-size: 0.8rem;
     }
 }
