@@ -1,4 +1,4 @@
-    table{
+      table{
         width: 95%;
         border-collapse: collapse;
         margin-bottom: 20px;
@@ -20,13 +20,13 @@
         padding-top: 10px;
         padding-bottom: 10px;
         padding-left: 10px;
-        border: 1px solid #2C3E50;
+        border: 1px solid var(--text-main);
     }
 
     td{
         background-color: #cbd9dc;
         padding-left: 10px;
-        border: 1px solid #2C3E50;
+        border: 1px solid var(--text-main);
     }
 
     a{
@@ -35,7 +35,7 @@
     }
 
     a:hover{
-        color: #ad115c;
+        color: #db7396;
     }
 
     .contenu-profil {
