@@ -19,13 +19,13 @@ body {
 
 /* --- HEADER (Barre de Navigation) --- */
 header {
-    background: white; /* Fond Blanc */
+    background: white; 
     padding: 15px 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 2px solid var(--border-color); /* Bordure Yumland */
-    position: sticky; /* Optionnel : garde le menu en haut */
+    border-bottom: 2px solid var(--border-color);
+    position: sticky; 
     top: 0;
     z-index: 1000;
 }
@@ -64,7 +64,7 @@ header a {
     transition: color 0.3s;
 }
 
-/* Lien Actif (Souligné Rose) */
+/* Lien Actif  */
 header a.active {
     color: #ad115c;
     text-decoration: underline;
@@ -78,11 +78,11 @@ header a:hover {
 /* --- BOUTON CONNEXION (.btn) --- */
 /* Style spécifique utilisé dans le header */
 header .btn {
-    background: var(--primary-client); /* Rose */
+    background: var(--primary-client); 
     color: var(--text-main) !important;
     padding: 8px 15px;
     border-radius: 8px;
-    border: 2px solid var(--border-color); /* Bordure cartoon */
+    border: 2px solid var(--border-color);
     transition: transform 0.2s, box-shadow 0.2s;
     font-weight: bold;
     text-decoration: none; /* Sécurité */
@@ -90,7 +90,7 @@ header .btn {
 
 header .btn:hover {
     transform: translateY(-2px);
-    box-shadow: 2px 2px 0px var(--border-color); /* Effet relief */
+    box-shadow: 2px 2px 0px var(--border-color);
 }
 
 /* --- FOOTER --- */
@@ -101,3 +101,5 @@ footer {
     margin-top: auto;
     border-top: 2px solid var(--border-color);
 }
+
+@media screen and (max-width: 768px) {}
