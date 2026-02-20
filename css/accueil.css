@@ -1,6 +1,6 @@
 /* Bannière centrale */
 .banniere-centre {
-    background-color: var(--bg-client); /* Fond Crème */
+    background-color: var(--bg-client); 
     text-align: center;
     padding: 80px 20px;
     color: var(--text-main);
@@ -29,7 +29,7 @@
 
 
 .zone-contenu {
-    background-color: var(--card-bg-client); /* Fond Bleu */
+    background-color: var(--card-bg-client); 
     padding: 60px 40px;
     min-height: 60vh;
     border-top: 2px solid var(--border-color);
