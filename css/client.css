@@ -60,18 +60,18 @@ header a {
 }
 
 header a.active {
-    color: #ad115c;
+    color: var(--couleur-curseur-bouton);
     text-decoration: underline;
     text-underline-offset: 4px;
 }
 
 header a:hover {
-    color: #ad115c;
+    color: var(--couleur-curseur-bouton);
 }
 
 header .btn {
     background: var(--primary-client);
-    color: var(--text-main) !important;
+    color: var(--text-main);
     padding: 8px 15px;
     border-radius: 8px;
     border: 2px solid var(--border-color);
@@ -88,7 +88,7 @@ header .btn:hover {
 footer {
     text-align: center;
     padding: 2rem;
-    background-color: var(--accent-client);
+    background-color: var(--bg-client);
     margin-top: auto;
     border-top: 2px solid var(--border-color);
 }
