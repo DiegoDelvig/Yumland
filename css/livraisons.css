@@ -100,41 +100,6 @@ main {
     font-size: large;
 }
 
-@media screen and (max-width: 768px) {
-    .livreur-info {
-        padding: 15px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
 
-    .bloc-blanc {
-        width: 100%; 
-        margin-top: 20px;
-        padding: 30px 20px;
-        font-size: 1.5rem; 
-        gap: 30px;
-        min-height: auto;
-    }
-
-
-    .maps {
-        padding: 15px;
-        justify-content: center;
-        font-size: 1.2rem;
-        text-align: center;
-    }
-
-    .btn-livraison {
-        width: 100%;   
-        margin: 40px 0 0 0; 
-        padding: 70px; 
-        font-size: 1.6rem; 
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 20px;
-    }
-}
 
 
