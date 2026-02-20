@@ -99,3 +99,27 @@ main {
     justify-content: space-between; 
     align-items: center; 
 }
+
+@media screen and (max-width: 768px) { 
+    .livreur-info {
+        padding: 20px;
+    }
+
+    .bloc-blanc {
+        padding: 20px 15px;
+        min-height: auto; 
+        font-size: 1rem; 
+    }
+
+    .btn-livraison {
+        margin-left: 5%;
+        width: 90%;
+        padding: 15px;
+    }
+
+    .bloc-blanc p:first-child {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+}
