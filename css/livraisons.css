@@ -105,25 +105,30 @@ main {
         padding: 20px;
     }
 
+    .bloc-blanc {
+        min-height: 450px; 
+        padding: 20px;
+        font-size: 1.1rem;
+    }
+
     .zone-boutons {
         flex-direction: column; 
         gap: 15px;
-    }
-
-    .maps {
-        max-width: 100%; 
-        width: 100%;
-        padding: 30px;
-        font-size: 1.2rem;
+        margin-top: 20px;
     }
 
     .btn-livraison {
         max-width: 100%; 
         width: 100%;
-        padding: 30px; 
+        padding: 25px; 
         font-size: 1.2rem;
     }
-
+    .maps{
+        max-width: 100%; 
+        width: 100%;
+        padding: 25px; 
+        font-size: 1.2rem;
+    }
 }
 
 
