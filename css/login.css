@@ -1,7 +1,7 @@
 .rect_bleu{
     width:400px;
     height: 400px;
-    background-color: #9ACBD5;
+    background-color: var(--card-bg-client);
     border-radius: 20px;
     border: solid black 1px;
 }
@@ -69,4 +69,5 @@ body {
 a{
     text-decoration: none;
 }
+
 
