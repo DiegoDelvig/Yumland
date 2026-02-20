@@ -100,6 +100,32 @@ main {
     font-size: large;
 }
 
+@media screen and (max-width: 768px) {
+    .livreur-info {
+        padding: 20px;
+    }
+
+    .zone-boutons {
+        flex-direction: column; 
+        gap: 15px;
+    }
+
+    .maps {
+        max-width: 100%; 
+        width: 100%;
+        padding: 30px;
+        font-size: 1.2rem;
+    }
+
+    .btn-livraison {
+        max-width: 100%; 
+        width: 100%;
+        padding: 30px; 
+        font-size: 1.2rem;
+    }
+
+}
+
 
 
 
