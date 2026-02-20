@@ -3,6 +3,7 @@
     height: 400px;
     background-color: #9ACBD5;
     border-radius: 20px;
+    border: solid black 1px;
 }
 body {
     margin: 0;
@@ -68,3 +69,4 @@ body {
 a{
     text-decoration: none;
 }
+
