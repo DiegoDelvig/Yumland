@@ -32,7 +32,7 @@ a:hover{
     flex: 1;                   
     max-width: 400px;
     padding: 25px;            
-    background-color: #E2ECE9;
+    background-color: var(--bg-client);
     border: 2px solid var(--text-main);
     border-radius: 15px;
     font-weight: bold;
@@ -78,7 +78,7 @@ main {
 .livreur-info{
     padding: 50px;
     border-top: 2px solid var(--text-main);
-    background-color: #fff0f5;
+    background-color: var(--text-light);
     flex: 1;
     width: 100%;
     display: flex;
@@ -125,6 +125,7 @@ main {
     }
 
 }
+
 
 
 
