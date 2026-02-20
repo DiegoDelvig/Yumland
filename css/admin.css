@@ -39,7 +39,7 @@
     }
 
     .titre-admin {
-    grid-area: contenu-profil;
+    grid-area: titre-admin;
     padding: 2rem;
     display: flex;
     flex-direction: column;
