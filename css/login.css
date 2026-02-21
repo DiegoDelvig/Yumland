@@ -5,14 +5,13 @@
     border-radius: 20px;
     border: solid black 1px;
 }
-
 body {
     margin: 0;
     display: flex;
     justify-content: center; 
     align-items: center;   
     min-height: 100vh;    
-    background-color: var(--bg-client); 
+    background-color: var(--accent-clien); 
 }
 .logo_login{
     margin: 0px 130px 0px 100px;
@@ -29,7 +28,7 @@ body {
     font-family: "Comic Sans MS", "Comic Sans", cursive;
 }
 .login_case_code{
-    margin: 0px 90px 0px 90px;
+    margin: 0px 100px 0px 90px;
     border: 1px solid black;
     border-radius: 5px;
     width: 225px;
@@ -43,7 +42,7 @@ body {
     border-radius: 5px;
     width: 150px;
     height: 30px; 
-    color:white;
+    color: var(--text-light);
     background-color: var(--primary-client);
     font-family: "Comic Sans MS", "Comic Sans", cursive;
 }
@@ -52,7 +51,7 @@ body {
     box-shadow: 2px 2px 0px black;
 }
 .mdp_oublie{
-    color: white;
+    color: var(--text-light);
     margin: 0px 0px 0px 20px;
     font-family: "Comic Sans MS", "Comic Sans", cursive;
 }
@@ -63,15 +62,10 @@ body {
     color: var(--primary-client);
 }
 .pas_de_compte{
-    color: white;
+    color: var(--text-light);
     margin: 0px 0px 0px 125px;
     font-family: "Comic Sans MS", "Comic Sans", cursive;
 }
 a{
     text-decoration: none;
 }
-
-
-
-
-
