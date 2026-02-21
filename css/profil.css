@@ -34,6 +34,16 @@
     width: 100%;
 }
 
+.carte-info .numero-carte {
+    font-size: 12;
+    margin-top: 5px;
+}
+
+.carte-info p strong{
+    font-size: 1.2rem;
+    margin-top: 5px;
+}
+
 .barre { 
     background: var(--card-bg-client);
     border-radius: 10px;
@@ -70,17 +80,7 @@
     margin-bottom: 15px;
 }
 
-.marge-bas { 
-    margin-bottom: 20px;
-}
 
-.texte-emphase {
-    font-size: 1.2rem;
-}
-
-.derniere-ligne {
-    border-bottom: none;
-}
 
 .carre-crayon {
     display: inline-flex;
