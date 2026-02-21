@@ -93,7 +93,6 @@
     border-radius: 8px;
     text-decoration: none;
     font-size: 1.1rem;
-    transition: transform 0.2s;
     cursor: pointer;
 }
 
@@ -143,10 +142,10 @@ footer {
     .contenu-profil {
         padding: 1rem;
     }
-    .texte-emphase{
-        text-decoration: none;
-    }
 
-    
+    .numero-carte{
+        text-decoration:none;
+        color : black;
+    }
 }
 
