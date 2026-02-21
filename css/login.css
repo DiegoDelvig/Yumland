@@ -44,7 +44,7 @@ body {
     width: 150px;
     height: 30px; 
     color:white;
-    background-color: #F3C6BC;
+    background-color: var(--primary-client);
     font-family: "Comic Sans MS", "Comic Sans", cursive;
 }
 .login_submit:hover{
@@ -57,10 +57,10 @@ body {
     font-family: "Comic Sans MS", "Comic Sans", cursive;
 }
 .mdp_oublie:hover{
-    color: #F3C6BC;
+    color: var(--primary-client);
 }
 .pas_de_compte:hover{
-    color: #F3C6BC;
+    color: var(--primary-client);
 }
 .pas_de_compte{
     color: white;
@@ -70,6 +70,7 @@ body {
 a{
     text-decoration: none;
 }
+
 
 
 
