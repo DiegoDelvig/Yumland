@@ -3,11 +3,12 @@
     height: 400px;
     background-color: var(--card-bg-client);
     border-radius: 20px;
+    border: solid black 1px;
     display: flex;
     flex-direction: column; 
     align-items: center;   
     justify-content: center;
-    border: solid black 1px;
+    
 }
 body {
     margin: 0;
@@ -15,21 +16,19 @@ body {
     justify-content: center; 
     align-items: center;   
     min-height: 100vh;    
-    background-color: var(--bg-client); 
+    background-color: var(--accent-client); 
 }
 .logo_login{
     margin-top: -5%;
     width: 240px;
     height: 240px;  
 }
-.login_case_email{
-    display: flex;
-    flex-direction: column;
-    justify-content: center; 
-    align-items: center;   
+.login_case_email{  
     border: solid 1px black;
     border-radius: 5px;
-    width: 600px;
+    min-width: 300px;
+    width: auto;
+    max-width: 800px;
     height: 40px; 
     color: black;
     font-size: large;
@@ -41,8 +40,8 @@ body {
     width: 150px;
     height: 30px; 
     align-self: center;
-    color:white;
-    background-color: #F3C6BC;
+    color:var(--text-light);
+    background-color: var(--primary-client);
     font-family: "Comic Sans MS", "Comic Sans", cursive;
     display: block;
     margin: 15px auto 0px auto;
@@ -51,6 +50,3 @@ body {
     transform: translateY(-2px);
     box-shadow: 2px 2px 0px black;
 }
-
-
-
