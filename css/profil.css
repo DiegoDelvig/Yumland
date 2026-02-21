@@ -143,7 +143,9 @@ footer {
     .contenu-profil {
         padding: 1rem;
     }
-
+    .texte-emphase:first-child{
+        text-decoration: none;
+    }
 
     
 }
