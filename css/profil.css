@@ -37,6 +37,7 @@
 .carte-info .numero-carte {
     font-size: 1.2rem;
     margin-top: 5px;
+    text-decoration: none;
 }
 
 .carte-info p strong{
