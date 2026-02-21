@@ -1,0 +1,115 @@
+.rect_bleu{
+    width:80%;
+    min-width: 600px;
+    height: auto;
+    background-color: var(--card-bg-client);
+    border-radius: 20px;
+    border: solid black 1px;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;   
+    justify-content: center;
+    
+}
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center; 
+    flex-direction: column;
+    align-items: center;   
+    min-height: 100vh;    
+    background-color: var(--accent-client); 
+}
+.inscription_text{
+    margin-bottom: 40px;
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+    font-size: xx-large;
+}
+.logo_login{
+    width: 350px;
+    height: 350px;  
+}
+.login_case_email{
+    margin-bottom: 15px;
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 225px;
+    height: 25px; 
+    color: black;
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+}
+.login_case_code{
+    margin-bottom: 15px;
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 225px;
+    height: 25px; 
+    color: black;
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+}
+.login_case_name{
+    margin-bottom: 15px;
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 225px;
+    height: 25px; 
+    color: black;
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+}
+.login_case_adr{
+    margin-bottom: 15px;
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 225px;
+    height: 25px; 
+    color: black;
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+}
+.login_case_tel{
+    margin-bottom: 15px;
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 225px;
+    height: 25px; 
+    color: black;
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+}
+.login_case_fname{
+    margin-bottom: 15px;
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 225px;
+    height: 25px; 
+    color: black;
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+}
+.login_case_infocomp{
+    margin-bottom: 15px;
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 225px;
+    height: 50px; 
+    color: black;
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+}
+.login_submit{
+    margin-top: 20px;
+    margin-bottom: 40px;
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 150px;
+    height: 30px; 
+    color:var(--text-light);
+    background-color: var(--primary-client);
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+}
+@media (max-width: 768px) {
+    .conteneur-menu {
+        flex-direction: column;
+        padding: 20px;
+    }
+    .colonne-filtres {
+        width: 100%;
+        position: static;
+    }
+}
