@@ -46,7 +46,7 @@ h1{
 
     .titre-admin {
     grid-area: titre-admin;
-    padding: 2rem;
+    padding: 32px;
     display: flex;
     flex-direction: column;
     }
