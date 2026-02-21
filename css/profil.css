@@ -20,7 +20,7 @@
 
 .contenu-profil {
     grid-area: contenu-profil;
-    padding: 2rem;
+    padding: 32px;
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -100,7 +100,7 @@
 
 footer {
     text-align: center;
-    padding: 2rem;
+    padding: 32px;
     background-color: var(--accent-client);
     border-top: 1px solid var(--border-color);
     margin-top: 0; 
@@ -141,7 +141,7 @@ footer {
     }
 
     .contenu-profil {
-        padding: 1rem;
+        padding: 16px;
     }
 
     .numero-carte{
