@@ -156,5 +156,10 @@ footer {
         text-decoration:none;
         color : black;
     }
+    
+    .numero-carte a {
+        text-decoration: none;
+        color: inherit;
+    }
 }
 
