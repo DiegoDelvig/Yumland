@@ -18,12 +18,13 @@ body {
     flex-direction: column;
     align-items: center;   
     min-height: 100vh;    
-    background-color: var(--accent-client); 
+    background-color: var(--bg-client); 
 }
 .inscription_text{
     margin-bottom: 40px;
-    font-family: "Comic Sans MS", "Comic Sans", cursive;
+    font-family: var(--font-title);
     font-size: xx-large;
+    color: var(--text-main);
 }
 .logo_login{
     width: 350px;
@@ -102,6 +103,7 @@ body {
     color:var(--text-light);
     background-color: var(--primary-client);
     font-family: "Comic Sans MS", "Comic Sans", cursive;
+    cursor: pointer;
 }
 @media (max-width: 768px) {
     .conteneur-menu {
@@ -113,3 +115,4 @@ body {
         position: static;
     }
 }
+
