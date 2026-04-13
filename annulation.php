@@ -94,8 +94,14 @@
                 <h2>Récapitulatif de commande</h2>
                 <?php foreach($commande['plats'] as $id => $detail){ ?>
                     <div class="ligne-article">
-                        <span><?php echo $plat[$id]['name']; ?> x<?php echo $commande['plats'][$id]['quantite']; ?></span>
-                        <span><?php echo number_format($plat[$id]['prix'], 2, ',', ' '); ?>€</span>
+                        <span><?php echo $commande['plats'][$id]['name']; ?> x<?php echo $commande['plats'][$id]['quantite']; ?></span>
+                        <span><?php echo number_format($commande['plats'][$id]['prix'], 2, ',', ' '); ?>€</span>
+                    </div>
+                <?php } ?>
+                <?php foreach($commande['menus'] as $id => $detail){ ?>
+                    <div class="ligne-article">
+                        <span><?php echo $commande['menus'][$id]['name']; ?> x<?php echo $commande['menus'][$id]['quantite']; ?></span>
+                        <span><?php echo number_format($commande['menus'][$id]['prix'], 2, ',', ' '); ?>€</span>
                     </div>
                 <?php } ?>
                 <?php if($commande['reduction']==true){ ?>
