@@ -6,18 +6,66 @@
             "saumon et patate douce",
             "os a macher bio"
         ],
+        "age":{
+            "junior": false,
+            "adulte": true,
+            "senior": false
+        },
+        "saveur":{
+            "volaille": true,
+            "boeuf/gibier": false,
+            "poisson": true,
+            "veggie": false
+        },
+        "specifique":{
+            "sans cereale": false,
+            "hypoallergenique": false,
+            "digestion sensible": true
+        },
         "prix": 27.00
     },
     "menu senior": {
         "name": "Menu Senior Zen",
+        "age":{
+            "junior": false,
+            "adulte": false,
+            "senior": true
+        },
+        "saveur":{
+            "volaille": false,
+            "boeuf/gibier": false,
+            "poisson": true,
+            "veggie": false
+        },
+        "specifique":{
+            "sans cereale": false,
+            "hypoallergenique": false,
+            "digestion sensible": true
+        },
         "plats": [
             "saumon et patate douce",
-            "croquettes senior articulations"
+            "cabillaud vapeur et quinoa"
         ],
-        "prix": 22.50
+        "prix": 32.50
     },
     "menu pack famille": {
         "name": "Menu Pack Famille",
+        "age":{
+            "junior": false,
+            "adulte": true,
+            "senior": false
+        },
+        "saveur":{
+            "volaille": true,
+            "boeuf/gibier": true,
+            "poisson": false,
+            "veggie": false
+        },
+        "specifique":{
+            "sans cereale": false,
+            "hypoallergenique": false,
+            "digestion sensible": true
+        },
         "plats": [
             "cro'c poulet fermier",
             "boeuf et legumes",
