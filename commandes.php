@@ -173,6 +173,15 @@
                                                 <?php echo $plat['quantite']."x ".$plat['name']; ?>
                                             </li>
                                         <?php } ?>
+                                        <?php foreach($detail['menus'] as $plats=> $plat){ 
+                                            if($detail['etat']['cuisinee'] == true) {
+                                                continue; 
+                                            }
+                                        ?>
+                                            <li>
+                                                <?php echo $plat['quantite']."x ".$plat['name']; ?>
+                                            </li>
+                                        <?php } ?>
                                     </ul>
                                     <div class="actions-commande">
                                         <form method="POST" action="commandes.php">
