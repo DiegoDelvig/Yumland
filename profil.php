@@ -219,6 +219,9 @@
                                 <?php foreach($details['plats'] as $produit){ ?>
                                 <p><?php echo $produit['quantite']."x       -".$produit['name']; ?> - <?php echo number_format($produit['quantite']*$produit['prix'], 2, ',', ' '); ?>€</p>
                                 <?php } ?>
+                                <?php foreach($details['menus'] as $produit){ ?>
+                                <p><?php echo $produit['quantite']."x       -".$produit['name']; ?> - <?php echo number_format($produit['quantite']*$produit['prix'], 2, ',', ' '); ?>€</p>
+                                <?php } ?>
                             </div>
                         <?php } 
                     } else { ?>
