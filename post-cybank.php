@@ -91,6 +91,9 @@
         foreach($new_cmd[aff_num_cmd($num)]['plats'] as $id => $name){
             $new_cmd[aff_num_cmd($num)]['plats'][$id]['note'] = 0;
         }
+        foreach($new_cmd[aff_num_cmd($num)]['menus'] as $id => $name){
+            $new_cmd[aff_num_cmd($num)]['menus'][$id]['note'] = 0;
+        }
         file_put_contents("donnees/data.json", json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
         file_put_contents("donnees/commande.json", json_encode($new_cmd, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
         unlink("donnees/panier_$mail.json");
