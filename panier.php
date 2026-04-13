@@ -14,13 +14,11 @@ $plat_data = file_get_contents("donnees/plat.json");
 $plat = json_decode($plat_data, true);
 $menu_data = file_get_contents("donnees/menu.json");
 $menu_dispo = json_decode($menu_data, true);
-
 if ($data[$client["email"]]["role"]["bloque"] == true) {
     setcookie("client", json_encode($data[$mail]), time() - 3600);
     header("Location: index.php");
     exit();
 }
-
 foreach ($commande["plats"] as $id => $detail) {
     if (isset($_REQUEST["btn_suppr_" . str_replace(" ", "_", $id)])) {
         $commande["total"] = $commande["total"] - ($detail["prix"] * $detail["quantite"]);
