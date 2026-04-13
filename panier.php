@@ -46,29 +46,17 @@ foreach ($commande["plats"] as $id => $detail) {
         }
     }
 }
-
-if(isset($commande['menus'])){
-    foreach ($commande["menus"] as $id_m => $detail_m) {
-        if (isset($_REQUEST["btn_suppr_menu_" . str_replace(" ", "_", $id_m)])) {
-            $commande["total"] = round($commande["total"] - ($detail_m["prix"] * $detail_m["quantite"]), 2);
-            unset($commande["menus"][$id_m]);
-            file_put_contents("donnees/panier_$mail.json", json_encode($commande, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
-            header("Location: panier.php");
-            exit();
-        }
-    }
-}
 foreach ($commande["menus"] as $id_m => $detail_m) {
     if (isset($_REQUEST["btn_suppr_".str_replace(" ", "_", $id_m)])) {
         $commande["total"] = $commande["total"] - ($detail_m["prix"] * $detail_m["quantite"]);
-        unset($commande["menu"][$id_m]);
+        unset($commande["menus"][$id_m]);
         file_put_contents("donnees/panier_$mail.json", json_encode($commande, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
         header("Location: panier.php");
         exit();
     } 
     elseif (isset($_REQUEST["btn_plus_".str_replace(" ", "_", $id_m)])) {
         $commande["total"] = round($commande["total"] + $detail_m["prix"], 2);
-        $commande["menu"][$id_m]["quantite"]++;
+        $commande["menus"][$id_m]["quantite"]++;
         file_put_contents("donnees/panier_$mail.json", json_encode($commande, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
         header("Location: panier.php");
         exit();
@@ -76,7 +64,7 @@ foreach ($commande["menus"] as $id_m => $detail_m) {
     elseif ($detail_m["quantite"] > 1) {
         if (isset($_REQUEST["btn_moins_".str_replace(" ", "_", $id_m)])) {
             $commande["total"] = round($commande["total"] - $detail_m["prix"], 2);
-            $commande["menu"][$id_m]["quantite"]--;
+            $commande["menus"][$id_m]["quantite"]--;
             file_put_contents("donnees/panier_$mail.json", json_encode($commande, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
             header("Location: panier.php");
             exit();
