@@ -94,7 +94,7 @@
         $file_data=file_get_contents("donnees/commande_passe.json");
         $file=json_decode($file_data, true);
         $mail=$cmd['mail'];
-        $new_tab=array('num'=>$cmd['num'], 'date'=>$cmd['date'], 'total'=>$cmd['total'], 'plats'=>$cmd['plats']);
+        $new_tab=array('num'=>$cmd['num'], 'date'=>$cmd['date'], 'total'=>$cmd['total'], 'plats'=>$cmd['plats'], 'menus'=> $cmd['menus']);
         $file[$mail][aff_num_cmd_sans_echo($cmd['num'])]=$new_tab;
         file_put_contents("donnees/data.json", json_encode($liste_client, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
         unset($commande[aff_num_cmd_sans_echo($cmd['num'])]);
