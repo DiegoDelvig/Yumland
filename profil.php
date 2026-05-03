@@ -1,4 +1,5 @@
 <?php 
+    error_reporting(0);
     if(!isset($_COOKIE["client"])){
         header("Location: index.php");
         exit;
