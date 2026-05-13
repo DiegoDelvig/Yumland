@@ -407,7 +407,9 @@
     color: var(--text-main);
 }
 
-
+.filtres{
+    display: none;
+}
 @media (max-width: 768px) {
     .section-menus {
         padding: 40px 20px;
