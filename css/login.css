@@ -89,6 +89,10 @@ footer {
     border-top: 1px solid black; 
     text-align: center;
 }
+.mdp_faux{
+    color: red;
+    text-align: center;
+}
 
 @media (max-width: 768px) {
     h1{
