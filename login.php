@@ -27,6 +27,15 @@
                     header("Location: index.php");
                     exit;
                 }
+                else if(password_verify($mdp, $data[$mail]['code']) && $data[$mail]['role']['bloque']==true){
+                    $mdp_false=false;
+                }    
+                else{
+                    $mdp_false=true;
+                }
+            }
+            else{
+                $mail_false=true;
             }    
         }                        
     }
@@ -60,7 +69,13 @@
         <div class="rect_bleu">
             <form action="" method="post" target="_top" id="formulaire_login" name="connexion">
                 <img class="logo_login" src="assets/Logo projet.png" alt="logo de notre site de vente">
+                <?php if(isset($mail_false)){ ?>
+                    <p class="mdp_faux">Compte inexistant ou adresse mail erronnée</p>
+                <?php } ?>
                 <input type="email" name="nemail" id="idemail" class="login_case_email" placeholder="   Adresse email">
+                <?php if(isset($mdp_false)){ ?>
+                    <p class="mdp_faux"><?php if($mdp_false==true){ echo "Mot de passe erroné";}else{ echo "Vous êtes bloqué";} ?></p>
+                <?php } ?>
                 <input type="password" name="ncode" id="idcode" class="login_case_code" placeholder="   Mot de passe">
                 <input type="submit" value="Se connecter" class="login_submit">
                 <div class="liens-bas">
