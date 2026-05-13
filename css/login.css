@@ -92,6 +92,7 @@ footer {
 .mdp_faux{
     color: red;
     text-align: center;
+    margin-top: -15px;
 }
 
 @media (max-width: 768px) {
