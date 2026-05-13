@@ -52,11 +52,73 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>La Carte - Les Croquettes du Chef</title>
-    
     <link rel="stylesheet" href="css/variables.css">
     <link rel="stylesheet" href="css/client.css">
     <link rel="stylesheet" href="css/accueil.css"> <link rel="stylesheet" href="css/menu.css">   
     <link href="assets/Logo projet.png" rel="icon">
+    <script>
+    function appliquer_filtre() {
+        const filtres = document.querySelectorAll("input[type=checkbox]");
+        // On cible via les conteneurs parents pour ne jamais perdre les éléments de vue, même cachés
+        const menus = document.querySelectorAll(".grille-menus article");
+        const plats = document.querySelectorAll(".grille-plats article");
+
+        // 1. On réaffiche tout par défaut avant de recalculer les filtres
+        menus.forEach(menu => menu.style.display = "");
+        plats.forEach(plat => plat.style.display = "");
+        
+        let sectionMenus = document.querySelector(".section-menus");
+        let banniereMenu = document.querySelector(".banniere-menu");
+        if(sectionMenus) sectionMenus.style.display = "";
+        if(banniereMenu) banniereMenu.style.display = "";
+
+        // 2. On parcourt chaque case à cocher
+        for (let filtre of filtres) {
+            let nomFiltre = filtre.name;
+
+            // Si la case EST DÉCOCHÉE, on cache ce qui correspond
+            if (!filtre.checked) {
+                
+                // Gestion spéciale pour le "pack" (cache la section menu entière)
+                if (nomFiltre === "pack") {
+                    if(sectionMenus) sectionMenus.style.display = "none";
+                    if(banniereMenu) banniereMenu.style.display = "none";
+                }
+                // Gestion spéciale pour "produit_unique" (cache tous les plats)
+                else if (nomFiltre === "produit_unique") {
+                    plats.forEach(plat => plat.style.display = "none");
+                }
+                // Gestion des attributs classiques (âge, saveur, spécifique)
+                else {
+                    plats.forEach(plat => {
+                        let p = plat.querySelector('p[name="' + nomFiltre + '"]');
+                        // On vérifie que la balise contient "1" (ce qui correspond à "true" en PHP)
+                        if (p && p.innerText.trim() === "1") {
+                            plat.style.display = "none";
+                        }
+                    });
+
+                    menus.forEach(menu => {
+                        let p = menu.querySelector('p[name="' + nomFiltre + '"]');
+                        if (p && p.innerText.trim() === "1") {
+                            menu.style.display = "none";
+                        }
+                    });
+                }
+            }
+        }
+    }
+
+    window.onload = function() {
+        const btn = document.querySelector(".btn-filtres");
+        if (btn) {
+            btn.addEventListener("click", function(event) {
+                event.preventDefault(); // Empêche un rechargement accidentel de la page
+                appliquer_filtre();
+            });
+        }
+    };
+</script>
 </head>
 <body>
 
@@ -87,7 +149,7 @@
     </header>
 
     <main>
-         <section class="banniere-menu">
+        <section class="banniere-menu">
             <h1>Notre Carte <span class="text-primary">Gourmande</span> 🦴</h1>
             <p>Sélectionnez le meilleur pour sa santé : sans céréales, frais et équilibré.</p>
         </section>
@@ -104,6 +166,16 @@
                 <article class="carte-menu">
                     <div class="carte-menu-header">
                         <h3><?php echo $detail_menu['name']; ?></h3>
+                        <p class="filtres" name="junior"><?php echo $detail_menu['age']['junior']; ?></p>
+                        <p class="filtres" name="adulte"><?php echo $detail_menu['age']['adulte']; ?></p>
+                        <p class="filtres" name="senior"><?php echo $detail_menu['age']['senior']; ?></p>
+                        <p class="filtres" name="volaille"><?php echo $detail_menu['saveur']['volaille']; ?></p>
+                        <p class="filtres" name="boeuf/gibier"><?php echo $detail_menu['saveur']['boeuf/gibier']; ?></p>
+                        <p class="filtres" name="poisson"><?php echo $detail_menu['saveur']['poisson']; ?></p>
+                        <p class="filtres" name="veggie"><?php echo $detail_menu['saveur']['veggie']; ?></p>
+                        <p class="filtres" name="sans cereale"><?php echo $detail_menu['specifique']['sans cereale']; ?></p>
+                        <p class="filtres" name="hypoallergenique"><?php echo $detail_menu['specifique']['hypoallergenique']; ?></p>
+                        <p class="filtres" name="digestion sensible"><?php echo $detail_menu['specifique']['digestion sensible']; ?></p>
                     </div>
                     <div class="carte-menu-plats">
                         <ul>
@@ -174,6 +246,16 @@
                                 <div class="carte-contenu">
                                     <h4><?php echo $detail['name']; ?></h4>
                                     <p class="description"><?php echo $detail['description']; ?></p>
+                                    <p class="filtres" name="junior"><?php echo $detail['age']['junior']; ?></p>
+                                    <p class="filtres" name="adulte"><?php echo $detail['age']['adulte']; ?></p>
+                                    <p class="filtres" name="senior"><?php echo $detail['age']['senior']; ?></p>
+                                    <p class="filtres" name="volaille"><?php echo $detail['saveur']['volaille']; ?></p>
+                                    <p class="filtres" name="boeuf/gibier"><?php echo $detail['saveur']['boeuf/gibier']; ?></p>
+                                    <p class="filtres" name="poisson"><?php echo $detail['saveur']['poisson']; ?></p>
+                                    <p class="filtres" name="veggie"><?php echo $detail['saveur']['veggie']; ?></p>
+                                    <p class="filtres" name="sans cereale"><?php echo $detail['specifique']['sans cereale']; ?></p>
+                                    <p class="filtres" name="hypoallergenique"><?php echo $detail['specifique']['hypoallergenique']; ?></p>
+                                    <p class="filtres" name="digestion sensible"><?php echo $detail['specifique']['digestion sensible']; ?></p>
                                     <div class="carte-footer">
                                         <span class="prix"><?php echo number_format($detail['prix'], 2, ',', ' ');?>€</span>
                                         <button name="btn_plus_<?php echo str_replace(" ", "_", $index); ?>" class="btn-carte">+</button>
