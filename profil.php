@@ -214,7 +214,7 @@
                         foreach($commande[$email] as $id_cmd => $details){ ?>
                             <div class="commande">
                                 <div class="numero">
-                                    <strong>Commande n°<?php aff_num_cmd_ou_fidelite($details['num'], 1) ;?> (<?php echo aff_temps($details['date']['jour'])."/".aff_temps($details['date']['mois'[...]
+                                    <strong>Commande n°<?php aff_num_cmd_ou_fidelite($details['num'], 1); ?> (<?php echo aff_temps($details['date']['jour'])."/".aff_temps($details['date']['mois'])."/".aff_temps($details['date']['annee'])." à ".aff_temps($details['date']['heure']).":".aff_temps($details['date']['minute']); ?>)</strong>
                                     <form method="POST"><button name="<?php aff_num_cmd_ou_fidelite($details['num'], 1) ; ?>" class="bouton-recommande">Recommander</button></form>
                                 </div>
                                 <?php foreach($details['plats'] as $produit){ ?>
