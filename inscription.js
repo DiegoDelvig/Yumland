@@ -1,1 +1,5 @@
-test
+let LIMITE_EMAIL = 50;
+let LIMITE_MOT_DE_PASSE = 50;
+let LIMITE_PRENOM = 50;
+let LIMITE_NOM = 50;
+let LIMITE_TEL = 15;
