@@ -1,165 +1,146 @@
-
 header {
-    width: 100%; 
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-
-.rect_bleu{
-    width:80%;
+.rect_bleu {
+    width: 80%;
     min-width: 600px;
     height: auto;
     background-color: var(--card-bg-client);
     border-radius: 20px;
     border: solid black 1px;
     display: flex;
-    flex-direction: column; 
-    align-items: center;   
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
     margin-bottom: 30px;
-    
 }
 body {
     margin: 0;
     display: flex;
-    justify-content: center; 
+    justify-content: center;
     flex-direction: column;
-    align-items: center;   
-    min-height: 100vh;    
-    background-color: var(--bg-client); 
+    align-items: center;
+    min-height: 100vh;
+    background-color: var(--bg-client);
 }
-h1{
+h1 {
     margin-top: 40px;
     margin-bottom: 40px;
     font-family: var(--font-title);
     color: var(--text-main);
 }
-.logo_login{
+.logo_login {
     width: 350px;
-    height: 350px;  
+    height: 350px;
 }
-.login_case_email{
+.login_case_email {
     text-align: center;
     margin-bottom: 15px;
     border: 1px solid black;
     border-radius: 5px;
     width: 70%;
-    height: 25px; 
+    height: 25px;
     color: black;
 }
-.login_case_code{
+.login_case_code {
     text-align: center;
     margin-bottom: 15px;
     border: 1px solid black;
     border-radius: 5px;
     width: 70%;
-    height: 25px; 
+    height: 25px;
     color: black;
 }
-.login_case_name{
+.login_case_name {
     text-align: center;
     margin-bottom: 15px;
     border: 1px solid black;
     border-radius: 5px;
     width: 70%;
-    height: 25px; 
+    height: 25px;
     color: black;
 }
-.login_case_adr{
+.login_case_adr {
     text-align: center;
     margin-bottom: 15px;
     border: 1px solid black;
     border-radius: 5px;
     width: 70%;
-    height: 25px; 
+    height: 25px;
     color: black;
 }
-.login_case_tel{
+.login_case_tel {
     text-align: center;
     margin-bottom: 15px;
     border: 1px solid black;
     border-radius: 5px;
     width: 70%;
-    height: 25px; 
+    height: 25px;
     color: black;
 }
-.login_case_fname{
+.login_case_fname {
     text-align: center;
     margin-bottom: 15px;
     border: 1px solid black;
     border-radius: 5px;
     width: 70%;
-    height: 25px; 
+    height: 25px;
     color: black;
 }
-.login_case_infocomp{
+.login_case_infocomp {
     text-align: center;
     padding-top: 5px;
     margin-bottom: 15px;
     border: 1px solid black;
     border-radius: 5px;
     width: 70%;
-    height: 50px; 
+    height: 50px;
     color: black;
 }
-.login_submit{
+.login_submit {
     margin-top: 20px;
     margin-bottom: 40px;
     border: 1px solid black;
     border-radius: 5px;
     width: 50%;
-    height: 30px; 
-    color:white;
+    height: 30px;
+    color: white;
     background-color: var(--primary-client);
     cursor: pointer;
 }
 
-.login_submit:hover{
+.login_submit:hover {
     transform: translateY(-2px);
     box-shadow: 2px 2px 0px black;
     color: var(--couleur-curseur-bouton);
 }
 
+.input_label {
+    width: 70%;
+    text-align: left;
+    margin-bottom: 5px;
+    color: var(--text-main, black);
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
 footer {
     width: 100%;
-    border-top: 1px solid black; 
+    border-top: 1px solid black;
     text-align: center;
 }
 
-@media screen and (max-width: 768px) { 
-    .rect_bleu{
+@media screen and (max-width: 768px) {
+    .rect_bleu {
         width: 90%;
         min-width: 300px;
     }
-    .logo_login{
+    .logo_login {
         width: 150px;
-        height: 150px;  
+        height: 150px;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
