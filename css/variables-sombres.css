@@ -1,1 +1,13 @@
-.
+:root {
+    --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --font-title: 'Georgia', serif;
+    --text-main: #f0f0f0;
+    --text-light: #1a1a2e;
+    --bg-client: #1a1a2e;
+    --primary-client: #4a1040;
+    --card-bg-client: #1e2d4a;
+    --couleur-curseur-bouton: #ff6eb4;
+    --couleur-capsules :#343142;
+    --border-color: #f0f0f0;
+    --bg-header: #0f0f1a;
+}
