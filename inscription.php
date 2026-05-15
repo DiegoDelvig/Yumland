@@ -47,6 +47,7 @@
         <link rel="stylesheet" href="css/inscription.css">
         <link href="assets/Logo projet.png" rel="icon">
         <script src="js/charte.js"></script>
+        <script src="js/inscription.js" defer></script>
         <title>Inscription - Les Croquettes du Chef</title>
         
     </head>
