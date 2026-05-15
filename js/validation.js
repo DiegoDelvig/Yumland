@@ -1,3 +1,6 @@
+
+//script commun pour login et inscription
+
 // Limite caractère
 let LIMITE_EMAIL = 100;
 let LIMITE_MOT_DE_PASSE = 50;
