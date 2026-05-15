@@ -51,6 +51,8 @@
         <title>Connexion - Les Croquettes du Chef</title>
         <link href="assets/Logo projet.png" rel="icon">
         <script src="js/charte.js"></script>
+        <script src="js/validation.js" defer></script>
+        <script src="js/login.js" defer></script>
     </head>
     <body>
         <header>
