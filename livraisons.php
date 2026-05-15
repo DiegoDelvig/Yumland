@@ -128,6 +128,7 @@
                 <li><a href="index.php">Accueil</a></li>
                 <li><a href="menu.php">La Carte</a></li>
                 <li><a href="commandes.php" class="active">Livraison</a></li>
+                <li><button id="btn-theme" onclick="changerTheme();">🌙</button></li>
                 <li><a href="<?php if (isset($_COOKIE["client"])) {
                     echo "profil.php";
                 } else {
