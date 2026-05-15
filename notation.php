@@ -95,6 +95,7 @@
                 <li><a href="index.php">Accueil</a></li>
                 <li><a href="menu.php">La carte</a></li>
                 <li><a href="menu.php" class="active">Avis</a></li>
+                <li><button id="btn-theme" onclick="changerTheme();">🌙</button></li>
                 <li><a href="profil.php" class="btn">Profil</a></li>
             </ul>
         </nav>
