@@ -155,6 +155,7 @@
                 <?php if(isset($_COOKIE["admin"])){ ?>
                     <li><a href="admin.php" class="btn">Retour page admin</a></li>
                 <?php }else{ ?>
+                    <li><button id="btn-theme" onclick="changerTheme();">🌙</button></li>
                     <li><a href="logout.php" class="btn">Déconnexion</a></li>
                 <?php } ?>
             </ul>
