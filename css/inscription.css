@@ -128,6 +128,65 @@ footer {
     text-align: center;
 }
 
+/*BLOCS POUR LES MODIF FORMULAIRES JAVA*/
+
+.erreur_champ {
+    color: red;
+    font-size: 0.75rem;
+    display: block;
+    width: 70%;
+    margin-bottom: 8px;
+    text-align: left;
+    min-height: 1rem;
+}
+
+.champ_erreur {
+    border: 2px solid red;
+}
+
+.compteur {
+    font-size: 0.72rem;
+    color: gray;
+    display: block;
+    width: 70%;
+    text-align: right;
+    margin-bottom: 4px;
+}
+
+.compteur_depasse {
+    color: red;
+    font-weight: bold;
+}
+
+.conteneur_mdp {
+    display: flex;
+    align-items: center;
+    width: 70%;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: white;
+    height: 25px;
+    position: relative;  
+}
+
+.conteneur_mdp .login_case_code {
+    width: 100%;
+    border: none;
+    margin-bottom: 0;
+    box-sizing: border-box;
+    padding-right: 30px;   
+}
+
+.btn_oeil {
+    position: absolute;   
+    right: 6px;            
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+
+
 @media screen and (max-width: 768px) { 
     .rect_bleu{
         width: 90%;
