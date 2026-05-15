@@ -89,7 +89,7 @@
         <div class="bloc-confirmation">
             <div class="entete-confirmation">
                 <div class="icone-check">❌</div>
-                <h1>Commande refusé !</h1>
+                <h1>Commande refusée !</h1>
                 <p>Votre paiement a été refusé.</p>
             </div>
             <div class="carte">
