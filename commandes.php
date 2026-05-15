@@ -125,6 +125,7 @@
             <ul>
                 <li><a href="index.php">Voir le site</a></li>
                 <li><a href="commandes.php" class="active">Commandes</a></li>
+                <li><button id="btn-theme" onclick="changerTheme();">🌙</button></li>
                 <li><a href="<?php if(isset($_COOKIE["client"])){ echo "profil.php"; } else{ echo "login.php"; }  ?>" class="btn">
                         <?php  
                             if(isset($_COOKIE["client"])){
