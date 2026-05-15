@@ -21,7 +21,7 @@ h1{
     th{
         text-align: left;
         font-weight: bold;
-        background-color: #cbd9dc;
+        background-color: var(--couleur-capsules);
         text-transform: capitalize;
         padding-top: 10px;
         padding-bottom: 10px;
@@ -30,7 +30,7 @@ h1{
     }
 
     td{
-        background-color: #cbd9dc;
+        background-color: var(--couleur-capsules);
         padding-left: 10px;
         border: 1px solid var(--text-main);
     }
