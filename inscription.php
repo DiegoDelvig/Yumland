@@ -70,14 +70,40 @@
         <h1>INSCRIPTION</h1>
         <form action="" method="post" target="_top" id="formulaire" name="connexion">
             <div class="rect_bleu">
-                <img class="logo_login" src="assets/Logo projet.png" alt="logo de notre site de vente">
-                <input type="text" name="nname" id="idname" class="login_case_name" placeholder="   Prénom">
-                <input type="text" name="nfname" id="idfname" class="login_case_fname" placeholder="   Nom">
+                <input type="text" name="nname" id="idname" class="login_case_name" placeholder="   Prénom" maxlength="50">
+                <span class="compteur" id="compteur_idname">0 / 50 caractères</span>
+                <span class="erreur_champ" id="erreur_idname"></span>
+
+
+                <input type="text" name="nfname" id="idfname" class="login_case_fname" placeholder="   Nom" maxlength="50">
+                <span class="compteur" id="compteur_idfname">0 / 50 caractères</span>
+                <span class="erreur_champ" id="erreur_idfname"></span>
+
+
                 <input type="text" name="nadr" id="idadr" class="login_case_adr" placeholder="   Adresse Postale">
-                <input type="tel" name="ntel" id="idtel" class="login_case_tel" placeholder="   Numéro de téléphone">
+                <span class="erreur_champ" id="erreur_idadr"></span>
+
+
+                <input type="tel" name="ntel" id="idtel" class="login_case_tel" placeholder="   Numéro de téléphone" maxlength="15">
+                <span class="compteur" id="compteur_idtel">0 / 10 caractères</span>
+                <span class="erreur_champ" id="erreur_idtel"></span>
+
+
                 <textarea name="ninfocomp" id="idinfocomp" class="login_case_infocomp" placeholder="   Information complémentaire"></textarea>
-                <input type="email" name="nemail" id="idemail" class="login_case_email" placeholder="   Adresse email">
-                <input type="password" name="ncode" id="idcode" class="login_case_code" placeholder="   Mot de passe">
+
+
+                <input type="email" name="nemail" id="idemail" class="login_case_email" placeholder="   Adresse email" maxlength="100">
+                <span class="compteur" id="compteur_idemail">0 / 100 caractères</span>
+                <span class="erreur_champ" id="erreur_idemail"></span>
+
+                <!--classe mdp avec icone cacher -->
+                <div class="conteneur_mdp">
+                    <input type="password" name="ncode" id="idcode" class="login_case_code" placeholder="   Mot de passe" maxlength="50">
+                    <button type="button" id="btn_oeil" class="btn_oeil" onclick="basculerVisibiliteMotDePasse();">👁️</button>
+                </div>
+                <span class="compteur" id="compteur_idcode">0 / 50 caractères</span>
+                <span class="erreur_champ" id="erreur_idcode"></span>
+                
                 <input type="submit" value="S'inscrire" class="login_submit">
             </div>
         </form>
