@@ -128,6 +128,7 @@ function conjugaison($sing, $plur, $val){
             <ul>
                 <li><a href="menu.php">La Carte</a></li>
                 <li><a href="panier.php" class="active">Panier</a></li>
+                <li><button id="btn-theme" onclick="changerTheme();">🌙</button></li>
                 <li><a href="profil.php" class="btn">Profil</a></li>
             </ul>
         </nav>
