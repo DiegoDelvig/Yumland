@@ -209,15 +209,15 @@ function conjugaison($sing, $plur, $val){
                 <div class="recapitulatif">
                     <h2>Récapitulatif</h2>
                     
-                    <div style="background: #f9f9f9; padding: 15px; border-radius: 10px; margin-bottom: 20px; border: 1px solid #ddd;">
-                        <p><strong>🕒 Préparation :</strong></p>
-                        <label><input type="radio" name="mode_temps" value="immediat" checked onclick="document.getElementById('zone_p').style.display='none'"> Immédiat</label><br>
-                        <label><input type="radio" name="mode_temps" value="planifie" onclick="document.getElementById('zone_p').style.display='block'"> Planifier</label>
+                    <div class="bloc-planification">
+                            <p><strong>🕒 Préparation :</strong></p>
+                            <label><input type="radio" name="mode_temps" value="immediat" checked onclick="document.getElementById('zone_p').style.display='none'"> Immédiat</label><br>
+                            <label><input type="radio" name="mode_temps" value="planifie" onclick="document.getElementById('zone_p').style.display='block'"> Planifier</label>
                         
-                        <div id="zone_p" style="display:none; margin-top:10px;">
-                            <input type="datetime-local" name="date_prevue" min="<?php echo date('Y-m-d\TH:i'); ?>" style="width:100%;">
+                            <div id="zone_p" class="zone-planification">
+                                <input type="datetime-local" name="date_prevue" min="<?php echo date('Y-m-d\TH:i'); ?>" style="width:100%;">
+                            </div>
                         </div>
-                    </div>
 
                     <?php foreach($commande['plats'] as $id => $detail){ ?>
                         <div class="commande">
