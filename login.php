@@ -79,8 +79,20 @@
                 <?php if(isset($mdp_false)){ ?>
                     <p class="mdp_faux"><?php if($mdp_false==true){ echo "Mot de passe erroné";}else{ echo "Vous êtes bloqué";} ?></p>
                 <?php } ?>
-                <input type="email" name="nemail" id="idemail" class="login_case_email" placeholder="   Adresse email">
-                <input type="password" name="ncode" id="idcode" class="login_case_code" placeholder="   Mot de passe">
+    
+                <input type="email" name="nemail" id="idemail" class="login_case_email" placeholder="   Adresse email" maxlength="100">
+                <span class="compteur" id="compteur_idemail">0 / 100 caractères</span>
+                <span class="erreur_champ" id="erreur_idemail"></span>
+
+
+                <div class="conteneur_mdp_login">
+                    <input type="password" name="ncode" id="idcode" class="login_case_code" placeholder="   Mot de passe" maxlength="50">
+                    <button type="button" id="btn_oeil" class="btn_oeil_login" onclick="basculerVisibiliteMotDePasse();">👁️</button>
+                </div>
+                <span class="compteur" id="compteur_idcode">0 / 50 caractères</span>
+                <span class="erreur_champ" id="erreur_idcode"></span>
+
+                
                 <input type="submit" value="Se connecter" class="login_submit">
                 <div class="liens-bas">
                     <a class="mdp_oublie" href="mdp_oublie.php">
