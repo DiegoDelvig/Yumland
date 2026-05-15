@@ -16,11 +16,12 @@ header {
 
 .rect_bleu{
     width:400px;
-    height: 400px;
+    height: auto;
     background-color: var(--card-bg-client);
     border-radius: 20px;
     border: solid black 1px;
     margin-bottom: 30px;
+    padding-bottom: 20px;
 }
 body {
     margin: 0;
@@ -93,6 +94,74 @@ footer {
     color: red;
     text-align: center;
     margin-top: -15px;
+}
+
+/*modif formulaire java*/
+
+.erreur_champ {
+    color: red;
+    font-size: 0.75rem;
+    display: block;
+    margin-left: 90px;
+    margin-bottom: 4px;
+    text-align: left;
+}
+
+.compteur {
+    font-size: 0.72rem;
+    color: gray;
+    display: block;
+    margin-left: 90px;
+    width: 225px;
+    text-align: right;
+    margin-bottom: 4px;
+}
+ 
+
+.champ_erreur {
+    border: 2px solid red;
+}
+ 
+
+ 
+.compteur_depasse {
+    color: red;
+    font-weight: bold;
+}
+ 
+
+.conteneur_mdp_login {
+    margin: 0px 100px 0px 90px;
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 225px;
+    height: 25px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+ 
+
+.conteneur_mdp_login .login_case_code {
+    width: 100%;
+    border: none;
+    margin: 0;
+    height: 100%;
+    box-sizing: border-box;
+    padding-right: 30px;
+    background: transparent;
+}
+ 
+
+.btn_oeil_login {
+    position: absolute;
+    right: 6px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 0;
 }
 
 @media (max-width: 768px) {
