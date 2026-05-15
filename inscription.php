@@ -70,6 +70,8 @@
         <h1>INSCRIPTION</h1>
         <form action="" method="post" target="_top" id="formulaire" name="connexion">
             <div class="rect_bleu">
+                <img class="logo_login" src="assets/Logo projet.png" alt="logo de notre site de vente">
+                
                 <input type="text" name="nname" id="idname" class="login_case_name" placeholder="   Prénom" maxlength="50">
                 <span class="compteur" id="compteur_idname">0 / 50 caractères</span>
                 <span class="erreur_champ" id="erreur_idname"></span>
