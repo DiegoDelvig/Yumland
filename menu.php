@@ -52,10 +52,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>La Carte - Les Croquettes du Chef</title>
-    <link rel="stylesheet" href="css/variables.css">
+    <link id="theme-css" rel="stylesheet" href="css/variables.css">
     <link rel="stylesheet" href="css/client.css">
     <link rel="stylesheet" href="css/accueil.css"> <link rel="stylesheet" href="css/menu.css">   
     <link href="assets/Logo projet.png" rel="icon">
+    <script src="js/charte.js"></script>
     <script>
     function appliquer_filtre() {
         const filtres = document.querySelectorAll("input[type=checkbox]");
