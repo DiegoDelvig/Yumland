@@ -163,9 +163,8 @@
                 </div>
                 <div class="zone-boutons">
                     <a class="maps" href="https://www.google.com/maps/place/<?php echo urlencode($liste_client[$cmd['mail']]['adr']) ?>/" target="_blank">LANCER L'ITINÉRAIRE (Google Maps)</a>
-                    <form method="POST" action="livraisons.php">
-                        <button name="button" class="btn-livraison">LIVRAISON TERMINÉE</button>
-                    </form>
+                    <button class="btn-livraison" onclick="livrerCommande();">LIVRAISON TERMINÉE</button>
+                    <p id="message-livraison" class="cache message-livraison">✅ Livraison confirmée !</p>
                 </div>
             </div>
         <?php } else { ?>
