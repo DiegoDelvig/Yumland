@@ -139,7 +139,7 @@
 }
 
 .capsule {
-    background: white;
+    background: var(--couleur-capsules);
     margin-bottom: 20px;
     padding: 10px;
     border-radius: 100px;
@@ -220,7 +220,7 @@
 
 /* Animation bouton ajouter */
 .bouton-ajouter:hover {
-    background: white;
+    background-color: var(--card-bg-client);
 }
 
 @media (max-width: 768px) {
