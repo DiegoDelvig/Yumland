@@ -42,10 +42,11 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="css/variables.css">
+        <link id="theme-css" rel="stylesheet" href="css/variables.css">
         <link rel="stylesheet" href="css/client.css">
         <link rel="stylesheet" href="css/inscription.css">
         <link href="assets/Logo projet.png" rel="icon">
+        <script src="js/charte.js></script>
         <title>Inscription - Les Croquettes du Chef</title>
         
     </head>
