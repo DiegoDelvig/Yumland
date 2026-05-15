@@ -171,12 +171,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Les Croquettes du Chef</title>
     
-    <link rel="stylesheet" href="css/variables.css">
+    <link id="theme-css" rel="stylesheet" href="css/variables.css">
     <link rel="stylesheet" href="css/admin.css">
     <link rel="stylesheet" href="css/client.css">
     <link href="assets/Logo projet.png" rel="icon">
     <script src="js/charte.js"></script>
-    <link id="theme-css" rel="stylesheet" href="css/variables.css">
+    
 </head>
 <body>
 <header>
