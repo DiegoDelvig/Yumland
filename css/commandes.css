@@ -43,7 +43,7 @@
 
 .en-tete-colonne h2 {
     text-align: center;
-    background: white;
+    background-color: var(--couleur-capsules);
     padding: 15px;
     border: 2px solid var(--border-color);
     border-radius: 10px;
@@ -60,7 +60,7 @@
 }
 
 .carte-commande {
-    background: white;
+    background-color: var(--couleur-capsules);
     border: 2px solid var(--border-color);
     border-radius: 12px;
     padding: 20px;
@@ -129,7 +129,7 @@
     position: relative;
     margin-bottom: 5px;
     font-size: 0.95rem;
-    color: #444;
+    color: var(--text-main);
 }
 
 .liste-articles li::before {
@@ -177,12 +177,12 @@
 }
 
 .btn-action.info {
-    background-color: white;
+    background-color: var(--primary-client);
     color: var(--text-main);
 }
 
 .btn-action.info:hover {
-    background-color: #eee;
+    background-color: var(--bg-client);
 }
 
 /* Adapté pour telephones/tablettes */
