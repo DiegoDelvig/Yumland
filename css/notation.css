@@ -90,7 +90,7 @@ body {
 .nplat_1 {
     font-size: 22px;
     font-weight: bold;
-    color: #2c3e50;
+    color: var(--text-main);
 }
 
 .radio_1 {
