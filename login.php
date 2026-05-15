@@ -45,12 +45,11 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link id="theme-css" rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/variables.css">
         <link rel="stylesheet" href="css/login.css">
         <link rel="stylesheet" href="css/client.css">
         <title>Connexion - Les Croquettes du Chef</title>
         <link href="assets/Logo projet.png" rel="icon">
-        <script src="js/charte.js></script>
     </head>
     <body>
         <header>
@@ -62,7 +61,6 @@
             <ul>
                 <li><a href="index.php">Accueil</a></li>
                 <li><a href="menu.php">La Carte</a></li>
-                <li><button id="btn-theme" onclick="changerTheme();">🌙</button></li>
                 <li><a href="login.php" class="active btn">Connexion</a></li>
             </ul>
         </nav>
