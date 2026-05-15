@@ -20,7 +20,7 @@
 
 
 .section-menus {
-    background-color: pink;
+    background-color: var(--bg-client);
     padding: 60px 40px;
     border-bottom: 2px solid var(--border-color);
 }
@@ -60,7 +60,7 @@
 
 /* ---- Carte menu ---- */
 .carte-menu {
-    background: white;
+    background-color: var(--couleur-capsules);
     border: 2px solid var(--border-color);
     border-radius: 15px;
     overflow: hidden;
@@ -79,6 +79,7 @@
 .carte-menu:hover {
     transform: translate(-3px, -3px);
     box-shadow: 7px 7px 0px var(--border-color);
+    background-color: var(--bg-client);
 }
 
 /* ---- Header ---- */
@@ -102,8 +103,8 @@
 
 .carte-menu-header h3::after,
 .carte-menu-header h3::before {
-    display: none !important;
-    content: none !important;
+    display: none;
+    content: none;
 }
 
 .carte-menu-header p {
@@ -135,9 +136,9 @@
 }
 
 .carte-menu-plats ul {
-    list-style: none !important;
-    padding: 0 !important;
-    margin: 0 !important;
+    list-style: none;
+    padding: 0;
+    margin: 0;
     display: flex;
     flex-direction: column;
     gap: 6px;
@@ -150,10 +151,10 @@
 .carte-menu-plats ul li {
     font-size: 0.9rem;
     color: var(--text-main);
-    padding: 6px 12px !important;
-    background-color: var(--bg-client) !important;
-    border-radius: 20px !important;
-    border: 1px solid var(--border-color) !important;
+    padding: 6px 12px;
+    background-color: var(--bg-client);
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
     display: block !important;
     margin: 0 !important;
     width: auto;
@@ -171,7 +172,7 @@
     justify-content: space-between;
     align-items: center;
     border-top: 2px solid var(--border-color);
-    background-color: var(--card-bg-client);
+    background-color: var(--couleur-capsules);
 }
 
 .carte-menu-footer .prix {
@@ -184,7 +185,7 @@
 
 .btn-ajout-menu {
     padding: 10px 20px;
-    background-color: var(--text-main);
+    background-color: var(--primary-client); 
     color: white;
     border: none;
     border-radius: 20px;
@@ -195,14 +196,14 @@
 }
 
 .btn-ajout-menu:hover {
-    background-color: var(--primary-client);
+    background-color: var(--bg-client);
     color: var(--text-main);
     transform: scale(1.05);
 }
 
 .conteneur-menu {
     display: flex;
-    background-color: var(--card-bg-client);
+    background-color: var(--bg-client);
     min-height: 80vh;
     padding: 40px;
     gap: 40px;
@@ -210,7 +211,7 @@
 
 .colonne-filtres {
     width: 250px;
-    background: white;
+    background-color: var(--couleur-capsules);
     padding: 25px;
     border-radius: 15px;
     border: 2px solid var(--border-color);
@@ -264,7 +265,7 @@
 .btn-filtres {
     width: 100%;
     padding: 12px;
-    background: var(--text-main);
+    background-color: var(--primary-client); 
     color: white;
     border: none;
     border-radius: 8px;
@@ -287,6 +288,8 @@
 }
 
 .barre-recherche-menu input {
+    background-color: white; 
+    color: var(--text-main); 
     width: 100%;
     padding: 15px;
     border: 2px solid var(--border-color);
@@ -315,7 +318,7 @@
 }
 
 .carte-plat {
-    background: white;
+    background-color:var(--couleur-capsules);
     border: 2px solid var(--border-color);
     border-radius: 15px;
     overflow: hidden;
@@ -393,7 +396,7 @@
     width: 35px;
     height: 35px;
     border-radius: 50%;
-    background: var(--text-main);
+    background-color: var(--primary-client);
     color: white;
     border: none;
     font-size: 1.2rem;
