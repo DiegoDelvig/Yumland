@@ -18,6 +18,8 @@ body {
     width: 30px;
     height: 30px;
     border: 1px solid var(--border-color);
+    cursor: pointer;
+    background-color: var(--bg-client);
 }
 header {
     background: var(--bg-header);
