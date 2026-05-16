@@ -208,6 +208,9 @@ footer {
         width: 80%;
         position: relative;
     }
+    .login_case_email {
+        margin-bottom: 0;
+    }
 }
 
 
