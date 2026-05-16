@@ -56,7 +56,7 @@
     <link rel="stylesheet" href="css/client.css">
     <link rel="stylesheet" href="css/accueil.css"> <link rel="stylesheet" href="css/menu.css">   
     <link href="assets/Logo projet.png" rel="icon">
-    <script src="js/charte.js"></script>
+    <script src="js/charte.js" defer></script>
     <script>
     function appliquer_filtre() {
         const filtres = document.querySelectorAll("input[type=checkbox]");
