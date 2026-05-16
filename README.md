@@ -166,6 +166,7 @@ Suivez l'état des commandes
 Validez les commandes prêtes
 📂 Structure du projet
 
+```plaintext
 Yumland/
 ├── 📄 index.php             # Page d'accueil
 ├── 📄 menu.php              # Catalogue de produits
@@ -202,6 +203,7 @@ Yumland/
 │   └── [images de produits] # Images des articles (croquettes, etc.)
 │
 └── 📄 README.md             # Ce fichier
+```
 
 🛠️ Technologies
 Frontend
