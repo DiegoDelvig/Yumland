@@ -165,44 +165,44 @@ Assignez des livreurs
 Suivez l'état des commandes
 Validez les commandes prêtes
 📂 Structure du projet
-Code
+
 Yumland/
-├── 📄 index.php              # Page d'accueil
-├── 📄 menu.php               # Catalogue de produits
-├── 📄 panier.php             # Gestion du panier
-├── 📄 login.php              # Authentification
-├── 📄 profil.php             # Profil utilisateur
-├── 📄 confirmation.php       # Confirmation de commande
-├── 📄 annulation.php         # Paiement refusé
-├── 📄 admin.php              # Espace administrateur
-├── 📄 commandes.php          # Gestion des commandes (admin)
-├── 📄 livraisons.php         # Espace livreur
+├── 📄 index.php             # Page d'accueil
+├── 📄 menu.php              # Catalogue de produits
+├── 📄 panier.php            # Gestion du panier
+├── 📄 login.php             # Authentification
+├── 📄 profil.php            # Profil utilisateur
+├── 📄 confirmation.php      # Confirmation de commande
+├── 📄 annulation.php        # Paiement refusé
+├── 📄 admin.php             # Espace administrateur
+├── 📄 commandes.php         # Gestion des commandes (admin)
+├── 📄 livraisons.php        # Espace livreur
 │
-├── 📁 css/
-│   ├── variables.css         # Thème et variables globales
-│   ├── client.css            # Styles généraux
-│   ├── accueil.css           # Styles de la page d'accueil
-│   ├── admin.css             # Styles de l'espace admin
-│   └── confirmation.css      # Styles des confirmations
+├── 📁 css/                  # 🎨 Stylesheets
+│   ├── variables.css        # Thème et variables globales
+│   ├── client.css           # Styles généraux
+│   ├── accueil.css          # Styles de la page d'accueil
+│   ├── admin.css            # Styles de l'espace admin
+│   └── confirmation.css     # Styles des confirmations
 │
-├── 📁 js/
-│   ├── charte.js             # Gestion du thème (sombre/clair)
-│   ├── admin.js              # Fonctionnalités admin
-│   ├── panier.js             # Logique du panier
-│   ├── menu.js               # Filtres et recherche
-│   ├── profil.js             # Édition de profil AJAX
-│   └── livraison.js          # Gestion des livraisons
+├── 📁 js/                   # 🧠 Scripts interactifs
+│   ├── charte.js            # Gestion du thème (sombre/clair)
+│   ├── admin.js             # Fonctionnalités admin
+│   ├── panier.js            # Logique du panier
+│   ├── menu.js              # Filtres et recherche
+│   ├── profil.js            # Édition de profil AJAX
+│   └── livraison.js         # Gestion des livraisons
 │
-├── 📁 donnees/
-│   ├── data.json             # Utilisateurs et rôles
-│   └── menu.json             # Catalogue de produits
+├── 📁 donnees/              # 🗄️ Base de données (fichiers plats)
+│   ├── data.json            # Utilisateurs et rôles
+│   └── menu.json            # Catalogue de produits
 │
-├── 📁 assets/
-│   ├── Logo projet.png       # Logo de l'application
-│   ├── [images de produits]  # Images des croquettes
-│   └── ...
+├── 📁 assets/               # 🖼️ Ressources graphiques
+│   ├── Logo projet.png      # Logo de l'application
+│   └── [images de produits] # Images des articles (croquettes, etc.)
 │
-└── 📄 README.md              # Ce fichier
+└── 📄 README.md             # Ce fichier
+
 🛠️ Technologies
 Frontend
 HTML5 : Structure sémantique
