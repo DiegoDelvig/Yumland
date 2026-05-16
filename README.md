@@ -66,18 +66,6 @@ Créée en janvier 2026, cette plateforme combine une interface intuitive avec d
 
 ## 🏗️ Architecture
 
-### Stack Technologique
-
-Frontend Backend Data ├── HTML5 ├── PHP 8+ ├── JSON ├── CSS3 ├── Sessions └── Cookies └── JavaScript └── Array
-
-Code
-
-### Flux d'utilisateur
-
-[Accueil] → [Catalogue] → [Panier] → [Paiement] → [Confirmation] ↓ [Profil/Commandes] ← [Admin/Livreur]
-
-Code
-
 ### Structure des données
 
 Les données sont stockées au format JSON :
@@ -230,67 +218,9 @@ Architecture
 MVC-like : Séparation logique
 REST-like : Requêtes POST/GET
 AJAX : Mise à jour sans rechargement (profil)
-🔐 Sécurité
-Implémentée
-✅ Gestion des sessions via cookies
-✅ Vérification des rôles utilisateur
-✅ Protection contre les comptes bloqués
-✅ Validation des formulaires
-✅ Encodage des données sensibles
-À améliorer
-🔴 Ajouter HTTPS en production
-🔴 Implémenter CSRF tokens
-🔴 Ajouter rate limiting
-🔴 Chiffrer les mots de passe
-🔴 Valider entrées côté serveur
-📊 Fonctionnalités par page
-Page	Clients	Livreurs	Admin
-index.php	✅	✅	✅
-menu.php	✅	✅	✅
-panier.php	✅	❌	❌
-profil.php	✅	✅	✅
-admin.php	❌	❌	✅
-commandes.php	❌	❌	✅
-livraisons.php	❌	✅	❌
-🐛 Dépannage
-La page de connexion s'affiche en boucle
-Vérifiez que donnees/data.json existe et est lisible
-Assurez-vous que les cookies sont activés
-Les images ne s'affichent pas
-Vérifiez que le dossier assets/ existe
-Vérifiez les chemins dans les fichiers HTML/PHP
-Le panier ne se met pas à jour
-Vérifiez la console JavaScript (F12)
-Assurez-vous que JavaScript est activé
-Videz le cache du navigateur
-Erreur 500 du serveur
-Vérifiez les logs PHP du serveur
-Assurez-vous que PHP 7.4+ est installé
-Vérifiez les permissions des fichiers
-📈 Améliorations futures
- Intégration Stripe/PayPal pour paiements réels
- Système d'avis et notes des produits
- Recommandations personnalisées via IA
- Application mobile native
- Système de notification par email
- Analytics et dashboard produits
- Gestion d'inventaire
- Support multi-langues
+
 👥 Contributeurs
 Diego Delvig @DiegoDelvig - Créateur et mainteneur principal
-📝 Licence
-Ce projet est distribué sous licence non spécifiée. Consultez le repository pour plus de détails.
-
-📞 Support
-Pour toute question ou problème :
-
-📧 Ouvrez une issue sur GitHub
-💬 Consultez la section discussions
-🐛 Signalez les bugs avec détails et reproduction
-🎉 Remerciements
-Merci à tous les utilisateurs et contributeurs qui aident à améliorer Yumland !
-
-Bienvenue dans l'aventure gastronomique canine ! 🦴✨
 
 Dernière mise à jour : Mai 2026
 
