@@ -114,8 +114,8 @@
     <link rel="stylesheet" href="css/client.css">
     <link rel="stylesheet" href="css/livraisons.css">
     <link href="assets/Logo projet.png" rel="icon">
-    <script src="js/charte.js"></script>
-    <script src="js/livraison.js"></script>
+    <script src="js/charte.js" defer></script>
+    <script src="js/livraison.js" defer></script>
 </head>
 <body>
 
