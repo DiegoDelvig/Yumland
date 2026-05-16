@@ -1,100 +1,121 @@
-
-table{
-      width: 95%;
-      border-collapse: collapse;
-      margin-bottom: 20px;
-   
+table {
+    width: 95%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
 }
 
-h1{
-      font-family: var(--font-title);
+h1 {
+    font-family: var(--font-title);
 }
 
-
-    main{
-        display: flex;
-        justify-content: center; 
-        align-items: center;
-    }
-
-
-    th{
-        text-align: left;
-        font-weight: bold;
-        background-color: var(--couleur-capsules);
-        text-transform: capitalize;
-        padding-top: 10px;
-        padding-bottom: 10px;
-        padding-left: 10px;
-        border: 1px solid var(--text-main);
-    }
-
-    td{
-        background-color: var(--couleur-capsules);
-        padding-left: 10px;
-        border: 1px solid var(--text-main);
-    }
-
-    button {
-    background: none;     
-    border: none;         
-    padding: 0;          
-    font: inherit;       
-    cursor: pointer;      
-    color: black;      
-    text-decoration: none;  
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-    button:hover{
-        color: var(--couleur-curseur-bouton);
-    }
+th {
+    text-align: left;
+    font-weight: bold;
+    background-color: var(--couleur-capsules);
+    text-transform: capitalize;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    border: 1px solid var(--text-main);
+}
 
-    a{
-        text-decoration: none;
-        color: black;
-    }
+td {
+    background-color: var(--couleur-capsules);
+    padding-left: 10px;
+    border: 1px solid var(--text-main);
+}
 
-    a:hover{
-        color: var(--couleur-curseur-bouton);
-    }
+button {
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    color: black;
+    text-decoration: none;
+}
 
-    .titre-admin {
+button:hover {
+    color: var(--couleur-curseur-bouton);
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    color: var(--couleur-curseur-bouton);
+}
+
+.titre-admin {
     grid-area: titre-admin;
     padding: 32px;
     display: flex;
     flex-direction: column;
-    }
+}
 
-    .filtres-admin {
-        display: flex;
-        justify-content: flex-end; 
-        margin-bottom: 20px;
-        align-items: center;
-    }
+.filtres-admin {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+    align-items: center;
+}
 
-    .filtres-admin select {
-        margin-left: 10px;
-        padding: 8px;
-        border-radius: 5px;
-        border: 1px solid black;
-        background-color: white;
-        cursor: pointer;
-    }
+.filtres-admin select {
+    margin-left: 10px;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid black;
+    background-color: white;
+    cursor: pointer;
+}
+
+.btn-bloque {
+    padding: 8px 16px;
+    border: 2px solid #e74c3c;
+    background-color: white;
+    color: #e74c3c;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.btn-bloque:hover {
+    background-color: #ffe0e0;
+}
+
+.btn-bloque.bloque {
+    background-color: #e74c3c;
+    color: white;
+    border-color: #c0392b;
+}
+
+.btn-bloque.bloque:hover {
+    background-color: #c0392b;
+}
 
 @media screen and (max-width: 768px) {
     .filtres-admin {
         display: flex;
-        flex-direction: row; 
-        justify-content: space-between; 
+        flex-direction: row;
+        justify-content: space-between;
         align-items: center;
         width: 100%;
         padding: 0 10px;
     }
 
     main {
-        display: block; 
-        overflow-x: auto; 
-        width:100%;
+        display: block;
+        overflow-x: auto;
+        width: 100%;
     }
 
     table {
@@ -102,14 +123,14 @@ h1{
         font-size: 0.8rem;
         min-width: 650px;
     }
-    th, td{
+    th,
+    td {
         padding: 12px 10px;
     }
 
-    
-    th:last-child, td:last-child{
+    th:last-child,
+    td:last-child {
         min-width: 160px;
         padding-right: 20px;
     }
-    
 }
