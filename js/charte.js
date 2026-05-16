@@ -1,7 +1,7 @@
 function setCookie(cookieName, cookieValue, expiration = null) {
             if(expiration == null) expiration = new Date(Date.now() + 86400000).toUTCString();
-            document.cookie = cookieName + "=" + cookieValue + "; expires=" + expiration + ";";
-        }
+            document.cookie = cookieName + "=" + cookieValue + "; expires=" + expiration + "; path=/;";
+}
 
     function getCookie(cookieName, defaultValue = null) {
         const cookies = document.cookie.split(";");
