@@ -113,7 +113,7 @@ foreach ($commande[$mail] as $id_cmd => $details) {
     <link rel="stylesheet" href="css/profil.css">
     <link rel="stylesheet" href="css/client.css">
     <link href="assets/Logo projet.png" rel="icon">
-    <script src="js/charte.js"></script>
+    <script src="js/charte.js" defer></script>
 </head>
 <body>
     <header>
