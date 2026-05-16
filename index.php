@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="css/client.css">
     <link rel="stylesheet" href="css/accueil.css">
     <link href="assets/Logo projet.png" rel="icon">
-    <script src="js/charte.js"></script>
+    <script src="js/charte.js" defer></script>
 </head>
 <body>
 
