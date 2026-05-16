@@ -181,9 +181,7 @@
 
 .btn-action.info:hover {
     background-color: var(--bg-client);
-}
-
-margin: 15px 0;
+    margin: 15px 0;
 }
 
 .groupe-assignation {
