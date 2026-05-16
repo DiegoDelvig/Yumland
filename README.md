@@ -206,6 +206,7 @@ Yumland/
 ```
 
 🛠️ Technologies
+```
 Frontend
 HTML5 : Structure sémantique
 CSS3 : Grid, Flexbox, Variables CSS
@@ -220,6 +221,7 @@ Architecture
 MVC-like : Séparation logique
 REST-like : Requêtes POST/GET
 AJAX : Mise à jour sans rechargement (profil)
+```
 
 👥 Contributeurs
 Diego Delvig @DiegoDelvig - Créateur et mainteneur principal
