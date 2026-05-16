@@ -87,7 +87,7 @@
 
 
                 <input type="tel" name="ntel" id="idtel" class="login_case_tel" placeholder="   Numéro de téléphone" maxlength="15">
-                <span class="compteur" id="compteur_idtel">0 / 10 caractères</span>
+                <span class="compteur" id="compteur_idtel">0 / 14 caractères</span>
                 <span class="erreur_champ" id="erreur_idtel"></span>
 
 
