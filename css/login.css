@@ -68,7 +68,7 @@ body {
     color: var(--couleur-curseur-bouton);
 }
 .mdp_oublie{
-    color: var(--text-light);
+    color: var(--text-main);
     margin: 0px 0px 0px 20px;
 }
 .mdp_oublie:hover{
@@ -78,7 +78,7 @@ body {
     color: var(--couleur-curseur-bouton);
 }
 .pas_de_compte{
-    color: var(--text-light);
+    color: var(--text-main);
     margin: 0px 0px 0px 125px;
 }
 a{
