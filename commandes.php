@@ -145,7 +145,7 @@ if (!empty($commande)) {
     <link rel="stylesheet" href="css/accueil.css">
     <link rel="stylesheet" href="css/commandes.css">
     <link href="assets/Logo projet.png" rel="icon">
-    <script src="js/charte.js"></script>
+    <script src="js/charte.js" defer></script>
 </head>
 <body>
     <header>
