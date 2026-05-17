@@ -60,11 +60,9 @@
     <script>
     function appliquer_filtre() {
         const filtres = document.querySelectorAll("input[type=checkbox]");
-        // On cible via les conteneurs parents pour ne jamais perdre les éléments de vue, même cachés
         const menus = document.querySelectorAll(".grille-menus article");
         const plats = document.querySelectorAll(".grille-plats article");
 
-        // 1. On réaffiche tout par défaut avant de recalculer les filtres
         menus.forEach(menu => menu.style.display = "");
         plats.forEach(plat => plat.style.display = "");
         
@@ -73,27 +71,21 @@
         if(sectionMenus) sectionMenus.style.display = "";
         if(banniereMenu) banniereMenu.style.display = "";
 
-        // 2. On parcourt chaque case à cocher
         for (let filtre of filtres) {
             let nomFiltre = filtre.name;
 
-            // Si la case EST DÉCOCHÉE, on cache ce qui correspond
             if (!filtre.checked) {
-                
-                // Gestion spéciale pour le "pack" (cache la section menu entière)
+
                 if (nomFiltre === "pack") {
                     if(sectionMenus) sectionMenus.style.display = "none";
                     if(banniereMenu) banniereMenu.style.display = "none";
                 }
-                // Gestion spéciale pour "produit_unique" (cache tous les plats)
                 else if (nomFiltre === "produit_unique") {
                     plats.forEach(plat => plat.style.display = "none");
                 }
-                // Gestion des attributs classiques (âge, saveur, spécifique)
                 else {
                     plats.forEach(plat => {
                         let p = plat.querySelector('p[name="' + nomFiltre + '"]');
-                        // On vérifie que la balise contient "1" (ce qui correspond à "true" en PHP)
                         if (p && p.innerText.trim() === "1") {
                             plat.style.display = "none";
                         }
@@ -114,7 +106,7 @@
         const btn = document.querySelector(".btn-filtres");
         if (btn) {
             btn.addEventListener("click", function(event) {
-                event.preventDefault(); // Empêche un rechargement accidentel de la page
+                event.preventDefault(); 
                 appliquer_filtre();
             });
         }
