@@ -76,10 +76,11 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <<link id="theme-css" rel="stylesheet" href="css/variables.css">
+        <link id="theme-css" rel="stylesheet" href="css/variables.css">
         <link rel="stylesheet" href="css/notation.css">
         <link rel="stylesheet" href="css/client.css">
         <script src="js/charte.js" defer></script>
+        <script src="js/notation.js" defer></script> 
         
         <title>Les Croquettes du Chef</title>
         <link href="assets/Logo projet.png" rel="icon">
@@ -101,7 +102,7 @@
         </nav>
         </header>
         <div class="rect_bleu">
-            <form action="" method="post" id="formulaire_login" name="connexion">
+            <form action="" method="post" id="formulaire_notation" name="connexion">
                 <img class="logo_login" src="assets/Logo projet.png" alt="logo de notre site de vente">
                 <div class="Notez_votre_cmd">   
                     Notez votre commande
@@ -129,12 +130,16 @@
                                     <label for="idnote_<?php echo $id_etoile; ?>_1">★</label>
                                 </div>
                             </div>
-                            <textarea name="<?php echo "com_".str_replace(" ", "_", $idplat); ?>" class="com_1" placeholder="   Votre commentaire sur le plat"></textarea>
+                            <textarea name="<?php echo "com_".str_replace(" ", "_", $idplat); ?>" id="com_<?php echo $id_etoile; ?>" class="com_1" placeholder="   Votre commentaire sur le plat (optionnel)" maxlength="250"></textarea>
+                            <span class="compteur" id="compteur_com_<?php echo $id_etoile; ?>" style="font-size: 0.8rem; color: #666; display: block; text-align: right; margin-top: -5px; margin-bottom: 10px;">0 / 250 caractères</span>
                         </div>
                     </div>
                 <?php } ?>
-                <textarea name="com" class="com_1" placeholder="   Votre commentaire sur la commande"></textarea>
-                <button class="avis_submit" name="submit_btn">
+                
+                <textarea name="com" id="com_global" class="com_1" placeholder="   Votre commentaire global sur la commande (optionnel)" maxlength="500"></textarea>
+                <span class="compteur" id="compteur_com_global" style="font-size: 0.8rem; color: #666; display: block; text-align: right; margin-top: -5px; margin-bottom: 15px;">0 / 500 caractères</span>
+                
+                <button type="submit" class="avis_submit" name="submit_btn">
                     Soumettre mes avis
                 </button>
             </form>
