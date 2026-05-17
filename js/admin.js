@@ -11,7 +11,6 @@ async function bloquerUtilisateur(email, bouton) {
     const data = await response.json();
 
     if (data.success) {
-      // Mettre à jour le bouton
       if (data.bloque) {
         bouton.textContent = "🔓 Débloquer";
         bouton.classList.add("bloque");
