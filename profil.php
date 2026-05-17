@@ -90,7 +90,6 @@ function aff_temps($num) {
     }
 }
 
-// --- LOGIQUE POUR RECOMMANDER ---
 foreach ($commande[$mail] as $id_cmd => $details) {
     if (isset($_REQUEST[aff_num_cmd($details["num"])])) {
         foreach ($details["plats"] as $id => $pla) {
@@ -107,7 +106,7 @@ foreach ($commande[$mail] as $id_cmd => $details) {
     }
 }
 
-// --- LOGIQUE POUR MODIFIER UNE COMMANDE EN COURS ---
+
 if (!empty($commande_en_cours)) {
     foreach ($commande_en_cours as $id_cmd => $details) {
         $nom_bouton = "modifier_" . aff_num_cmd($details["num"]);
@@ -219,7 +218,6 @@ if (!empty($commande_en_cours)) {
                 $var = 0;
 
                 if (!empty($commande_en_cours)) {
-                    // 1ère passe : Les commandes encore modifiables (non cuisinées)
                     foreach ($commande_en_cours as $id_cmd_en_cours => $details_cmd_en_cours) { 
                         if ($details_cmd_en_cours["mail"] == $email && $details_cmd_en_cours["etat"]["cuisinee"] == false) {
                             $var = 1;
@@ -240,8 +238,6 @@ if (!empty($commande_en_cours)) {
                             </div>
                         <?php }
                     }
-
-                    // 2ème passe : Les commandes en cours de livraison (déjà cuisinées)
                     foreach ($commande_en_cours as $id_cmd_en_cours => $details_cmd_en_cours) { 
                         if ($details_cmd_en_cours["mail"] == $email && $details_cmd_en_cours["etat"]["cuisinee"] == true) {
                             $var = 1;
