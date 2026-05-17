@@ -15,6 +15,7 @@ Plateforme de commande en ligne de croquettes premium pour chiens, avec gestion 
 - [Configuration](#-configuration)
 - [Utilisation](#-utilisation)
 - [Structure du projet](#-structure-du-projet)
+- [Composition du langage](#-composition-du-langage)
 - [Technologies](#-technologies)
 - [Contributeurs](#-contributeurs)
 
@@ -37,10 +38,11 @@ Créée en janvier 2026, cette plateforme combine une interface intuitive avec d
 ### 🛒 Espace Client
 - **Catalogue interactif** : Parcourez les menus filtrables par âge, saveur et spécificités
 - **Panier dynamique** : Gérez vos articles en temps réel
-- **Commande sécurisée** : Système de paiement intégré
+- **Commande sécurisée** : Système de paiement intégré (Cybank)
 - **Historique** : Consultez vos commandes précédentes
-- **Profil** : Gérez vos informations personnelles
+- **Profil** : Gérez vos informations personnelles et notations
 - **Fidélité** : Système de coupons et réductions
+- **Notation** : Laissez des avis sur les commandes reçues
 
 ### 🚀 Espace Livraison
 - **Assignation de commandes** : Attribution automatique des livraisons
@@ -58,7 +60,8 @@ Créée en janvier 2026, cette plateforme combine une interface intuitive avec d
 ### 🌙 Fonctionnalités Globales
 - **Mode sombre/clair** : Thème personnalisable
 - **Interface responsive** : Compatible mobile, tablette et desktop
-- **Authentification** : Système de login/signup sécurisé
+- **Authentification** : Système de login/signup/inscription sécurisé
+- **Récupération de mot de passe** : Système de réinitialisation
 - **Gestion des cookies** : Sessions persistantes
 - **Validation** : Vérification des formulaires côté client et serveur
 
@@ -80,6 +83,7 @@ Les données sont stockées au format JSON :
 - **PHP** >= 7.4
 - **Serveur web** (Apache, Nginx, etc.)
 - **Navigateur moderne** (Chrome, Firefox, Safari, Edge)
+- **Clé API Google Maps** (pour la géolocalisation)
 
 ### Étapes
 
@@ -87,144 +91,227 @@ Les données sont stockées au format JSON :
    ```bash
    git clone https://github.com/DiegoDelvig/Yumland.git
    cd Yumland
-Configurer le serveur web
+   ```
 
-Pointer le répertoire racine vers le dossier du projet
-Autoriser les fichiers .json en lecture
-Définir les permissions
+2. **Configurer le serveur web**
+   - Pointer le répertoire racine vers le dossier du projet
+   - Autoriser les fichiers .json en lecture
+   - Définir les permissions
+   ```bash
+   chmod 755 donnees/
+   chmod 644 donnees/*.json
+   ```
 
-bash
-chmod 755 donnees/
-chmod 644 donnees/*.json
-Accéder l'application
+3. **Configurer la clé API Google Maps**
+   - Placer la clé API dans le dossier `getapikey/`
+   - Ou configurer directement dans le fichier concerné
 
-Code
-http://localhost/Yumland
-⚙️ Configuration
-Variables d'environnement
+4. **Accéder l'application**
+   ```
+   http://localhost/Yumland
+   ```
+
+---
+
+## ⚙️ Configuration
+
+### Variables d'environnement
 Aucune variable d'environnement requise pour l'installation basique.
 
-Données de test
-Des utilisateurs de test sont disponibles dans donnees/data.json :
+### Données de test
+Des utilisateurs de test sont disponibles dans `donnees/data.json` :
 
-Client : Peut commander et suivre ses commandes
-Livreur : Peut gérer les livraisons
-Admin : Accès complet à l'application
-Personnalisation
-Logo : assets/Logo projet.png
-Styles : css/variables.css (thème et couleurs)
-Menus produits : donnees/menu.json
-🚀 Utilisation
-Pour les clients
-Inscription / Connexion
+- **Client** : Peut commander et suivre ses commandes
+- **Livreur** : Peut gérer les livraisons
+- **Admin** : Accès complet à l'application
 
-Cliquez sur "Connexion" en haut à droite
-Remplissez le formulaire ou créez un compte
-Parcourir le catalogue
+### Personnalisation
+- **Logo** : `assets/Logo projet.png`
+- **Styles** : `css/variables.css` (thème et couleurs)
+- **Menus produits** : `donnees/menu.json`
+- **Charte graphique** : Dossier `charte/`
 
-Allez à "La Carte" pour voir tous les produits
-Utilisez les filtres (âge, saveur, spécificités)
-Cliquez sur un produit pour voir les détails
-Commander
+---
 
-Ajoutez les articles au panier
-Cliquez sur le 🛒 en haut
-Procédez au paiement
-Recevez une confirmation
-Suivi
+## 🚀 Utilisation
 
-Allez à "Profil" pour voir vos commandes
-Consultez le statut et les détails
-Pour les livreurs
-Connexion
+### Pour les clients
 
-Utilisez vos identifiants livreur
-Accédez à "Livraison"
-Prendre une commande
+#### Inscription / Connexion
+- Cliquez sur "Connexion" en haut à droite
+- Créez un compte via le formulaire d'inscription
+- Ou connectez-vous avec vos identifiants existants
 
-Consultez la liste des commandes à livrer
-Cliquez sur une commande
-Lancez Google Maps pour l'itinéraire
-Confirmer la livraison
+#### Parcourir le catalogue
+- Allez à "La Carte" pour voir tous les produits
+- Utilisez les filtres (âge, saveur, spécificités)
+- Cliquez sur un produit pour voir les détails
 
-Cliquez sur "LIVRAISON TERMINÉE"
-Le statut se met à jour automatiquement
-Pour les administrateurs
-Accès Admin
+#### Commander
+- Ajoutez les articles au panier
+- Cliquez sur le 🛒 en haut
+- Procédez au paiement via Cybank
+- Recevez une confirmation
 
-Allez à "Admin" (visible si vous êtes administrateur)
-Consultez tous les utilisateurs
-Gérer les utilisateurs
+#### Suivi & Notation
+- Allez à "Profil" pour voir vos commandes
+- Consultez le statut et les détails
+- Laissez une notation après réception
 
-Filtrez par type (clients, livreurs, admins)
-Bloquez/déverrouillez des comptes
-Consultez les profils détaillés
-Gérer les commandes
+#### Mot de passe oublié
+- Cliquez sur "Mot de passe oublié" sur la page de connexion
+- Suivez les instructions de réinitialisation
 
-Assignez des livreurs
-Suivez l'état des commandes
-Validez les commandes prêtes
-📂 Structure du projet
+### Pour les livreurs
+
+#### Connexion
+- Utilisez vos identifiants livreur
+- Accédez à "Livraison"
+
+#### Prendre une commande
+- Consultez la liste des commandes à livrer
+- Cliquez sur une commande
+- Lancez Google Maps pour l'itinéraire
+
+#### Confirmer la livraison
+- Cliquez sur "LIVRAISON TERMINÉE"
+- Le statut se met à jour automatiquement
+
+### Pour les administrateurs
+
+#### Accès Admin
+- Allez à "Admin" (visible si vous êtes administrateur)
+- Consultez tous les utilisateurs
+
+#### Gérer les utilisateurs
+- Filtrez par type (clients, livreurs, admins)
+- Bloquez/déverrouillez des comptes
+- Consultez les profils détaillés
+
+#### Gérer les commandes
+- Assignez des livreurs
+- Suivez l'état des commandes
+- Validez les commandes prêtes
+
+---
+
+## 📂 Structure du projet
 
 ```plaintext
 Yumland/
-├── 📄 index.php             # Page d'accueil
-├── 📄 menu.php              # Catalogue de produits
-├── 📄 panier.php            # Gestion du panier
-├── 📄 login.php             # Authentification
-├── 📄 profil.php            # Profil utilisateur
-├── 📄 confirmation.php      # Confirmation de commande
-├── 📄 annulation.php        # Paiement refusé
-├── 📄 admin.php             # Espace administrateur
-├── 📄 commandes.php         # Gestion des commandes (admin)
-├── 📄 livraisons.php        # Espace livreur
 │
-├── 📁 css/                  # 🎨 Stylesheets
-│   ├── variables.css        # Thème et variables globales
-│   ├── client.css           # Styles généraux
-│   ├── accueil.css          # Styles de la page d'accueil
-│   ├── admin.css            # Styles de l'espace admin
-│   └── confirmation.css     # Styles des confirmations
+├── 📄 index.php                 # Page d'accueil
+├── 📄 menu.php                  # Catalogue de produits
+├── 📄 panier.php                # Gestion du panier
+├── 📄 login.php                 # Authentification (connexion)
+├── 📄 inscription.php           # Inscription utilisateur
+├── 📄 logout.php                # Déconnexion
+├── 📄 mdp_oublie.php            # Page mot de passe oublié
+├── 📄 code_mdp_oublie.php       # Traitement réinitialisation
+├── 📄 profil.php                # Profil utilisateur
+├── 📄 modification.php          # Modification de profil
+├── 📄 notation.php              # Système de notation/avis
+├── 📄 confirmation.php          # Confirmation de commande
+├── 📄 annulation.php            # Paiement refusé
+├── 📄 post-cybank.php           # Intégration paiement Cybank
+├── 📄 admin.php                 # Espace administrateur
+├── 📄 commandes.php             # Gestion des commandes (admin)
+├── 📄 livraisons.php            # Espace livreur
+├── 📄 livrer_commande.php       # Traitement livraison
+├── 📄 api_bloquer_utilisateur.php # API blocage (admin)
+├── 📄 verifier_blocage.php      # Vérification blocage utilisateur
 │
-├── 📁 js/                   # 🧠 Scripts interactifs
-│   ├── charte.js            # Gestion du thème (sombre/clair)
-│   ├── admin.js             # Fonctionnalités admin
-│   ├── panier.js            # Logique du panier
-│   ├── menu.js              # Filtres et recherche
-│   ├── profil.js            # Édition de profil AJAX
-│   └── livraison.js         # Gestion des livraisons
+├── 📁 css/                      # 🎨 Stylesheets
+│   ├── variables.css            # Thème et variables globales
+│   ├── client.css               # Styles généraux
+│   ├── accueil.css              # Styles de la page d'accueil
+│   ├── admin.css                # Styles de l'espace admin
+│   └── confirmation.css         # Styles des confirmations
 │
-├── 📁 donnees/              # 🗄️ Base de données (fichiers plats)
-│   ├── data.json            # Utilisateurs et rôles
-│   └── menu.json            # Catalogue de produits
+├── 📁 js/                       # 🧠 Scripts interactifs
+│   ├── charte.js                # Gestion du thème (sombre/clair)
+│   ├── admin.js                 # Fonctionnalités admin
+│   ├── panier.js                # Logique du panier
+│   ├── menu.js                  # Filtres et recherche
+│   ├── profil.js                # Édition de profil AJAX
+│   └── livraison.js             # Gestion des livraisons
 │
-├── 📁 assets/               # 🖼️ Ressources graphiques
-│   ├── Logo projet.png      # Logo de l'application
-│   └── [images de produits] # Images des articles (croquettes, etc.)
+├── 📁 donnees/                  # 🗄️ Base de données (fichiers plats)
+│   ├── data.json                # Utilisateurs et rôles
+│   └── menu.json                # Catalogue de produits
 │
-└── 📄 README.md             # Ce fichier
+├── 📁 assets/                   # 🖼️ Ressources graphiques
+│   ├── Logo projet.png          # Logo de l'application
+│   └── [images de produits]     # Images des articles (croquettes, etc.)
+│
+├── 📁 charte/                   # 📋 Charte graphique & guidelines
+│   └── [fichiers charte]        # Documentation visuelle
+│
+├── 📁 getapikey/                # 🔑 Configuration API
+│   └── [clés API]               # Clés d'accès externes
+│
+├── 📁 sujets/                   # 📚 Documentation
+│   └── [fichiers sujets]        # Sujets de projet & spécifications
+│
+├── 📁 Rapports/                 # 📊 Rapports & Documentation
+│   └── [fichiers rapports]      # Rapports techniques
+│
+└── 📄 README.md                 # Ce fichier
 ```
 
-🛠️ Technologies
-```
-Frontend
-HTML5 : Structure sémantique
-CSS3 : Grid, Flexbox, Variables CSS
-JavaScript (Vanilla) : Pas de framework, code natif
-Google Maps API : Navigation et itinéraires
-Backend
-PHP : Traitement serveur
-Sessions PHP : Authentification
-Cookies : Persistance des sessions
-JSON : Stockage des données
-Architecture
-MVC-like : Séparation logique
-REST-like : Requêtes POST/GET
-AJAX : Mise à jour sans rechargement (profil)
-```
+---
 
-👥 Contributeurs
-Diego Delvig @DiegoDelvig - Créateur et mainteneur principal
+## 📊 Composition du langage
 
-Dernière mise à jour : Mai 2026
+| Langage | Pourcentage |
+|---------|------------|
+| **PHP** | 62.4% |
+| **CSS** | 26.8% |
+| **JavaScript** | 10% |
+| **Hack** | 0.8% |
 
+Le projet est principalement basé sur **PHP pour le backend** avec une interface **CSS/JavaScript** côté client pour une expérience utilisateur riche et interactive.
+
+---
+
+## 🛠️ Technologies
+
+### Frontend
+- **HTML5** : Structure sémantique
+- **CSS3** : Grid, Flexbox, Variables CSS, Mode sombre/clair
+- **JavaScript (Vanilla)** : Pas de framework, code natif pur
+- **Google Maps API** : Navigation et itinéraires en temps réel
+
+### Backend
+- **PHP** : Traitement serveur (62.4% du code)
+- **Sessions PHP** : Authentification et gestion utilisateur
+- **Cookies** : Persistance des sessions
+- **JSON** : Stockage des données (fichiers plats)
+
+### Paiement
+- **Cybank** : Intégration de paiement sécurisée
+
+### Architecture
+- **MVC-like** : Séparation logique client/serveur
+- **REST-like** : Requêtes POST/GET
+- **AJAX** : Mise à jour sans rechargement de page
+- **Responsive Design** : Adaptation tous appareils
+
+---
+
+## 👥 Contributeurs
+
+- **Diego Delvig** [@DiegoDelvig](https://github.com/DiegoDelvig) - Créateur et mainteneur principal
+
+---
+
+## 📅 Historique
+
+- **Janvier 2026** : Création initiale du projet
+- **Mai 2026** : Dernière mise à jour - Amélioration structure et documentation
+
+---
+
+## 📝 Licence
+
+© 2026 Yumland. Tous droits réservés.
