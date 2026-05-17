@@ -1,4 +1,5 @@
 <?php
+session_start();
 error_reporting(0);
 if (!isset($_COOKIE["client"])) {
     header("Location: index.php");
@@ -31,11 +32,12 @@ if ($client["role"]["bloque"] == true && !isset($_COOKIE["admin"])) {
     exit();
 }
 
-$mail = $client["email"];
-if (!file_exists("donnees/panier_$mail.json")) {
+$fichier_panier = "donnees/panier_$mail.json";
+if (!file_exists($fichier_panier)) {
     $panier = ["total" => 0, "reduction" => false];
-    $panier_data = "donnees/panier_$mail.json";
-    file_put_contents($panier_data, json_encode($panier, JSON_PRETTY_PRINT));
+    file_put_contents($fichier_panier, json_encode($panier, JSON_PRETTY_PRINT));
+} else {
+    $panier = json_decode(file_get_contents($fichier_panier), true);
 }
 
 function aff_num_cmd_ou_fidelite($num, $cmd_ou_fidelite) {
@@ -90,22 +92,35 @@ function aff_temps($num) {
     }
 }
 
-foreach ($commande[$mail] as $id_cmd => $details) {
-    if (isset($_REQUEST[aff_num_cmd($details["num"])])) {
-        foreach ($details["plats"] as $id => $pla) {
-            $panier["total"] += $pla["quantite"] * $pla["prix"];
-            if (isset($panier["plats"][$id])) {
-                $panier["plats"][$id]["quantite"] += $pla["quantite"];
-            } else {
-                $panier["plats"][$id] = $pla;
+if (isset($commande[$mail])) {
+    foreach ($commande[$mail] as $id_cmd => $details) {
+        if (isset($_REQUEST[aff_num_cmd($details["num"])])) {
+            if (isset($details["plats"])) {
+                foreach ($details["plats"] as $id => $pla) {
+                    $panier["total"] += $pla["quantite"] * $pla["prix"];
+                    if (isset($panier["plats"][$id])) {
+                        $panier["plats"][$id]["quantite"] += $pla["quantite"];
+                    } else {
+                        $panier["plats"][$id] = $pla;
+                    }
+                }
             }
+            if (isset($details["menus"])) {
+                foreach ($details["menus"] as $id_m => $menu) {
+                    $panier["total"] += $menu["quantite"] * $menu["prix"];
+                    if (isset($panier["menus"][$id_m])) {
+                        $panier["menus"][$id_m]["quantite"] += $menu["quantite"];
+                    } else {
+                        $panier["menus"][$id_m] = $menu;
+                    }
+                }
+            }
+            file_put_contents($fichier_panier, json_encode($panier, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+            header("Location: panier.php");
+            exit();
         }
-        file_put_contents("donnees/panier_$mail.json", json_encode($panier, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
-        header("Location: panier.php");
-        exit();
     }
 }
-
 
 if (!empty($commande_en_cours)) {
     foreach ($commande_en_cours as $id_cmd => $details) {
@@ -124,7 +139,6 @@ if (!empty($commande_en_cours)) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="format-detection" content="telephone=no">
     <title>Les Croquettes du Chef</title>
-
     <link id="theme-css" rel="stylesheet" href="css/variables.css">
     <link rel="stylesheet" href="css/profil.css">
     <link rel="stylesheet" href="css/client.css">
@@ -214,12 +228,10 @@ if (!empty($commande_en_cours)) {
             <div class="carte-info">
                 <h3>Commandes en cours ...</h3>
                 <?php
-                $email = $client["email"];
                 $var = 0;
-
                 if (!empty($commande_en_cours)) {
                     foreach ($commande_en_cours as $id_cmd_en_cours => $details_cmd_en_cours) { 
-                        if ($details_cmd_en_cours["mail"] == $email && $details_cmd_en_cours["etat"]["cuisinee"] == false) {
+                        if ($details_cmd_en_cours["mail"] == $mail && $details_cmd_en_cours["etat"]["cuisinee"] == false) {
                             $var = 1;
                             ?>
                             <div class="commande">
@@ -239,7 +251,7 @@ if (!empty($commande_en_cours)) {
                         <?php }
                     }
                     foreach ($commande_en_cours as $id_cmd_en_cours => $details_cmd_en_cours) { 
-                        if ($details_cmd_en_cours["mail"] == $email && $details_cmd_en_cours["etat"]["cuisinee"] == true) {
+                        if ($details_cmd_en_cours["mail"] == $mail && $details_cmd_en_cours["etat"]["cuisinee"] == true) {
                             $var = 1;
                             ?>
                             <div class="commande">
@@ -256,7 +268,6 @@ if (!empty($commande_en_cours)) {
                         <?php }
                     }
                 }
-
                 if ($var == 0) { ?>
                     <div class="commande">
                         <div class="numero">
@@ -270,13 +281,13 @@ if (!empty($commande_en_cours)) {
             <div class="carte-info">
                 <h3>Anciennes commandes 🛍️</h3>
                 <?php
-                if (!empty($commande[$email])) {
-                    foreach ($commande[$email] as $id_cmd => $details) { ?>
+                if (!empty($commande[$mail])) {
+                    foreach ($commande[$mail] as $id_cmd => $details) { ?>
                         <div class="commande">
                             <div class="numero">
                                 <strong>Commande n°<?php aff_num_cmd_ou_fidelite($details["num"], 1); ?> (<?php echo aff_temps($details["date"]["jour"]) . "/" . aff_temps($details["date"]["mois"]) . "/" . aff_temps($details["date"]["annee"]) . " à " . aff_temps($details["date"]["heure"]) . ":" . aff_temps($details["date"]["minute"]); ?>)</strong>
                                 <form method="POST">
-                                    <button name="<?php aff_num_cmd($details["num"]); ?>" class="bouton-recommande">Recommander</button>
+                                    <button name="<?php echo aff_num_cmd($details["num"]); ?>" class="bouton-recommande">Recommander</button>
                                 </form>
                             </div>
                             <?php foreach ($details["plats"] as $produit) { ?>
@@ -304,38 +315,32 @@ if (!empty($commande_en_cours)) {
                     <h2>Modifier mon profil</h2>
                     <button type="button" class="modal-close" id="close-modal" aria-label="Fermer">&times;</button>
                 </div>
-
                 <form id="form-edit-profile" class="modal-form">
                     <div class="form-group">
                         <label for="edit-name">NOM *</label>
                         <input type="text" id="edit-name" name="name" required maxlength="100" value="<?php echo htmlspecialchars($client["name"]); ?>">
                         <small class="error-message" id="error-name"></small>
                     </div>
-
                     <div class="form-group">
                         <label for="edit-fname">PRÉNOM *</label>
                         <input type="text" id="edit-fname" name="fname" required maxlength="100" value="<?php echo htmlspecialchars($client["fname"]); ?>">
                         <small class="error-message" id="error-fname"></small>
                     </div>
-
                     <div class="form-group">
                         <label for="edit-adr">ADRESSE *</label>
                         <input type="text" id="edit-adr" name="adr" required maxlength="200" value="<?php echo htmlspecialchars($client["adr"]); ?>">
                         <small class="error-message" id="error-adr"></small>
                     </div>
-
                     <div class="form-group">
                         <label for="edit-tel">TÉLÉPHONE *</label>
                         <input type="tel" id="edit-tel" name="tel" required pattern="[0-9+ ]+" maxlength="20" value="<?php echo htmlspecialchars($client["tel"]); ?>">
                         <small class="error-message" id="error-tel"></small>
                     </div>
-
                     <div class="form-group">
                         <label for="edit-infocomp">INFOS COMPLÉMENTAIRES</label>
                         <textarea id="edit-infocomp" name="infocomp" maxlength="500"><?php echo htmlspecialchars($client["infocomp"]); ?></textarea>
                         <small class="char-count" id="char-count">0/500</small>
                     </div>
-
                     <div class="form-actions">
                         <button type="submit" class="btn-save" id="btn-save">
                             <span id="save-text">Sauvegarder</span>
@@ -343,10 +348,8 @@ if (!empty($commande_en_cours)) {
                         </button>
                         <button type="button" class="btn-cancel" id="btn-cancel-form">Annuler</button>
                     </div>
-
                     <div id="form-message" class="form-message"></div>
                 </form>
-
                 <noscript>
                     <p style="text-align: center; margin-top: 20px;">
                         <a href="modification.php" class="btn">Aller à la page de modification</a>
@@ -354,14 +357,11 @@ if (!empty($commande_en_cours)) {
                 </noscript>
             </div>
         </div>
-
         <div id="modal-overlay" class="modal-overlay" style="display: none;"></div>
     </main>
-
     <footer>
         <p>&copy; 2026 Les Croquettes du Chef - Espace Client</p>
     </footer>
-
     <script src="js/edit-profile.js" defer></script>
 </body>
 </html>
