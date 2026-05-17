@@ -5,6 +5,21 @@
     padding: 20px;
     min-height: 100vh;
 }
+form.form-modification {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+form.form-modification .bloc-planification {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+form.form-modification .bouton-recommande {
+    margin-top: 20px;
+    align-self: center;
+}
 h3{
     font-family: var(--font-title);
 }
