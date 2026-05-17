@@ -11,17 +11,15 @@ $mail = $client["email"];
 $file = file_get_contents("donnees/data.json");
 $data = json_decode($file, true);
 
-// Récupération de l'identifiant de la commande transmis par l'URL
+
 $id_cmd_actuelle = isset($_REQUEST['cmd']) ? $_REQUEST['cmd'] : '';
 
-// --- TRAITEMENT DE LA VALIDATION EN CAS DE RETRAIT D'ARTICLES ---
 if (isset($_POST['valider_modification_negative'])) {
     $choix = $_POST['choix_remboursement'];
     
     if ($choix == 'points') {
         $diff_abs = floatval($_POST['montant_diff_abs']);
         
-        // Calcul des points (1€ = 1 point normal, x2 pour la compensation)
         $points_normaux = floor($diff_abs); 
         $points_compensation = $points_normaux * 2; 
         
@@ -31,7 +29,6 @@ if (isset($_POST['valider_modification_negative'])) {
         setcookie("client", json_encode($data[$mail]), time() + 3600);
     }
     
-    // Suppression de la commande dans le fichier JSON si elle a été entièrement vidée
     $commande_data = file_get_contents("donnees/commande.json");
     $cmd_temp = json_decode($commande_data, true);
     
@@ -39,32 +36,27 @@ if (isset($_POST['valider_modification_negative'])) {
         unset($cmd_temp[$id_cmd_actuelle]);
         file_put_contents("donnees/commande.json", json_encode($cmd_temp, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
     }
-    
-    // Nettoyage de la variable de session et retour au profil
+
     unset($_SESSION["montant_initial_" . $id_cmd_actuelle]);
     header("Location: profil.php");
     exit();
 }
-// ----------------------------------------------------------------
 
 $commande_data = file_get_contents("donnees/commande.json");
 $commande = json_decode($commande_data, true);
 $cmd_total = $commande; 
 
-// Filtrage sécurisé pour ne garder que les commandes modifiables de ce client
 foreach($commande as $id_cmd => $details){
     if($details["mail"] != $mail || $details["etat"]["cuisinee"] == true){
         unset($commande[$id_cmd]); 
     }
 }
 
-// Sécurité : Si la commande n'existe pas ou n'appartient pas au client
 if (empty($id_cmd_actuelle) || !isset($commande[$id_cmd_actuelle])) {
     header("Location: profil.php");
     exit();
 }
 
-// Enregistrement unique du montant initial d'origine
 if (!isset($_SESSION["montant_initial_" . $id_cmd_actuelle])) {
     if ($commande[$id_cmd_actuelle]["reduction"] == true) {
         $_SESSION["montant_initial_" . $id_cmd_actuelle] = (3 * $commande[$id_cmd_actuelle]["total"]) / 4;
@@ -86,7 +78,6 @@ if ($data[$client["email"]]["role"]["bloque"] == true) {
     exit();
 }
 
-// Gestion des actions sur les Plats
 if (isset($ma_commande["plats"])) {
     foreach ($ma_commande["plats"] as $id => $detail) {
         if (isset($_REQUEST["btn_suppr_" . str_replace(" ", "_", $id)])) {
@@ -115,7 +106,6 @@ if (isset($ma_commande["plats"])) {
     }
 }
 
-// Gestion des actions sur les Menus
 if (isset($ma_commande["menus"])) {
     foreach ($ma_commande["menus"] as $id_m => $detail_m) {
         if (isset($_REQUEST["btn_suppr_" . str_replace(" ", "_", $id_m)])) {
@@ -164,14 +154,12 @@ else {
     $montant = number_format($cmd_total[$id_cmd_actuelle]["total"], 2, ".", "");
 }
 
-// Calcul de la différence de prix (Nouveau montant - Montant initial d'origine)
 $difference = $montant - $_SESSION["montant_initial_" . $id_cmd_actuelle];
 
 $transac = uniqid();
 $vendeur = "MI-1_I";
 $retour = "http://localhost:7180/post-cybank.php";
 
-// Préparation des clés Cybank uniquement si le client doit payer
 if ($difference > 0) {
     $montant_a_payer = number_format($difference, 2, ".", "");
     $control = md5($getapikey . "#" . $transac . "#" . $montant_a_payer . "#" . $vendeur . "#" . $retour . "#");
