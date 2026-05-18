@@ -8,7 +8,8 @@ if (!isset($_COOKIE["client"])) {
 
 if (isset($_COOKIE["admin"])) {
     $client_temp = json_decode($_COOKIE["admin"], true);
-} else {
+} 
+else {
     $client_temp = json_decode($_COOKIE["client"], true);
 }
 
@@ -16,16 +17,28 @@ $commande_data = file_get_contents("donnees/commande_passe.json");
 $commande = json_decode($commande_data, true);
 $commande_en_cours_data = file_get_contents("donnees/commande.json");
 $commande_en_cours = json_decode($commande_en_cours_data, true);
+$plats=json_decode(file_get_contents("donnees/plat.json"), true);
 $file = file_get_contents("donnees/data.json");
 $data = json_decode($file, true);
 $client = $data[$client_temp["email"]];
 $mail = $client["email"];
-
+foreach($plats as $id => $plat){
+    $plats[$id]["vente"]=0;
+    foreach($commande as $id_client => $cclient){
+        foreach($cclient as $id_cmd => $cmd){
+            foreach($cmd["plats"] as $id_plat_cmd => $plat_cmd){
+                if($plat_cmd["name"]==$plat["name"]){
+                    $plats[$id]["vente"]+= $plat_cmd["quantite"];
+                }
+            }
+        }
+    }
+}
+file_put_contents("donnees/plat.json", json_encode($plats, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
 if (!isset($_COOKIE["admin"])) {
     setcookie("client", json_encode($client), time() - 3600);
     setcookie("client", json_encode($client), time() + 3600);
 }
-
 if ($client["role"]["bloque"] == true && !isset($_COOKIE["admin"])) {
     setcookie("client", json_encode($client), time() - 3600);
     header("Location: index.php");
@@ -36,7 +49,8 @@ $fichier_panier = "donnees/panier_$mail.json";
 if (!file_exists($fichier_panier)) {
     $panier = ["total" => 0, "reduction" => false];
     file_put_contents($fichier_panier, json_encode($panier, JSON_PRETTY_PRINT));
-} else {
+} 
+else {
     $panier = json_decode(file_get_contents($fichier_panier), true);
 }
 
