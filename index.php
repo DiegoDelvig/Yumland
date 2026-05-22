@@ -1,12 +1,28 @@
 <?php 
     error_reporting(0);
     $client=json_decode($_COOKIE["client"], true);   
+    $mail = $client["email"];
     $file=file_get_contents("donnees/data.json");
     $data=json_decode($file, true);
+    $plats=json_decode(file_get_contents("donnees/plat.json"), true);
     if($data[$client['email']]['role']['bloque']==true){
         setcookie("client", json_encode($data[$mail]), time()-3600);  
         header("Location: index.php");
     } 
+    $plat1=$plats["agneau roti aux herbes"];
+    $plat2=$plats["agneau roti aux herbes"];
+    $plat3=$plats["agneau roti aux herbes"];
+    foreach($plats as $id => $plat){
+        if($plat["vente"]>=$plat1["vente"] && $plat["prix"]>$plat1["prix"]){
+            $plat1=$plat;
+        }
+        else if($plat["vente"]>=$plat2["vente"] && $plat["prix"]>$plat2["prix"] && $plat!=$plat1){
+            $plat2=$plat;
+        }
+        else if($plat["vente"]>=$plat3["vente"] && $plat["prix"]>$plat3["prix"] && $plat!=$plat1 && $plat!=$plat2){
+            $plat3=$plat;
+        }
+    }
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -112,40 +128,40 @@
 
                     <article class="capsule">
                         <div class="capsule-img">
-                            <img src="assets/cro'c poulet fermier.png" alt="Croc Poulet">
+                            <img src="assets/le prestige du chef.png" alt="Croc Premium">
                         </div>
                         <div class="capsule-info">
-                            <h4>Croc' Poulet Fermier</h4>
-                            <p>Poulet Fermier & Riz • Haute digestibilité</p>
+                            <h4><?php echo $plat1["name"] ?></h4>
+                            <p><?php echo $plat1["description"] ?></p>
                         </div>
                         <div class="capsule-action">
-                            <span class="prix">12.50€</span>
+                            <span class="prix"><?php echo number_format($plat1['prix'], 2, ',', ' '); ?>€</span>
                         </div>
                     </article>
 
                     <article class="capsule">
                         <div class="capsule-img">
-                            <img src="assets/saumon et patate douce.png" alt="Croc Saumon">
+                            <img src="assets/le prestige du chef.png" alt="Croc Premium">
                         </div>
                         <div class="capsule-info">
-                            <h4>Saumon & Patate Douce</h4>
-                            <p>Saumon & Patate douce • Poil soyeux</p>
+                            <h4><?php echo $plat2["name"] ?></h4>
+                            <p><?php echo $plat2["description"] ?></p>
                         </div>
                         <div class="capsule-action">
-                            <span class="prix">14.90€</span>
+                            <span class="prix"><?php echo number_format($plat2['prix'], 2, ',', ' '); ?>€</span>
                         </div>
                     </article>
 
                     <article class="capsule">
                         <div class="capsule-img">
-                            <img src="assets/mijote de boeuf et carotte.png" alt="Croc Boeuf">
+                            <img src="assets/le prestige du chef.png" alt="Croc Premium">
                         </div>
                         <div class="capsule-info">
-                            <h4>Mijoté de Bœuf & Carottes</h4>
-                            <p>Bœuf Angus & Carottes • Énergie Max</p>
+                            <h4><?php echo $plat3["name"] ?></h4>
+                            <p><?php echo $plat3["description"]; ?></p>
                         </div>
                         <div class="capsule-action">
-                            <span class="prix">14.90€</span>
+                            <span class="prix"><?php echo number_format($plat3['prix'], 2, ',', ' '); ?>€</span>
                         </div>
                     </article>
 
