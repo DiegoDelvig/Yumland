@@ -59,6 +59,8 @@ if (
         <link rel="stylesheet" href="css/modification.css">
         <link href="assets/Logo projet.png" rel="icon">
         <script src="js/charte.js" defer></script>
+        <script src="js/validation.js" defer></script>
+        <script src="js/modification.js" defer></script>
         <title>Inscription - Les Croquettes du Chef</title>
 
     </head>
