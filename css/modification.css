@@ -57,7 +57,7 @@ h1 {
 }
 .login_case_name {
     text-align: center;
-    margin-bottom: 15px;
+    margin-bottom: 0px;
     border: 1px solid black;
     border-radius: 5px;
     width: 70%;
@@ -75,7 +75,7 @@ h1 {
 }
 .login_case_tel {
     text-align: center;
-    margin-bottom: 15px;
+    margin-bottom: 0px;
     border: 1px solid black;
     border-radius: 5px;
     width: 70%;
@@ -84,7 +84,7 @@ h1 {
 }
 .login_case_fname {
     text-align: center;
-    margin-bottom: 15px;
+    margin-bottom: 0px;
     border: 1px solid black;
     border-radius: 5px;
     width: 70%;
