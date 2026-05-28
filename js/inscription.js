@@ -59,8 +59,8 @@ function validerTelephone() {
         return false;
     }
  
-    if (valeur.length < 7 || valeur.length > 15) {
-        afficherErreur(champ, "Le numéro doit contenir entre 7 et 15 caractères.");
+    if (valeur.length < 7 || valeur.length > LIMITE_TEL) {
+        afficherErreur(champ, "Le numéro doit contenir entre 7 et 14 caractères.");
         return false;
     }
  
