@@ -85,25 +85,24 @@ if (
                     <div class="rect_bleu">
                         <img class="logo_login" src="assets/Logo projet.png" alt="logo de notre site de vente">
 
-                        <label for="idname" class="input_label">Nom :</label>
-                        <input type="text" name="nname" id="idname" class="login_case_name" value="<?php echo $client[
-                            "name"
-                        ]; ?>">
+                        <label for="idname" class="input_label">Prénom :</label>
+                        <input type="text" name="nname" id="idname" class="login_case_name" value="<?php echo $client['name']; ?>" maxlength="50">
+                        <span class="compteur" id="compteur_idname">0 / 50 caractères</span>
+                        <span class="erreur_champ" id="erreur_idname"></span>
 
-                        <label for="idfname" class="input_label">Prénom :</label>
-                        <input type="text" name="nfname" id="idfname" class="login_case_fname" value="<?php echo $client[
-                            "fname"
-                        ]; ?>">
+                        <label for="idfname" class="input_label">Nom :</label>
+                        <input type="text" name="nfname" id="idfname" class="login_case_fname" value="<?php echo $client['fname']; ?>" maxlength="50">
+                        <span class="compteur" id="compteur_idfname">0 / 50 caractères</span>
+                        <span class="erreur_champ" id="erreur_idfname"></span>
 
                         <label for="idadr" class="input_label">Adresse postale :</label>
-                        <input type="text" name="nadr" id="idadr" class="login_case_adr" value="<?php echo $client[
-                            "adr"
-                        ]; ?>">
+                        <input type="text" name="nadr" id="idadr" class="login_case_adr" value="<?php echo $client['adr']; ?>">
+                        <span class="erreur_champ" id="erreur_idadr"></span>
 
-                        <label for="idtel" class="input_label">Numéro de téléphone :</label>
-                        <input type="tel" name="ntel" id="idtel" class="login_case_tel" value="<?php echo $client[
-                            "tel"
-                        ]; ?>">
+                        <label for="idtel" class="input_label">Téléphone :</label>
+                        <input type="tel" name="ntel" id="idtel" class="login_case_tel" value="<?php echo $client['tel']; ?>" maxlength="14">
+                        <span class="compteur" id="compteur_idtel">0 / 14 caractères</span>
+                        <span class="erreur_champ" id="erreur_idtel"></span>
 
                         <label for="idinfocomp" class="input_label">Informations complémentaires :</label>
                         <textarea name="ninfocomp" id="idinfocomp" class="login_case_infocomp"><?php echo $client[
@@ -118,3 +117,4 @@ if (
     </footer>
     </body>
 </html>
+
