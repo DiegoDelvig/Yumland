@@ -134,6 +134,28 @@ footer {
     text-align: center;
 }
 
+
+.erreur_champ {
+    color: red;
+    font-size: 0.75em;
+    margin-bottom: 8px;
+}
+
+.champ_erreur {
+    border: 2px solid red;
+}
+
+.compteur {
+    font-size: 0.72rem;
+    color: grey;
+    margin-bottom: 4px;
+}
+
+.compteur_depasse {
+    color: red;
+    font-weight: bold;
+}
+
 @media screen and (max-width: 768px) {
     .rect_bleu {
         width: 90%;
