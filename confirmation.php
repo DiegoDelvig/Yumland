@@ -1,75 +1,76 @@
-<?php 
-    error_reporting(0);
-    if(!isset($_COOKIE["client"])){
-        header("Location: index.php");
+<?php
+error_reporting(0);
+if (!isset($_COOKIE["client"])) {
+    header("Location: index.php");
+    exit();
+}
+
+$client = json_decode($_COOKIE["client"], true);
+$file = file_get_contents("donnees/data.json");
+$data = json_decode($file, true);
+
+if (
+    isset($data[$client["email"]]) &&
+    $data[$client["email"]]["role"]["bloque"] == true
+) {
+    setcookie("client", "", time() - 3600);
+    header("Location: index.php?msg=bloque");
+    exit();
+}
+$client = json_decode($_COOKIE["client"], true);
+$mail = $client["email"];
+$file = file_get_contents("donnees/data.json");
+$data = json_decode($file, true);
+$commande_data = file_get_contents("donnees/commande.json");
+$commande_passe = json_decode($commande_data, true);
+foreach ($commande_passe as $id => $detail) {
+    if ($client["email"] == $detail["mail"]) {
+        $commande = $detail;
     }
-    $client=json_decode($_COOKIE["client"], true);
-    $mail=$client['email'];   
-    $file=file_get_contents("donnees/data.json");
-    $data=json_decode($file, true);
-    $commande_data =file_get_contents("donnees/commande.json");
-    $commande_passe = json_decode($commande_data, true); 
-    foreach($commande_passe as $id=>$detail){
-        if($client['email']==$detail['mail']){
-            $commande=$detail;
+}
+$plat_data = file_get_contents("donnees/plat.json");
+$plat = json_decode($plat_data, true);
+
+function aff_num_cmd_ou_fidelite($num, $cmd_ou_fidelite)
+{
+    if ($cmd_ou_fidelite == 1) {
+        if ($num < 10) {
+            echo "000" . $num;
+        } elseif ($num < 100) {
+            echo "00" . $num;
+        } elseif ($num < 1000) {
+            echo "0" . $num;
+        } else {
+            echo $num;
+        }
+    } else {
+        if ($num < 10) {
+            echo "0000000" . $num;
+        } elseif ($num < 100) {
+            echo "000000" . $num;
+        } elseif ($num < 10000) {
+            echo "00000" . $num;
+        } elseif ($num < 100000) {
+            echo "0000" . $num;
+        } elseif ($num < 1000000) {
+            echo "000" . $num;
+        } elseif ($num < 10000000) {
+            echo "00" . $num;
+        } elseif ($num < 100000000) {
+            echo "0" . $num;
+        } else {
+            echo $num;
         }
     }
-    $plat_data=file_get_contents("donnees/plat.json");
-    $plat=json_decode($plat_data, true);
-    if($data[$client['email']]['role']['bloque']==true){
-        setcookie("client", json_encode($data[$mail]), time()-3600);  
-        header("Location: index.php");
+}
+function aff_temps($num)
+{
+    if ($num < 10) {
+        return "0" . $num;
+    } else {
+        return $num;
     }
-    function aff_num_cmd_ou_fidelite($num, $cmd_ou_fidelite){
-        if($cmd_ou_fidelite==1){
-            if($num<10){
-                echo "000".$num;
-            }
-            else if($num<100){
-                echo "00".$num;
-            }
-            else if($num<1000){
-                echo "0".$num;
-            }
-            else{
-                echo $num;
-            }
-        }
-        else{
-            if($num<10){
-                echo "0000000".$num;
-            }
-            else if($num<100){
-                echo "000000".$num;
-            }
-            else if($num<10000){
-                echo "00000".$num;
-            }
-            else if($num<100000){
-                echo "0000".$num;
-            }
-            else if($num<1000000){
-                echo "000".$num;
-            }
-            else if($num<10000000){
-                echo "00".$num;
-            }
-            else if($num<100000000){
-                echo "0".$num;
-            }
-            else{
-                echo $num;
-            }
-        }
-    }
-    function aff_temps($num){
-        if($num<10){
-            return "0".$num;
-        }
-        else{
-            return $num;
-        }
-    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -107,31 +108,64 @@
             </div>
             <div class="carte">
                 <h2>Récapitulatif de commande</h2>
-                <?php foreach($commande['plats'] as $id => $detail){ ?>
+                <?php foreach ($commande["plats"] as $id => $detail) { ?>
                     <div class="ligne-article">
-                        <span><?php echo $commande['plats'][$id]['name']; ?> x<?php echo $commande['plats'][$id]['quantite']; ?></span>
-                        <span><?php echo number_format($commande['plats'][$id]['prix'], 2, ',', ' '); ?>€</span>
+                        <span><?php echo $commande["plats"][$id][
+                            "name"
+                        ]; ?> x<?php echo $commande["plats"][$id][
+     "quantite"
+ ]; ?></span>
+                        <span><?php echo number_format(
+                            $commande["plats"][$id]["prix"],
+                            2,
+                            ",",
+                            " ",
+                        ); ?>€</span>
                     </div>
                 <?php } ?>
-                <?php foreach($commande['menus'] as $id => $detail){ ?>
+                <?php foreach ($commande["menus"] as $id => $detail) { ?>
                     <div class="ligne-article">
-                        <span><?php echo $commande['menus'][$id]['name']; ?> x<?php echo $commande['menus'][$id]['quantite']; ?></span>
-                        <span><?php echo number_format($commande['menus'][$id]['prix'], 2, ',', ' '); ?>€</span>
+                        <span><?php echo $commande["menus"][$id][
+                            "name"
+                        ]; ?> x<?php echo $commande["menus"][$id][
+     "quantite"
+ ]; ?></span>
+                        <span><?php echo number_format(
+                            $commande["menus"][$id]["prix"],
+                            2,
+                            ",",
+                            " ",
+                        ); ?>€</span>
                     </div>
                 <?php } ?>
-                <?php if($commande['reduction']==true){ ?>
+                <?php if ($commande["reduction"] == true) { ?>
                     <div class="ligne-reduction">
                         <span>Réduction coupon fidélité</span>
-                        <span>-<?php echo number_format($commande['total']/4, 2, ',', ' ');?></span>
+                        <span>-<?php echo number_format(
+                            $commande["total"] / 4,
+                            2,
+                            ",",
+                            " ",
+                        ); ?></span>
                     </div>
                     <div class="ligne-total">
                         <span>Total</span>
-                        <span><?php echo number_format(3*$commande['total']/4, 2, ',', ' '); ?>€</span>
+                        <span><?php echo number_format(
+                            (3 * $commande["total"]) / 4,
+                            2,
+                            ",",
+                            " ",
+                        ); ?>€</span>
                     </div>
-                <?php }else{?>
+                <?php } else { ?>
                     <div class="ligne-total">
                         <span>Total</span>
-                        <span><?php echo number_format($commande['total'], 2, ',', ' '); ?>€</span>
+                        <span><?php echo number_format(
+                            $commande["total"],
+                            2,
+                            ",",
+                            " ",
+                        ); ?>€</span>
                     </div>
                 <?php } ?>
             </div>
@@ -139,15 +173,26 @@
                 <h2>Informations</h2>
                 <div class="ligne-info">
                     <span class="label-info">Numéro de commande</span>
-                    <span>#<?php aff_num_cmd_ou_fidelite($commande['num'], 1); ?></span>
+                    <span>#<?php aff_num_cmd_ou_fidelite(
+                        $commande["num"],
+                        1,
+                    ); ?></span>
                 </div>
                 <div class="ligne-info">
                     <span class="label-info">Date</span>
-                    <span><?php echo aff_temps($commande['date']['jour'])."/".aff_temps($commande['date']['mois'])."/".aff_temps($commande['date']['annee'])." - ".aff_temps($commande['date']['heure']).":".aff_temps($commande['date']['minute']); ?></span>
+                    <span><?php echo aff_temps($commande["date"]["jour"]) .
+                        "/" .
+                        aff_temps($commande["date"]["mois"]) .
+                        "/" .
+                        aff_temps($commande["date"]["annee"]) .
+                        " - " .
+                        aff_temps($commande["date"]["heure"]) .
+                        ":" .
+                        aff_temps($commande["date"]["minute"]); ?></span>
                 </div>
                 <div class="ligne-info">
                     <span class="label-info">Adresse</span>
-                    <span><?php echo $client['adr']; ?></span>
+                    <span><?php echo $client["adr"]; ?></span>
                 </div>
             </div>
             <div class="zone-boutons">

@@ -1,17 +1,30 @@
 <?php
 error_reporting(0);
+
 if (!isset($_COOKIE["client"])) {
     header("Location: index.php");
+    exit();
 }
+
+$client = json_decode($_COOKIE["client"], true);
+$file = file_get_contents("donnees/data.json");
+$data = json_decode($file, true);
+
+if (
+    isset($data[$client["email"]]) &&
+    $data[$client["email"]]["role"]["bloque"] == true
+) {
+    setcookie("client", "", time() - 3600);
+    header("Location: index.php?msg=bloque");
+    exit();
+}
+
 $client = json_decode($_COOKIE["client"], true);
 $liste_client_data = file_get_contents("donnees/data.json");
 $liste_client = json_decode($liste_client_data, true);
 $commande_data = file_get_contents("donnees/commande.json");
 $commande = json_decode($commande_data, true);
-if ($liste_client[$client["email"]]["role"]["bloque"] == true) {
-    setcookie("client", "", time() - 3600);
-    header("Location: index.php");
-}
+
 if ($liste_client[$client["email"]]["role"]["restaurateur"] == false) {
     header("Location: profil.php");
 }

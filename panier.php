@@ -1,9 +1,28 @@
 <?php
 error_reporting(0);
+
 if (!isset($_COOKIE["client"])) {
     header("Location: index.php");
     exit();
 }
+
+$client = json_decode($_COOKIE["client"], true);
+$file = file_get_contents("donnees/data.json");
+$data = json_decode($file, true);
+
+if (
+    isset($data[$client["email"]]) &&
+    $data[$client["email"]]["role"]["bloque"] == true
+) {
+    setcookie("client", "", time() - 3600);
+    header("Location: index.php?msg=bloque");
+    exit();
+}
+
+$client = json_decode($_COOKIE["client"], true);
+$file = file_get_contents("donnees/data.json");
+$data = json_decode($file, true);
+
 $client = json_decode($_COOKIE["client"], true);
 $mail = $client["email"];
 $file = file_get_contents("donnees/data.json");
@@ -14,76 +33,105 @@ $plat_data = file_get_contents("donnees/plat.json");
 $plat = json_decode($plat_data, true);
 $menu_data = file_get_contents("donnees/menu.json");
 $menu_dispo = json_decode($menu_data, true);
-if ($data[$client["email"]]["role"]["bloque"] == true) {
-    setcookie("client", json_encode($data[$mail]), time() - 3600);
-    header("Location: index.php");
-    exit();
-}
+
 foreach ($commande["plats"] as $id => $detail) {
     if (isset($_REQUEST["btn_suppr_" . str_replace(" ", "_", $id)])) {
-        $commande["total"] = $commande["total"] - ($detail["prix"] * $detail["quantite"]);
+        $commande["total"] =
+            $commande["total"] - $detail["prix"] * $detail["quantite"];
         unset($commande["plats"][$id]);
-        file_put_contents("donnees/panier_$mail.json", json_encode($commande, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+        file_put_contents(
+            "donnees/panier_$mail.json",
+            json_encode($commande, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE),
+        );
         header("Location: panier.php");
         exit();
-    } 
-    elseif (isset($_REQUEST["btn_plus_" . str_replace(" ", "_", $id)])) {
+    } elseif (isset($_REQUEST["btn_plus_" . str_replace(" ", "_", $id)])) {
         $commande["total"] = round($commande["total"] + $detail["prix"], 2);
         $commande["plats"][$id]["quantite"]++;
-        file_put_contents("donnees/panier_$mail.json", json_encode($commande, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+        file_put_contents(
+            "donnees/panier_$mail.json",
+            json_encode($commande, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE),
+        );
         header("Location: panier.php");
         exit();
-    } 
-    elseif ($detail["quantite"] > 1) {
+    } elseif ($detail["quantite"] > 1) {
         if (isset($_REQUEST["btn_moins_" . str_replace(" ", "_", $id)])) {
             $commande["total"] = round($commande["total"] - $detail["prix"], 2);
             $commande["plats"][$id]["quantite"]--;
-            file_put_contents("donnees/panier_$mail.json", json_encode($commande, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+            file_put_contents(
+                "donnees/panier_$mail.json",
+                json_encode(
+                    $commande,
+                    JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE,
+                ),
+            );
             header("Location: panier.php");
             exit();
         }
     }
 }
 foreach ($commande["menus"] as $id_m => $detail_m) {
-    if (isset($_REQUEST["btn_suppr_".str_replace(" ", "_", $id_m)])) {
-        $commande["total"] = $commande["total"] - ($detail_m["prix"] * $detail_m["quantite"]);
+    if (isset($_REQUEST["btn_suppr_" . str_replace(" ", "_", $id_m)])) {
+        $commande["total"] =
+            $commande["total"] - $detail_m["prix"] * $detail_m["quantite"];
         unset($commande["menus"][$id_m]);
-        file_put_contents("donnees/panier_$mail.json", json_encode($commande, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+        file_put_contents(
+            "donnees/panier_$mail.json",
+            json_encode($commande, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE),
+        );
         header("Location: panier.php");
         exit();
-    } 
-    elseif (isset($_REQUEST["btn_plus_".str_replace(" ", "_", $id_m)])) {
+    } elseif (isset($_REQUEST["btn_plus_" . str_replace(" ", "_", $id_m)])) {
         $commande["total"] = round($commande["total"] + $detail_m["prix"], 2);
         $commande["menus"][$id_m]["quantite"]++;
-        file_put_contents("donnees/panier_$mail.json", json_encode($commande, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+        file_put_contents(
+            "donnees/panier_$mail.json",
+            json_encode($commande, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE),
+        );
         header("Location: panier.php");
         exit();
-    } 
-    elseif ($detail_m["quantite"] > 1) {
-        if (isset($_REQUEST["btn_moins_".str_replace(" ", "_", $id_m)])) {
-            $commande["total"] = round($commande["total"] - $detail_m["prix"], 2);
+    } elseif ($detail_m["quantite"] > 1) {
+        if (isset($_REQUEST["btn_moins_" . str_replace(" ", "_", $id_m)])) {
+            $commande["total"] = round(
+                $commande["total"] - $detail_m["prix"],
+                2,
+            );
             $commande["menus"][$id_m]["quantite"]--;
-            file_put_contents("donnees/panier_$mail.json", json_encode($commande, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+            file_put_contents(
+                "donnees/panier_$mail.json",
+                json_encode(
+                    $commande,
+                    JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE,
+                ),
+            );
             header("Location: panier.php");
             exit();
         }
     }
 }
 
-if(isset($_REQUEST['mode_temps'])){
-    $commande['planification'] = $_REQUEST['mode_temps'];
-    $commande['date_voulue'] = ($commande['planification'] == 'planifie') ? $_REQUEST['date_prevue'] : 'maintenant';
-    file_put_contents("donnees/panier_$mail.json", json_encode($commande, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+if (isset($_REQUEST["mode_temps"])) {
+    $commande["planification"] = $_REQUEST["mode_temps"];
+    $commande["date_voulue"] =
+        $commande["planification"] == "planifie"
+            ? $_REQUEST["date_prevue"]
+            : "maintenant";
+    file_put_contents(
+        "donnees/panier_$mail.json",
+        json_encode($commande, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE),
+    );
 }
 
 if ($data[$client["email"]]["point_fidelite"] > 299) {
     $commande["reduction"] = true;
-} 
-else {
+} else {
     $commande["reduction"] = false;
 }
 
-file_put_contents("donnees/panier_$mail.json", json_encode($commande, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+file_put_contents(
+    "donnees/panier_$mail.json",
+    json_encode($commande, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE),
+);
 
 include "getapikey/getapikey.php";
 $getapikey = getAPIKey("MI-1_I");
@@ -91,8 +139,7 @@ $getapikey = getAPIKey("MI-1_I");
 if ($commande["reduction"] == true) {
     $reduc = $commande["total"] / 4;
     $montant = number_format((3 * $commande["total"]) / 4, 2, ".", "");
-} 
-else {
+} else {
     $reduc = 0;
     $montant = number_format($commande["total"], 2, ".", "");
 }
@@ -100,10 +147,22 @@ else {
 $transac = uniqid();
 $vendeur = "MI-1_I";
 $retour = "http://localhost:7180/post-cybank.php";
-$control = md5($getapikey . "#" . $transac . "#" . $montant . "#" . $vendeur . "#" . $retour . "#");
+$control = md5(
+    $getapikey .
+        "#" .
+        $transac .
+        "#" .
+        $montant .
+        "#" .
+        $vendeur .
+        "#" .
+        $retour .
+        "#",
+);
 
-function conjugaison($sing, $plur, $val){
-    return ($val == 1) ? $sing : $plur;
+function conjugaison($sing, $plur, $val)
+{
+    return $val == 1 ? $sing : $plur;
 }
 ?>
 <!DOCTYPE html>
@@ -136,7 +195,7 @@ function conjugaison($sing, $plur, $val){
 
     <h1>Mon Panier</h1>
 
-    <?php if(empty($commande['plats']) && empty($commande['menus'])){ ?>
+    <?php if (empty($commande["plats"]) && empty($commande["menus"])) { ?>
         <div class="rien_commander">
             <p><strong>Votre panier est vide</strong></p>
         </div>
@@ -145,106 +204,183 @@ function conjugaison($sing, $plur, $val){
     <main class="container">
         <div class="diff_part">
             <section class="contenu-profil">
-                <?php foreach($commande['plats'] as $id => $detail){ ?>
+                <?php foreach ($commande["plats"] as $id => $detail) { ?>
                     <div class="carte-info">
-                        <img class="img_cmd" src="assets/<?php echo $plat[$id]['image']; ?>" alt="">
+                        <img class="img_cmd" src="assets/<?php echo $plat[$id][
+                            "image"
+                        ]; ?>" alt="">
                         <div class="clm_1">
-                            <h2 class="name"><?php echo $plat[$id]['name'];?></h2>
+                            <h2 class="name"><?php echo $plat[$id][
+                                "name"
+                            ]; ?></h2>
                             <p class="name"><small>Plat individuel</small></p>
                         </div>
                         <div class="clm_2">
-                            <p class="prix"><?php echo number_format($detail['quantite']*$plat[$id]['prix'], 2, ',', ' ');?>€</p>
-                            <form method="POST">   
+                            <p class="prix"><?php echo number_format(
+                                $detail["quantite"] * $plat[$id]["prix"],
+                                2,
+                                ",",
+                                " ",
+                            ); ?>€</p>
+                            <form method="POST">
                                 <div class="gestion_quantite">
-                                    <?php if($detail['quantite'] == 1){ ?>
-                                        <button name="btn_suppr_<?php echo str_replace(" ", "_", $id); ?>" class="btn-carte">🗑️</button>
+                                    <?php if ($detail["quantite"] == 1) { ?>
+                                        <button name="btn_suppr_<?php echo str_replace(
+                                            " ",
+                                            "_",
+                                            $id,
+                                        ); ?>" class="btn-carte">🗑️</button>
                                     <?php } else { ?>
-                                        <button name="btn_moins_<?php echo str_replace(" ", "_", $id); ?>" class="btn-carte">-</button>
+                                        <button name="btn_moins_<?php echo str_replace(
+                                            " ",
+                                            "_",
+                                            $id,
+                                        ); ?>" class="btn-carte">-</button>
                                     <?php } ?>
-                                    <p><strong><?php echo $detail['quantite']; ?></strong></p>
-                                    <button name="btn_plus_<?php echo str_replace(" ", "_", $id); ?>" class="btn-carte">+</button>
+                                    <p><strong><?php echo $detail[
+                                        "quantite"
+                                    ]; ?></strong></p>
+                                    <button name="btn_plus_<?php echo str_replace(
+                                        " ",
+                                        "_",
+                                        $id,
+                                    ); ?>" class="btn-carte">+</button>
                                 </div>
                             </form>
-                        </div>    
+                        </div>
                     </div>
                 <?php } ?>
 
-                <?php if(isset($commande['menus'])){ 
-                    foreach($commande['menus'] as $id_m => $detail_m){ ?>
+                <?php if (isset($commande["menus"])) {
+                    foreach ($commande["menus"] as $id_m => $detail_m) { ?>
                         <div class="carte-info">
                             <div class="clm_1">
-                                <h2 class="name">🎁 <?php echo $detail_m['name'];?></h2>
+                                <h2 class="name">🎁 <?php echo $detail_m[
+                                    "name"
+                                ]; ?></h2>
                                 <p class="name"><small>
-                                    <?php
-                                        if(isset($detail_m['plats']) && count($detail_m['plats']) > 0){
-                                            $noms = array_map(function($p) use ($plat){
-                                                return isset($plat[$p]) ? $plat[$p]['name'] : ucfirst($p);
-                                            }, $detail_m['plats']);
-                                            echo implode(', ', $noms);
-                                        } else {
-                                            echo "Menu complet";
-                                        }
-                                    ?>
+                                    <?php if (
+                                        isset($detail_m["plats"]) &&
+                                        count($detail_m["plats"]) > 0
+                                    ) {
+                                        $noms = array_map(function ($p) use (
+                                            $plat,
+                                        ) {
+                                            return isset($plat[$p])
+                                                ? $plat[$p]["name"]
+                                                : ucfirst($p);
+                                        }, $detail_m["plats"]);
+                                        echo implode(", ", $noms);
+                                    } else {
+                                        echo "Menu complet";
+                                    } ?>
                                 </small></p>
                             </div>
                             <div class="clm_2">
-                                <p class="prix"><?php echo number_format($detail_m['quantite']*$detail_m['prix'], 2, ',', ' ');?>€</p>
+                                <p class="prix"><?php echo number_format(
+                                    $detail_m["quantite"] * $detail_m["prix"],
+                                    2,
+                                    ",",
+                                    " ",
+                                ); ?>€</p>
                                 <form method="POST">
                                     <div class="gestion_quantite">
-                                    <?php if($detail_m['quantite'] == 1){ ?>
-                                        <button name="btn_suppr_<?php echo str_replace(" ", "_", $id_m); ?>" class="btn-carte">🗑️</button>
+                                    <?php if ($detail_m["quantite"] == 1) { ?>
+                                        <button name="btn_suppr_<?php echo str_replace(
+                                            " ",
+                                            "_",
+                                            $id_m,
+                                        ); ?>" class="btn-carte">🗑️</button>
                                     <?php } else { ?>
-                                        <button name="btn_moins_<?php echo str_replace(" ", "_", $id_m); ?>" class="btn-carte">-</button>
+                                        <button name="btn_moins_<?php echo str_replace(
+                                            " ",
+                                            "_",
+                                            $id_m,
+                                        ); ?>" class="btn-carte">-</button>
                                     <?php } ?>
-                                    <p><strong><?php echo $detail_m['quantite']; ?></strong></p>
-                                    <button name="btn_plus_<?php echo str_replace(" ", "_", $id_m); ?>" class="btn-carte">+</button>
+                                    <p><strong><?php echo $detail_m[
+                                        "quantite"
+                                    ]; ?></strong></p>
+                                    <button name="btn_plus_<?php echo str_replace(
+                                        " ",
+                                        "_",
+                                        $id_m,
+                                    ); ?>" class="btn-carte">+</button>
                                 </div>
                                 </form>
                             </div>
                         </div>
-                <?php } } ?>
+                <?php }
+                } ?>
 
             </section>
 
-            <?php if($commande['total'] != 0){ ?>
+            <?php if ($commande["total"] != 0) { ?>
                 <div class="recapitulatif">
                     <h2>Récapitulatif</h2>
-                    
+
                     <div class="bloc-planification">
                             <p><strong>🕒 Préparation :</strong></p>
                             <label><input type="radio" name="mode_temps" value="immediat" checked onclick="document.getElementById('zone_p').style.display='none'"> Immédiat</label><br>
                             <label><input type="radio" name="mode_temps" value="planifie" onclick="document.getElementById('zone_p').style.display='block'"> Planifier</label>
-                        
+
                             <div id="zone_p" class="zone-planification">
-                                <input type="datetime-local" name="date_prevue" min="<?php echo date('Y-m-d\TH:i'); ?>" style="width:100%;">
+                                <input type="datetime-local" name="date_prevue" min="<?php echo date(
+                                    "Y-m-d\TH:i",
+                                ); ?>" style="width:100%;">
                             </div>
                         </div>
 
-                    <?php foreach($commande['plats'] as $id => $detail){ ?>
+                    <?php foreach ($commande["plats"] as $id => $detail) { ?>
                         <div class="commande">
-                            <p><?php echo $detail['name']." x".$detail['quantite']; ?></p>
-                            <p class="prix_recap"><?php echo number_format($detail['quantite']*$plat[$id]['prix'], 2, ',', ' '); ?>€</p>
+                            <p><?php echo $detail["name"] .
+                                " x" .
+                                $detail["quantite"]; ?></p>
+                            <p class="prix_recap"><?php echo number_format(
+                                $detail["quantite"] * $plat[$id]["prix"],
+                                2,
+                                ",",
+                                " ",
+                            ); ?>€</p>
                         </div>
                     <?php } ?>
-                    
-                    <?php if(isset($commande['menus'])){ 
-                        foreach($commande['menus'] as $id_m => $detail_m){ ?>
-                            <div class="commande">
-                                <p><?php echo $detail_m['name']." x".$detail_m['quantite']; ?></p>
-                                <p class="prix_recap"><?php echo number_format($detail_m['quantite']*$detail_m['prix'], 2, ',', ' '); ?>€</p>
-                            </div>
-                    <?php } } ?>
 
-                    <?php if($commande["reduction"]){ ?>
+                    <?php if (isset($commande["menus"])) {
+                        foreach ($commande["menus"] as $id_m => $detail_m) { ?>
+                            <div class="commande">
+                                <p><?php echo $detail_m["name"] .
+                                    " x" .
+                                    $detail_m["quantite"]; ?></p>
+                                <p class="prix_recap"><?php echo number_format(
+                                    $detail_m["quantite"] * $detail_m["prix"],
+                                    2,
+                                    ",",
+                                    " ",
+                                ); ?>€</p>
+                            </div>
+                    <?php }
+                    } ?>
+
+                    <?php if ($commande["reduction"]) { ?>
                         <div class="reduction">
                             <p>Réduction coupon fidélité</p>
-                            <p class="prix_recap">-<?php echo number_format($reduc, 2, ',', ' '); ?>€</p>
+                            <p class="prix_recap">-<?php echo number_format(
+                                $reduc,
+                                2,
+                                ",",
+                                " ",
+                            ); ?>€</p>
                         </div>
                     <?php } ?>
 
                     <div class="commande_total">
                         <p><strong>TOTAL</strong></p>
-                        <p class="prix_recap"><strong><?php echo number_format($montant, 2, ',', ' '); ?>€</strong></p>
+                        <p class="prix_recap"><strong><?php echo number_format(
+                            $montant,
+                            2,
+                            ",",
+                            " ",
+                        ); ?>€</strong></p>
                     </div>
 
                     <form action='https://www.plateforme-smc.fr/cybank/index.php' method='POST'>

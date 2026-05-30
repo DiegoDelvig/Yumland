@@ -6,10 +6,22 @@ if (!isset($_COOKIE["client"])) {
     exit();
 }
 
+$client = json_decode($_COOKIE["client"], true);
+$file = file_get_contents("donnees/data.json");
+$data = json_decode($file, true);
+
+if (
+    isset($data[$client["email"]]) &&
+    $data[$client["email"]]["role"]["bloque"] == true
+) {
+    setcookie("client", "", time() - 3600);
+    header("Location: index.php?msg=bloque");
+    exit();
+}
+
 if (isset($_COOKIE["admin"])) {
     $client_temp = json_decode($_COOKIE["admin"], true);
-} 
-else {
+} else {
     $client_temp = json_decode($_COOKIE["client"], true);
 }
 
@@ -17,44 +29,42 @@ $commande_data = file_get_contents("donnees/commande_passe.json");
 $commande = json_decode($commande_data, true);
 $commande_en_cours_data = file_get_contents("donnees/commande.json");
 $commande_en_cours = json_decode($commande_en_cours_data, true);
-$plats=json_decode(file_get_contents("donnees/plat.json"), true);
+$plats = json_decode(file_get_contents("donnees/plat.json"), true);
 $file = file_get_contents("donnees/data.json");
 $data = json_decode($file, true);
 $client = $data[$client_temp["email"]];
 $mail = $client["email"];
-foreach($plats as $id => $plat){
-    $plats[$id]["vente"]=0;
-    foreach($commande as $id_client => $cclient){
-        foreach($cclient as $id_cmd => $cmd){
-            foreach($cmd["plats"] as $id_plat_cmd => $plat_cmd){
-                if($plat_cmd["name"]==$plat["name"]){
-                    $plats[$id]["vente"]+= $plat_cmd["quantite"];
+foreach ($plats as $id => $plat) {
+    $plats[$id]["vente"] = 0;
+    foreach ($commande as $id_client => $cclient) {
+        foreach ($cclient as $id_cmd => $cmd) {
+            foreach ($cmd["plats"] as $id_plat_cmd => $plat_cmd) {
+                if ($plat_cmd["name"] == $plat["name"]) {
+                    $plats[$id]["vente"] += $plat_cmd["quantite"];
                 }
             }
         }
     }
 }
-file_put_contents("donnees/plat.json", json_encode($plats, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+file_put_contents(
+    "donnees/plat.json",
+    json_encode($plats, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE),
+);
 if (!isset($_COOKIE["admin"])) {
     setcookie("client", json_encode($client), time() - 3600);
     setcookie("client", json_encode($client), time() + 3600);
-}
-if ($client["role"]["bloque"] == true && !isset($_COOKIE["admin"])) {
-    setcookie("client", json_encode($client), time() - 3600);
-    header("Location: index.php");
-    exit();
 }
 
 $fichier_panier = "donnees/panier_$mail.json";
 if (!file_exists($fichier_panier)) {
     $panier = ["total" => 0, "reduction" => false];
     file_put_contents($fichier_panier, json_encode($panier, JSON_PRETTY_PRINT));
-} 
-else {
+} else {
     $panier = json_decode(file_get_contents($fichier_panier), true);
 }
 
-function aff_num_cmd_ou_fidelite($num, $cmd_ou_fidelite) {
+function aff_num_cmd_ou_fidelite($num, $cmd_ou_fidelite)
+{
     if ($cmd_ou_fidelite == 1) {
         if ($num < 10) {
             echo "000" . $num;
@@ -86,7 +96,8 @@ function aff_num_cmd_ou_fidelite($num, $cmd_ou_fidelite) {
     }
 }
 
-function aff_num_cmd($num) {
+function aff_num_cmd($num)
+{
     if ($num < 10) {
         return "000" . $num;
     } elseif ($num < 100) {
@@ -98,7 +109,8 @@ function aff_num_cmd($num) {
     }
 }
 
-function aff_temps($num) {
+function aff_temps($num)
+{
     if ($num < 10) {
         return "0" . $num;
     } else {
@@ -123,13 +135,20 @@ if (isset($commande[$mail])) {
                 foreach ($details["menus"] as $id_m => $menu) {
                     $panier["total"] += $menu["quantite"] * $menu["prix"];
                     if (isset($panier["menus"][$id_m])) {
-                        $panier["menus"][$id_m]["quantite"] += $menu["quantite"];
+                        $panier["menus"][$id_m]["quantite"] +=
+                            $menu["quantite"];
                     } else {
                         $panier["menus"][$id_m] = $menu;
                     }
                 }
             }
-            file_put_contents($fichier_panier, json_encode($panier, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+            file_put_contents(
+                $fichier_panier,
+                json_encode(
+                    $panier,
+                    JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE,
+                ),
+            );
             header("Location: panier.php");
             exit();
         }
@@ -140,7 +159,10 @@ if (!empty($commande_en_cours)) {
     foreach ($commande_en_cours as $id_cmd => $details) {
         $nom_bouton = "modifier_" . aff_num_cmd($details["num"]);
         if (isset($_REQUEST[$nom_bouton])) {
-            header("Location: modification_commande.php?cmd=" . aff_num_cmd($details["num"]));
+            header(
+                "Location: modification_commande.php?cmd=" .
+                    aff_num_cmd($details["num"]),
+            );
             exit();
         }
     }
@@ -167,13 +189,25 @@ if (!empty($commande_en_cours)) {
         </div>
         <nav>
             <ul>
-                <?php if (isset($client["role"]["restaurateur"]) && $client["role"]["restaurateur"] == true && !isset($_COOKIE["admin"])) { ?>
+                <?php if (
+                    isset($client["role"]["restaurateur"]) &&
+                    $client["role"]["restaurateur"] == true &&
+                    !isset($_COOKIE["admin"])
+                ) { ?>
                     <li><a href="commandes.php">Commande</a></li>
                 <?php } ?>
-                <?php if (isset($client["role"]["livreur"]) && $client["role"]["livreur"] == true && !isset($_COOKIE["admin"])) { ?>
+                <?php if (
+                    isset($client["role"]["livreur"]) &&
+                    $client["role"]["livreur"] == true &&
+                    !isset($_COOKIE["admin"])
+                ) { ?>
                     <li><a href="livraisons.php">Livraison</a></li>
                 <?php } ?>
-                <?php if (isset($client["role"]["admin"]) && $client["role"]["admin"] == true && !isset($_COOKIE["admin"])) { ?>
+                <?php if (
+                    isset($client["role"]["admin"]) &&
+                    $client["role"]["admin"] == true &&
+                    !isset($_COOKIE["admin"])
+                ) { ?>
                     <li><a href="admin.php">Administration</a></li>
                 <?php } ?>
                 <?php if (!isset($_COOKIE["admin"])) { ?>
@@ -220,7 +254,10 @@ if (!empty($commande_en_cours)) {
                 <h3>Programme De Fidélité</h3>
                 <p>
                     N° de carte de fidélité :<br />
-                    <span class="numero-carte"><?php aff_num_cmd_ou_fidelite($client["numero_fidelite"], 2); ?></span>
+                    <span class="numero-carte"><?php aff_num_cmd_ou_fidelite(
+                        $client["numero_fidelite"],
+                        2,
+                    ); ?></span>
                 </p>
                 <?php
                 $pourcentage = (100 * $client["point_fidelite"]) / 300;
@@ -228,12 +265,17 @@ if (!empty($commande_en_cours)) {
                     $pourcentage = 100;
                 }
                 ?>
-                <p>Vous avez <strong><?php echo $client["point_fidelite"]; ?> points</strong></p>
+                <p>Vous avez <strong><?php echo $client[
+                    "point_fidelite"
+                ]; ?> points</strong></p>
                 <div class="barre">
                     <div class="avancee" style="width:<?php echo $pourcentage; ?>%;"></div>
                 </div>
                 <?php if ($pourcentage < 100) { ?>
-                    <p><small>Encore <?php echo 300 - $client["point_fidelite"]; ?> points avant la réduction de 25% sur la commande suivante !</small></p>
+                    <p><small>Encore <?php echo 300 -
+                        $client[
+                            "point_fidelite"
+                        ]; ?> points avant la réduction de 25% sur la commande suivante !</small></p>
                 <?php } else { ?>
                     <p><small>🎉 Félicitations ! Vous avez débloqué une réduction de 25% sur votre prochaine commande !</small></p>
                 <?php } ?>
@@ -244,42 +286,131 @@ if (!empty($commande_en_cours)) {
                 <?php
                 $var = 0;
                 if (!empty($commande_en_cours)) {
-                    foreach ($commande_en_cours as $id_cmd_en_cours => $details_cmd_en_cours) { 
-                        if ($details_cmd_en_cours["mail"] == $mail && $details_cmd_en_cours["etat"]["cuisinee"] == false) {
-                            $var = 1;
-                            ?>
+                    foreach (
+                        $commande_en_cours
+                        as $id_cmd_en_cours => $details_cmd_en_cours
+                    ) {
+                        if (
+                            $details_cmd_en_cours["mail"] == $mail &&
+                            $details_cmd_en_cours["etat"]["cuisinee"] == false
+                        ) {
+                            $var = 1; ?>
                             <div class="commande">
                                 <div class="numero">
-                                    <strong>Commande n°<?php aff_num_cmd_ou_fidelite($details_cmd_en_cours["num"], 1); ?> (<?php echo aff_temps($details_cmd_en_cours["date"]["jour"]) . "/" . aff_temps($details_cmd_en_cours["date"]["mois"]) . "/" . aff_temps($details_cmd_en_cours["date"]["annee"]) . " à " . aff_temps($details_cmd_en_cours["date"]["heure"]) . ":" . aff_temps($details_cmd_en_cours["date"]["minute"]); ?>)</strong>
+                                    <strong>Commande n°<?php aff_num_cmd_ou_fidelite(
+                                        $details_cmd_en_cours["num"],
+                                        1,
+                                    ); ?> (<?php echo aff_temps(
+     $details_cmd_en_cours["date"]["jour"],
+ ) .
+     "/" .
+     aff_temps($details_cmd_en_cours["date"]["mois"]) .
+     "/" .
+     aff_temps($details_cmd_en_cours["date"]["annee"]) .
+     " à " .
+     aff_temps($details_cmd_en_cours["date"]["heure"]) .
+     ":" .
+     aff_temps($details_cmd_en_cours["date"]["minute"]); ?>)</strong>
                                     <form method="POST">
-                                        <button name="modifier_<?php aff_num_cmd_ou_fidelite($details_cmd_en_cours["num"], 1); ?>" class="bouton-recommande">Modifier</button>
+                                        <button name="modifier_<?php aff_num_cmd_ou_fidelite(
+                                            $details_cmd_en_cours["num"],
+                                            1,
+                                        ); ?>" class="bouton-recommande">Modifier</button>
                                     </form>
                                 </div>
-                                <?php foreach ($details_cmd_en_cours["plats"] as $produit) { ?>
-                                    <p><?php echo $produit["quantite"] . "x       -" . $produit["name"]; ?> - <?php echo number_format($produit["quantite"] * $produit["prix"], 2, ",", " "); ?>€</p>
+                                <?php foreach (
+                                    $details_cmd_en_cours["plats"]
+                                    as $produit
+                                ) { ?>
+                                    <p><?php echo $produit["quantite"] .
+                                        "x       -" .
+                                        $produit[
+                                            "name"
+                                        ]; ?> - <?php echo number_format(
+     $produit["quantite"] * $produit["prix"],
+     2,
+     ",",
+     " ",
+ ); ?>€</p>
                                 <?php } ?>
-                                <?php foreach ($details_cmd_en_cours["menus"] as $produit) { ?>
-                                    <p><?php echo $produit["quantite"] . "x       -" . $produit["name"]; ?> - <?php echo number_format($produit["quantite"] * $produit["prix"], 2, ",", " "); ?>€</p>
+                                <?php foreach (
+                                    $details_cmd_en_cours["menus"]
+                                    as $produit
+                                ) { ?>
+                                    <p><?php echo $produit["quantite"] .
+                                        "x       -" .
+                                        $produit[
+                                            "name"
+                                        ]; ?> - <?php echo number_format(
+     $produit["quantite"] * $produit["prix"],
+     2,
+     ",",
+     " ",
+ ); ?>€</p>
                                 <?php } ?>
                             </div>
-                        <?php }
+                        <?php
+                        }
                     }
-                    foreach ($commande_en_cours as $id_cmd_en_cours => $details_cmd_en_cours) { 
-                        if ($details_cmd_en_cours["mail"] == $mail && $details_cmd_en_cours["etat"]["cuisinee"] == true) {
-                            $var = 1;
-                            ?>
+                    foreach (
+                        $commande_en_cours
+                        as $id_cmd_en_cours => $details_cmd_en_cours
+                    ) {
+                        if (
+                            $details_cmd_en_cours["mail"] == $mail &&
+                            $details_cmd_en_cours["etat"]["cuisinee"] == true
+                        ) {
+                            $var = 1; ?>
                             <div class="commande">
                                 <div class="numero">
-                                    <strong>Commande n°<?php aff_num_cmd_ou_fidelite($details_cmd_en_cours["num"], 1); ?> (<?php echo aff_temps($details_cmd_en_cours["date"]["jour"]) . "/" . aff_temps($details_cmd_en_cours["date"]["mois"]) . "/" . aff_temps($details_cmd_en_cours["date"]["annee"]) . " à " . aff_temps($details_cmd_en_cours["date"]["heure"]) . ":" . aff_temps($details_cmd_en_cours["date"]["minute"]); ?>)</strong>
+                                    <strong>Commande n°<?php aff_num_cmd_ou_fidelite(
+                                        $details_cmd_en_cours["num"],
+                                        1,
+                                    ); ?> (<?php echo aff_temps(
+     $details_cmd_en_cours["date"]["jour"],
+ ) .
+     "/" .
+     aff_temps($details_cmd_en_cours["date"]["mois"]) .
+     "/" .
+     aff_temps($details_cmd_en_cours["date"]["annee"]) .
+     " à " .
+     aff_temps($details_cmd_en_cours["date"]["heure"]) .
+     ":" .
+     aff_temps($details_cmd_en_cours["date"]["minute"]); ?>)</strong>
                                 </div>
-                                <?php foreach ($details_cmd_en_cours["plats"] as $produit) { ?>
-                                    <p><?php echo $produit["quantite"] . "x       -" . $produit["name"]; ?> - <?php echo number_format($produit["quantite"] * $produit["prix"], 2, ",", " "); ?>€</p>
+                                <?php foreach (
+                                    $details_cmd_en_cours["plats"]
+                                    as $produit
+                                ) { ?>
+                                    <p><?php echo $produit["quantite"] .
+                                        "x       -" .
+                                        $produit[
+                                            "name"
+                                        ]; ?> - <?php echo number_format(
+     $produit["quantite"] * $produit["prix"],
+     2,
+     ",",
+     " ",
+ ); ?>€</p>
                                 <?php } ?>
-                                <?php foreach ($details_cmd_en_cours["menus"] as $produit) { ?>
-                                    <p><?php echo $produit["quantite"] . "x       -" . $produit["name"]; ?> - <?php echo number_format($produit["quantite"] * $produit["prix"], 2, ",", " "); ?>€</p>
+                                <?php foreach (
+                                    $details_cmd_en_cours["menus"]
+                                    as $produit
+                                ) { ?>
+                                    <p><?php echo $produit["quantite"] .
+                                        "x       -" .
+                                        $produit[
+                                            "name"
+                                        ]; ?> - <?php echo number_format(
+     $produit["quantite"] * $produit["prix"],
+     2,
+     ",",
+     " ",
+ ); ?>€</p>
                                 <?php } ?>
                             </div>
-                        <?php }
+                        <?php
+                        }
                     }
                 }
                 if ($var == 0) { ?>
@@ -289,37 +420,72 @@ if (!empty($commande_en_cours)) {
                             <a href="menu.php" class="bouton-recommande" style="text-decoration: none; display: inline-block; text-align: center;">Commander</a>
                         </div>
                     </div>
-                <?php } ?>
+                <?php }
+                ?>
             </div>
 
             <div class="carte-info">
                 <h3>Anciennes commandes 🛍️</h3>
-                <?php
-                if (!empty($commande[$mail])) {
+                <?php if (!empty($commande[$mail])) {
                     foreach ($commande[$mail] as $id_cmd => $details) { ?>
                         <div class="commande">
                             <div class="numero">
-                                <strong>Commande n°<?php aff_num_cmd_ou_fidelite($details["num"], 1); ?> (<?php echo aff_temps($details["date"]["jour"]) . "/" . aff_temps($details["date"]["mois"]) . "/" . aff_temps($details["date"]["annee"]) . " à " . aff_temps($details["date"]["heure"]) . ":" . aff_temps($details["date"]["minute"]); ?>)</strong>
+                                <strong>Commande n°<?php aff_num_cmd_ou_fidelite(
+                                    $details["num"],
+                                    1,
+                                ); ?> (<?php echo aff_temps(
+     $details["date"]["jour"],
+ ) .
+     "/" .
+     aff_temps($details["date"]["mois"]) .
+     "/" .
+     aff_temps($details["date"]["annee"]) .
+     " à " .
+     aff_temps($details["date"]["heure"]) .
+     ":" .
+     aff_temps($details["date"]["minute"]); ?>)</strong>
                                 <form method="POST">
-                                    <button name="<?php echo aff_num_cmd($details["num"]); ?>" class="bouton-recommande">Recommander</button>
+                                    <button name="<?php echo aff_num_cmd(
+                                        $details["num"],
+                                    ); ?>" class="bouton-recommande">Recommander</button>
                                 </form>
                             </div>
                             <?php foreach ($details["plats"] as $produit) { ?>
-                                <p><?php echo $produit["quantite"] . "x       -" . $produit["name"]; ?> - <?php echo number_format($produit["quantite"] * $produit["prix"], 2, ",", " "); ?>€</p>
+                                <p><?php echo $produit["quantite"] .
+                                    "x       -" .
+                                    $produit[
+                                        "name"
+                                    ]; ?> - <?php echo number_format(
+     $produit["quantite"] * $produit["prix"],
+     2,
+     ",",
+     " ",
+ ); ?>€</p>
                             <?php } ?>
                             <?php foreach ($details["menus"] as $produit) { ?>
-                                <p><?php echo $produit["quantite"] . "x       -" . $produit["name"]; ?> - <?php echo number_format($produit["quantite"] * $produit["prix"], 2, ",", " "); ?>€</p>
+                                <p><?php echo $produit["quantite"] .
+                                    "x       -" .
+                                    $produit[
+                                        "name"
+                                    ]; ?> - <?php echo number_format(
+     $produit["quantite"] * $produit["prix"],
+     2,
+     ",",
+     " ",
+ ); ?>€</p>
                             <?php } ?>
                         </div>
                     <?php }
-                } else { ?>
+                } else {
+                     ?>
                     <div class="commande">
                         <div class="numero">
                             <strong><br>Vous n'avez pas encore passé de commande.</strong>
                             <a href="menu.php" class="bouton-recommande" style="text-decoration: none; display: inline-block; text-align: center;">Commander</a>
                         </div>
                     </div>
-                <?php } ?>
+                <?php
+                } ?>
             </div>
         </section>
 
@@ -332,27 +498,37 @@ if (!empty($commande_en_cours)) {
                 <form id="form-edit-profile" class="modal-form">
                     <div class="form-group">
                         <label for="edit-name">NOM *</label>
-                        <input type="text" id="edit-name" name="name" required maxlength="100" value="<?php echo htmlspecialchars($client["name"]); ?>">
+                        <input type="text" id="edit-name" name="name" required maxlength="100" value="<?php echo htmlspecialchars(
+                            $client["name"],
+                        ); ?>">
                         <small class="error-message" id="error-name"></small>
                     </div>
                     <div class="form-group">
                         <label for="edit-fname">PRÉNOM *</label>
-                        <input type="text" id="edit-fname" name="fname" required maxlength="100" value="<?php echo htmlspecialchars($client["fname"]); ?>">
+                        <input type="text" id="edit-fname" name="fname" required maxlength="100" value="<?php echo htmlspecialchars(
+                            $client["fname"],
+                        ); ?>">
                         <small class="error-message" id="error-fname"></small>
                     </div>
                     <div class="form-group">
                         <label for="edit-adr">ADRESSE *</label>
-                        <input type="text" id="edit-adr" name="adr" required maxlength="200" value="<?php echo htmlspecialchars($client["adr"]); ?>">
+                        <input type="text" id="edit-adr" name="adr" required maxlength="200" value="<?php echo htmlspecialchars(
+                            $client["adr"],
+                        ); ?>">
                         <small class="error-message" id="error-adr"></small>
                     </div>
                     <div class="form-group">
                         <label for="edit-tel">TÉLÉPHONE *</label>
-                        <input type="tel" id="edit-tel" name="tel" required pattern="[0-9+ ]+" maxlength="20" value="<?php echo htmlspecialchars($client["tel"]); ?>">
+                        <input type="tel" id="edit-tel" name="tel" required pattern="[0-9+ ]+" maxlength="20" value="<?php echo htmlspecialchars(
+                            $client["tel"],
+                        ); ?>">
                         <small class="error-message" id="error-tel"></small>
                     </div>
                     <div class="form-group">
                         <label for="edit-infocomp">INFOS COMPLÉMENTAIRES</label>
-                        <textarea id="edit-infocomp" name="infocomp" maxlength="500"><?php echo htmlspecialchars($client["infocomp"]); ?></textarea>
+                        <textarea id="edit-infocomp" name="infocomp" maxlength="500"><?php echo htmlspecialchars(
+                            $client["infocomp"],
+                        ); ?></textarea>
                         <small class="char-count" id="char-count">0/500</small>
                     </div>
                     <div class="form-actions">

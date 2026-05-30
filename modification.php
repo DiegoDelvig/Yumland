@@ -3,6 +3,20 @@ error_reporting(0);
 $client = json_decode($_COOKIE["client"], true);
 if (!isset($_COOKIE["client"])) {
     header("Location: index.php");
+    exit();
+}
+
+$client = json_decode($_COOKIE["client"], true);
+$file = file_get_contents("donnees/data.json");
+$data = json_decode($file, true);
+
+if (
+    isset($data[$client["email"]]) &&
+    $data[$client["email"]]["role"]["bloque"] == true
+) {
+    setcookie("client", "", time() - 3600);
+    header("Location: index.php?msg=bloque");
+    exit();
 }
 if (
     empty($_REQUEST["nname"]) ||
@@ -86,21 +100,29 @@ if (
                         <img class="logo_login" src="assets/Logo projet.png" alt="logo de notre site de vente">
 
                         <label for="idname" class="input_label">Prénom :</label>
-                        <input type="text" name="nname" id="idname" class="login_case_name" value="<?php echo $client['name']; ?>" maxlength="50">
+                        <input type="text" name="nname" id="idname" class="login_case_name" value="<?php echo $client[
+                            "name"
+                        ]; ?>" maxlength="50">
                         <span class="compteur" id="compteur_idname">0 / 50 caractères</span>
                         <span class="erreur_champ" id="erreur_idname"></span>
 
                         <label for="idfname" class="input_label">Nom :</label>
-                        <input type="text" name="nfname" id="idfname" class="login_case_fname" value="<?php echo $client['fname']; ?>" maxlength="50">
+                        <input type="text" name="nfname" id="idfname" class="login_case_fname" value="<?php echo $client[
+                            "fname"
+                        ]; ?>" maxlength="50">
                         <span class="compteur" id="compteur_idfname">0 / 50 caractères</span>
                         <span class="erreur_champ" id="erreur_idfname"></span>
 
                         <label for="idadr" class="input_label">Adresse postale :</label>
-                        <input type="text" name="nadr" id="idadr" class="login_case_adr" value="<?php echo $client['adr']; ?>">
+                        <input type="text" name="nadr" id="idadr" class="login_case_adr" value="<?php echo $client[
+                            "adr"
+                        ]; ?>">
                         <span class="erreur_champ" id="erreur_idadr"></span>
 
                         <label for="idtel" class="input_label">Téléphone :</label>
-                        <input type="tel" name="ntel" id="idtel" class="login_case_tel" value="<?php echo $client['tel']; ?>" maxlength="14">
+                        <input type="tel" name="ntel" id="idtel" class="login_case_tel" value="<?php echo $client[
+                            "tel"
+                        ]; ?>" maxlength="14">
                         <span class="compteur" id="compteur_idtel">0 / 14 caractères</span>
                         <span class="erreur_champ" id="erreur_idtel"></span>
 
@@ -117,4 +139,3 @@ if (
     </footer>
     </body>
 </html>
-

@@ -1,28 +1,48 @@
-<?php 
-    error_reporting(0);
-    $client=json_decode($_COOKIE["client"], true);   
-    $mail = $client["email"];
-    $file=file_get_contents("donnees/data.json");
-    $data=json_decode($file, true);
-    $plats=json_decode(file_get_contents("donnees/plat.json"), true);
-    if($data[$client['email']]['role']['bloque']==true){
-        setcookie("client", json_encode($data[$mail]), time()-3600);  
-        header("Location: index.php");
-    } 
-    $plat1=$plats["agneau roti aux herbes"];
-    $plat2=$plats["agneau roti aux herbes"];
-    $plat3=$plats["agneau roti aux herbes"];
-    foreach($plats as $id => $plat){
-        if($plat["vente"]>=$plat1["vente"] && $plat["prix"]>$plat1["prix"]){
-            $plat1=$plat;
-        }
-        else if($plat["vente"]>=$plat2["vente"] && $plat["prix"]>$plat2["prix"] && $plat!=$plat1){
-            $plat2=$plat;
-        }
-        else if($plat["vente"]>=$plat3["vente"] && $plat["prix"]>$plat3["prix"] && $plat!=$plat1 && $plat!=$plat2){
-            $plat3=$plat;
-        }
+<?php
+error_reporting(0);
+
+// On vérifie le blocage UNIQUEMENT si l'utilisateur est connecté
+if (isset($_COOKIE["client"])) {
+    $client = json_decode($_COOKIE["client"], true);
+    $file = file_get_contents("donnees/data.json");
+    $data = json_decode($file, true);
+
+    if (
+        isset($data[$client["email"]]) &&
+        $data[$client["email"]]["role"]["bloque"] == true
+    ) {
+        setcookie("client", "", time() - 3600);
+        header("Location: index.php?msg=bloque");
+        exit();
     }
+}
+
+$client = json_decode($_COOKIE["client"], true);
+$mail = $client["email"];
+$file = file_get_contents("donnees/data.json");
+$data = json_decode($file, true);
+$plats = json_decode(file_get_contents("donnees/plat.json"), true);
+$plat1 = $plats["agneau roti aux herbes"];
+$plat2 = $plats["agneau roti aux herbes"];
+$plat3 = $plats["agneau roti aux herbes"];
+foreach ($plats as $id => $plat) {
+    if ($plat["vente"] >= $plat1["vente"] && $plat["prix"] > $plat1["prix"]) {
+        $plat1 = $plat;
+    } elseif (
+        $plat["vente"] >= $plat2["vente"] &&
+        $plat["prix"] > $plat2["prix"] &&
+        $plat != $plat1
+    ) {
+        $plat2 = $plat;
+    } elseif (
+        $plat["vente"] >= $plat3["vente"] &&
+        $plat["prix"] > $plat3["prix"] &&
+        $plat != $plat1 &&
+        $plat != $plat2
+    ) {
+        $plat3 = $plat;
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -30,7 +50,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Les Croquettes du Chef - Pour Chiens</title>
-    
+
     <link id="theme-css" rel="stylesheet" href="css/variables.css">
     <link rel="stylesheet" href="css/client.css">
     <link rel="stylesheet" href="css/accueil.css">
@@ -38,6 +58,11 @@
     <script src="js/charte.js" defer></script>
 </head>
 <body>
+    <?php if (isset($_GET["msg"]) && $_GET["msg"] === "bloque"): ?>
+        <script>
+            alert("Vous avez été déconnecté car votre compte a été bloqué par un administrateur.");
+        </script>
+    <?php endif; ?>
 
     <header>
     <div class="logo">
@@ -49,15 +74,16 @@
             <li><a href="index.php" class="active">Accueil</a></li>
             <li><a href="menu.php">La Carte</a></li>
             <li><button id="btn-theme" onclick="changerTheme();">🌙</button></li>
-            <li><a href="<?php if(isset($_COOKIE["client"])){ echo "profil.php"; } else{ echo "login.php"; }  ?>" class="btn">
-                <?php  
-                    if(isset($_COOKIE["client"])){
-                        echo "Profil";
-                    }
-                    else{
-                        echo "Connexion";
-                    }
-                ?>
+            <li><a href="<?php if (isset($_COOKIE["client"])) {
+                echo "profil.php";
+            } else {
+                echo "login.php";
+            } ?>" class="btn">
+                <?php if (isset($_COOKIE["client"])) {
+                    echo "Profil";
+                } else {
+                    echo "Connexion";
+                } ?>
             </a></li>
         </ul>
     </nav>
@@ -73,7 +99,7 @@
 
         <section class="zone-contenu">
             <div class="conteneur-gauche">
-                
+
                 <div class="conteneur-recherche">
                     <form action="menu.html" method="get" class="barre-recherche">
                         <span class="icone">🦴</span> <input type="text" name="search" placeholder="Race, âge, saveur (ex: Agneau, Senior...)">
@@ -131,11 +157,16 @@
                             <img src="assets/le prestige du chef.png" alt="Croc Premium">
                         </div>
                         <div class="capsule-info">
-                            <h4><?php echo $plat1["name"] ?></h4>
-                            <p><?php echo $plat1["description"] ?></p>
+                            <h4><?php echo $plat1["name"]; ?></h4>
+                            <p><?php echo $plat1["description"]; ?></p>
                         </div>
                         <div class="capsule-action">
-                            <span class="prix"><?php echo number_format($plat1['prix'], 2, ',', ' '); ?>€</span>
+                            <span class="prix"><?php echo number_format(
+                                $plat1["prix"],
+                                2,
+                                ",",
+                                " ",
+                            ); ?>€</span>
                         </div>
                     </article>
 
@@ -144,11 +175,16 @@
                             <img src="assets/le prestige du chef.png" alt="Croc Premium">
                         </div>
                         <div class="capsule-info">
-                            <h4><?php echo $plat2["name"] ?></h4>
-                            <p><?php echo $plat2["description"] ?></p>
+                            <h4><?php echo $plat2["name"]; ?></h4>
+                            <p><?php echo $plat2["description"]; ?></p>
                         </div>
                         <div class="capsule-action">
-                            <span class="prix"><?php echo number_format($plat2['prix'], 2, ',', ' '); ?>€</span>
+                            <span class="prix"><?php echo number_format(
+                                $plat2["prix"],
+                                2,
+                                ",",
+                                " ",
+                            ); ?>€</span>
                         </div>
                     </article>
 
@@ -157,11 +193,16 @@
                             <img src="assets/le prestige du chef.png" alt="Croc Premium">
                         </div>
                         <div class="capsule-info">
-                            <h4><?php echo $plat3["name"] ?></h4>
+                            <h4><?php echo $plat3["name"]; ?></h4>
                             <p><?php echo $plat3["description"]; ?></p>
                         </div>
                         <div class="capsule-action">
-                            <span class="prix"><?php echo number_format($plat3['prix'], 2, ',', ' '); ?>€</span>
+                            <span class="prix"><?php echo number_format(
+                                $plat3["prix"],
+                                2,
+                                ",",
+                                " ",
+                            ); ?>€</span>
                         </div>
                     </article>
 

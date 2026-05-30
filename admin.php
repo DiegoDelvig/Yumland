@@ -3,6 +3,33 @@ if (!isset($_COOKIE["client"])) {
     header("Location: index.php");
     exit();
 }
+
+$client = json_decode($_COOKIE["client"], true);
+$file = file_get_contents("donnees/data.json");
+$data = json_decode($file, true);
+
+if (
+    isset($data[$client["email"]]) &&
+    $data[$client["email"]]["role"]["bloque"] == true
+) {
+    setcookie("client", "", time() - 3600);
+    header("Location: index.php?msg=bloque");
+    exit();
+}
+
+$client = json_decode($_COOKIE["client"], true);
+$file = file_get_contents("donnees/data.json");
+$data = json_decode($file, true);
+
+if (
+    isset($data[$client["email"]]) &&
+    $data[$client["email"]]["role"]["bloque"] == true
+) {
+    setcookie("client", "", time() - 3600);
+    header("Location: index.php?msg=bloque");
+    exit();
+}
+
 if (isset($_COOKIE["admin"])) {
     setcookie("admin", json_encode($data[$mail]), time() - 3600);
     header("Location: admin.php");
@@ -11,10 +38,7 @@ if (isset($_COOKIE["admin"])) {
 $client = json_decode($_COOKIE["client"], true);
 $file = file_get_contents("donnees/data.json");
 $data = json_decode($file, true);
-if ($data[$client["email"]]["role"]["bloque"] == true) {
-    setcookie("client", "", time() - 3600);
-    header("Location: index.php");
-}
+
 if ($data[$client["email"]]["role"]["admin"] == false) {
     header("Location: profil.php");
 }
@@ -215,7 +239,7 @@ foreach ($data as $pers) {
     <link href="assets/Logo projet.png" rel="icon">
     <script src="js/charte.js" defer></script>
     <script src="js/admin.js" defer></script>
-    
+
 
 </head>
 <body>
