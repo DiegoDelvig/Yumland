@@ -1,0 +1,16 @@
+{
+    "total": 36.8,
+    "reduction": false,
+    "plats": {
+        "cabillaud vapeur et quinoa": {
+            "quantite": 1,
+            "prix": 18.9,
+            "name": "Cabillaud Vapeur & Quinoa"
+        },
+        "boulettes de sanglier": {
+            "quantite": 1,
+            "prix": 17.9,
+            "name": "Boulettes de Sanglier"
+        }
+    }
+}

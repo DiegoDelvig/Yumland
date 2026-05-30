@@ -1,18 +1,18 @@
 {
-    "agneau roti aux herbes":{
+    "agneau roti aux herbes": {
         "name": "Agneau Rôti aux Herbes",
-        "age":{
+        "age": {
             "junior": false,
             "adulte": true,
             "senior": false
         },
-        "saveur":{
+        "saveur": {
             "volaille": false,
-            "boeuf/gibier": true,
+            "boeuf\/gibier": true,
             "poisson": false,
             "veggie": false
         },
-        "specifique":{
+        "specifique": {
             "sans cereale": false,
             "hypoallergenique": false,
             "digestion sensible": true
@@ -20,23 +20,23 @@
         "image": "agneau roti aux herbes.png",
         "new": false,
         "description": "Une viande douce et digeste, parfaite pour les estomacs sensibles.",
-        "vente": 0,
-        "prix": 15.20
+        "vente": 4,
+        "prix": 15.2
     },
-    "bol regal carottes et pommes":{
+    "bol regal carottes et pommes": {
         "name": "Bol Régal Carottes & Pommes",
-        "age":{
+        "age": {
             "junior": false,
             "adulte": true,
             "senior": false
         },
-        "saveur":{
+        "saveur": {
             "volaille": false,
-            "boeuf/gibier": false,
+            "boeuf\/gibier": false,
             "poisson": false,
             "veggie": true
         },
-        "specifique":{
+        "specifique": {
             "sans cereale": false,
             "hypoallergenique": true,
             "digestion sensible": false
@@ -44,23 +44,23 @@
         "image": "bol regal carottes et pommes.png",
         "new": true,
         "description": "Une douceur fruitée et végétale, très douce et hypoallergénique.",
-        "vente": 0,
-        "prix": 16.50
+        "vente": 5,
+        "prix": 16.5
     },
-    "boulettes de sanglier":{
+    "boulettes de sanglier": {
         "name": "Boulettes de Sanglier",
-        "age":{
+        "age": {
             "junior": false,
             "adulte": true,
             "senior": false
         },
-        "saveur":{
+        "saveur": {
             "volaille": false,
-            "boeuf/gibier": true,
+            "boeuf\/gibier": true,
             "poisson": false,
             "veggie": false
         },
-        "specifique":{
+        "specifique": {
             "sans cereale": false,
             "hypoallergenique": false,
             "digestion sensible": false
@@ -68,23 +68,23 @@
         "image": "boulettes de sanglier.png",
         "new": false,
         "description": "Une recette d'hiver aux éclats de châtaignes. Très gourmand.",
-        "vente": 0,
-        "prix": 17.90
+        "vente": 1,
+        "prix": 17.9
     },
-    "cabillaud vapeur et quinoa":{
+    "cabillaud vapeur et quinoa": {
         "name": "Cabillaud Vapeur & Quinoa",
-        "age":{
+        "age": {
             "junior": false,
             "adulte": false,
             "senior": true
         },
-        "saveur":{
+        "saveur": {
             "volaille": false,
-            "boeuf/gibier": false,
+            "boeuf\/gibier": false,
             "poisson": true,
             "veggie": false
         },
-        "specifique":{
+        "specifique": {
             "sans cereale": true,
             "hypoallergenique": false,
             "digestion sensible": false
@@ -93,22 +93,22 @@
         "new": true,
         "description": "Protéines maigres et super-aliments pour soutenir le système immunitaire des chiens vieillissants.",
         "vente": 0,
-        "prix": 18.90
+        "prix": 18.9
     },
-    "canard confit et lentilles":{
+    "canard confit et lentilles": {
         "name": "Canard Confit & Lentilles",
-        "age":{
+        "age": {
             "junior": false,
             "adulte": true,
             "senior": false
         },
-        "saveur":{
+        "saveur": {
             "volaille": true,
-            "boeuf/gibier": false,
+            "boeuf\/gibier": false,
             "poisson": false,
             "veggie": false
         },
-        "specifique":{
+        "specifique": {
             "sans cereale": true,
             "hypoallergenique": true,
             "digestion sensible": false
@@ -116,23 +116,23 @@
         "image": "canard confit et lentilles.png",
         "new": false,
         "description": "Recette hypoallergénique sans céréales aux saveurs rustiques.",
-        "vente": 0,
-        "prix": 17.00
+        "vente": 2,
+        "prix": 17
     },
-    "couronne de gibier":{
+    "couronne de gibier": {
         "name": "Couronne de Gibier",
-        "age":{
+        "age": {
             "junior": false,
             "adulte": true,
             "senior": false
         },
-        "saveur":{
+        "saveur": {
             "volaille": false,
-            "boeuf/gibier": true,
+            "boeuf\/gibier": true,
             "poisson": false,
             "veggie": false
         },
-        "specifique":{
+        "specifique": {
             "sans cereale": false,
             "hypoallergenique": false,
             "digestion sensible": false
@@ -140,23 +140,23 @@
         "image": "couronne de gibier.png",
         "new": false,
         "description": "Riche en viande de cerf et en antioxydants pour soutenir la vitalité au quotidien.",
-        "vente": 0,
-        "prix": 27.90
+        "vente": 2,
+        "prix": 27.9
     },
-    "cro'c junior poulet et riz souffle":{
+    "cro'c junior poulet et riz souffle": {
         "name": "Croc' Junior Poulet & Riz Soufflé",
-        "age":{
+        "age": {
             "junior": true,
             "adulte": false,
             "senior": false
         },
-        "saveur":{
+        "saveur": {
             "volaille": true,
-            "boeuf/gibier": false,
+            "boeuf\/gibier": false,
             "poisson": false,
             "veggie": false
         },
-        "specifique":{
+        "specifique": {
             "sans cereale": false,
             "hypoallergenique": false,
             "digestion sensible": true
@@ -164,23 +164,23 @@
         "image": "cro'c junior poulet et riz souffle.png",
         "new": true,
         "description": "Une texture facile à mâcher et hautement digestible pour les jeunes estomacs.",
-        "vente": 0,
-        "prix": 13.90
+        "vente": 1,
+        "prix": 13.9
     },
-    "cro'c poulet fermier":{
+    "cro'c poulet fermier": {
         "name": "Croc' Poulet Fermier",
-        "age":{
+        "age": {
             "junior": true,
             "adulte": false,
             "senior": false
         },
-        "saveur":{
+        "saveur": {
             "volaille": true,
-            "boeuf/gibier": false,
+            "boeuf\/gibier": false,
             "poisson": false,
             "veggie": false
         },
-        "specifique":{
+        "specifique": {
             "sans cereale": false,
             "hypoallergenique": false,
             "digestion sensible": false
@@ -189,22 +189,22 @@
         "new": false,
         "description": "Riche en protéines pour les chiens actifs.",
         "vente": 0,
-        "prix": 12.50
+        "prix": 12.5
     },
-    "cro'c quinoa petits pois et courgettes":{
+    "cro'c quinoa petits pois et courgettes": {
         "name": "Croc' Quinoa Petits Pois & Courgettes",
-        "age":{
+        "age": {
             "junior": false,
             "adulte": true,
             "senior": false
         },
-        "saveur":{
+        "saveur": {
             "volaille": false,
-            "boeuf/gibier": false,
+            "boeuf\/gibier": false,
             "poisson": false,
             "veggie": true
         },
-        "specifique":{
+        "specifique": {
             "sans cereale": true,
             "hypoallergenique": false,
             "digestion sensible": false
@@ -212,23 +212,23 @@
         "image": "cro'c quinoa petits pois et courgettes.png",
         "new": true,
         "description": "Des croquettes pleines de vitamines et 100% végétales.",
-        "vente": 0,
-        "prix": 17.50
+        "vente": 1,
+        "prix": 17.5
     },
-    "cro'c senior dinde et courgettes":{
+    "cro'c senior dinde et courgettes": {
         "name": "Croc' Senior Dinde & Courgettes",
-        "age":{
+        "age": {
             "junior": false,
             "adulte": false,
             "senior": true
         },
-        "saveur":{
+        "saveur": {
             "volaille": true,
-            "boeuf/gibier": false,
+            "boeuf\/gibier": false,
             "poisson": false,
             "veggie": false
         },
-        "specifique":{
+        "specifique": {
             "sans cereale": false,
             "hypoallergenique": false,
             "digestion sensible": true
@@ -237,22 +237,22 @@
         "new": true,
         "description": "Une recette très légère pour maintenir le poids de forme, avec des fibres naturelles.",
         "vente": 0,
-        "prix": 14.50
+        "prix": 14.5
     },
-    "delice de saumon frais":{
+    "delice de saumon frais": {
         "name": "Délice de Saumon Frais",
-        "age":{
+        "age": {
             "junior": false,
             "adulte": true,
             "senior": false
         },
-        "saveur":{
+        "saveur": {
             "volaille": false,
-            "boeuf/gibier": false,
+            "boeuf\/gibier": false,
             "poisson": true,
             "veggie": false
         },
-        "specifique":{
+        "specifique": {
             "sans cereale": false,
             "hypoallergenique": false,
             "digestion sensible": false
@@ -261,22 +261,22 @@
         "new": false,
         "description": "Riche en Oméga-3 pour un poil soyeux et une peau saine.",
         "vente": 0,
-        "prix": 16.50
+        "prix": 16.5
     },
-    "dinde douceur et petits pois":{
+    "dinde douceur et petits pois": {
         "name": "Dinde Douceur & Petits Pois",
-        "age":{
+        "age": {
             "junior": false,
             "adulte": false,
             "senior": true
         },
-        "saveur":{
+        "saveur": {
             "volaille": true,
-            "boeuf/gibier": false,
+            "boeuf\/gibier": false,
             "poisson": false,
             "veggie": false
         },
-        "specifique":{
+        "specifique": {
             "sans cereale": false,
             "hypoallergenique": false,
             "digestion sensible": false
@@ -284,23 +284,23 @@
         "image": "dinde douceur et petits pois.png",
         "new": false,
         "description": "Faible en matières grasses, le choix numéro un des seniors.",
-        "vente": 0,
-        "prix": 13.80
+        "vente": 1,
+        "prix": 13.8
     },
-    "duo de poissons blancs":{
+    "duo de poissons blancs": {
         "name": "Duo de Poissons Blancs",
-        "age":{
+        "age": {
             "junior": false,
             "adulte": true,
             "senior": false
         },
-        "saveur":{
+        "saveur": {
             "volaille": false,
-            "boeuf/gibier": false,
+            "boeuf\/gibier": false,
             "poisson": true,
             "veggie": false
         },
-        "specifique":{
+        "specifique": {
             "sans cereale": false,
             "hypoallergenique": false,
             "digestion sensible": false
@@ -308,23 +308,23 @@
         "image": "duo de poissons blancs.png",
         "new": false,
         "description": "Cabillaud et colin accompagnés d'épinards frais pour la vitalité.",
-        "vente": 0,
-        "prix": 15.90
+        "vente": 1,
+        "prix": 15.9
     },
-    "effiloche de boeuf maigre aux myrtilles":{
+    "effiloche de boeuf maigre aux myrtilles": {
         "name": "Effiloché de Bœuf Maigre aux Myrtilles",
-        "age":{
+        "age": {
             "junior": false,
             "adulte": false,
             "senior": true
         },
-        "saveur":{
+        "saveur": {
             "volaille": false,
-            "boeuf/gibier": true,
+            "boeuf\/gibier": true,
             "poisson": false,
             "veggie": false
         },
-        "specifique":{
+        "specifique": {
             "sans cereale": false,
             "hypoallergenique": false,
             "digestion sensible": false
@@ -333,22 +333,22 @@
         "new": true,
         "description": "Faible en matières grasses et riche en antioxydants pour protéger la vitalité.",
         "vente": 0,
-        "prix": 18.50
+        "prix": 18.5
     },
-    "emince de saumon et carottes":{
+    "emince de saumon et carottes": {
         "name": "Émincé de Saumon & Carottes",
-        "age":{
+        "age": {
             "junior": true,
             "adulte": false,
             "senior": false
         },
-        "saveur":{
+        "saveur": {
             "volaille": false,
-            "boeuf/gibier": false,
+            "boeuf\/gibier": false,
             "poisson": true,
             "veggie": false
         },
-        "specifique":{
+        "specifique": {
             "sans cereale": true,
             "hypoallergenique": false,
             "digestion sensible": false
@@ -357,22 +357,22 @@
         "new": true,
         "description": "Riche en DHA pour stimuler l'apprentissage et garantir un pelage soyeux.",
         "vente": 0,
-        "prix": 17.50
+        "prix": 17.5
     },
-    "festin du chiot au veau":{
+    "festin du chiot au veau": {
         "name": "Festin du Chiot au Veau",
-        "age":{
+        "age": {
             "junior": true,
             "adulte": false,
             "senior": false
         },
-        "saveur":{
+        "saveur": {
             "volaille": false,
-            "boeuf/gibier": true,
+            "boeuf\/gibier": true,
             "poisson": false,
             "veggie": false
         },
-        "specifique":{
+        "specifique": {
             "sans cereale": false,
             "hypoallergenique": false,
             "digestion sensible": false
@@ -380,23 +380,23 @@
         "image": "festin du chiot au veau.png",
         "new": false,
         "description": "Petites bouchées de veau tendres pour une croissance harmonieuse.",
-        "vente": 0,
-        "prix": 13.50
+        "vente": 3,
+        "prix": 13.5
     },
-    "le prestige du chef":{
+    "le prestige du chef": {
         "name": "Le Prestige du Chef - Bœuf Wagyu",
-        "age":{
+        "age": {
             "junior": false,
             "adulte": true,
             "senior": false
         },
-        "saveur":{
+        "saveur": {
             "volaille": false,
-            "boeuf/gibier": true,
+            "boeuf\/gibier": true,
             "poisson": false,
             "veggie": false
         },
-        "specifique":{
+        "specifique": {
             "sans cereale": false,
             "hypoallergenique": false,
             "digestion sensible": false
@@ -404,23 +404,23 @@
         "image": "le prestige du chef.png",
         "new": false,
         "description": "Recette d'exception au bœuf Wagyu pour offrir une expérience gustative unique.",
-        "vente": 0,
-        "prix": 29.90
+        "vente": 5,
+        "prix": 29.9
     },
-    "mijote de boeuf":{
+    "mijote de boeuf": {
         "name": "Mijoté de Bœuf",
-        "age":{
+        "age": {
             "junior": false,
             "adulte": true,
             "senior": false
         },
-        "saveur":{
+        "saveur": {
             "volaille": false,
-            "boeuf/gibier": true,
+            "boeuf\/gibier": true,
             "poisson": false,
             "veggie": false
         },
-        "specifique":{
+        "specifique": {
             "sans cereale": false,
             "hypoallergenique": false,
             "digestion sensible": false
@@ -429,22 +429,22 @@
         "new": false,
         "description": "Morceaux tendres en sauce.",
         "vente": 0,
-        "prix": 4.90
+        "prix": 4.9
     },
-    "mijote de boeuf et carotte":{
+    "mijote de boeuf et carotte": {
         "name": "Mijoté de Bœuf & Carottes",
-        "age":{
+        "age": {
             "junior": false,
             "adulte": true,
             "senior": false
         },
-        "saveur":{
+        "saveur": {
             "volaille": false,
-            "boeuf/gibier": true,
+            "boeuf\/gibier": true,
             "poisson": false,
             "veggie": false
         },
-        "specifique":{
+        "specifique": {
             "sans cereale": false,
             "hypoallergenique": false,
             "digestion sensible": false
@@ -452,23 +452,23 @@
         "image": "mijote de boeuf et carotte.png",
         "new": false,
         "description": "Morceaux tendres en sauce, idéal pour l'énergie au quotidien.",
-        "vente": 0,
-        "prix": 14.90
+        "vente": 1,
+        "prix": 14.9
     },
-    "mijote de patate douce et lentilles":{
+    "mijote de patate douce et lentilles": {
         "name": "Mijoté de Patate Douce & Lentilles",
-        "age":{
+        "age": {
             "junior": false,
             "adulte": true,
             "senior": false
         },
-        "saveur":{
+        "saveur": {
             "volaille": false,
-            "boeuf/gibier": false,
+            "boeuf\/gibier": false,
             "poisson": false,
             "veggie": true
         },
-        "specifique":{
+        "specifique": {
             "sans cereale": false,
             "hypoallergenique": false,
             "digestion sensible": true
@@ -477,22 +477,22 @@
         "new": true,
         "description": "Un plat réconfortant et riche en fibres douces pour un transit optimal.",
         "vente": 0,
-        "prix": 16.90
+        "prix": 16.9
     },
-    "os a macher bio":{
+    "os a macher bio": {
         "name": "Os à mâcher Bio",
-        "age":{
+        "age": {
             "junior": true,
             "adulte": true,
             "senior": false
         },
-        "saveur":{
+        "saveur": {
             "volaille": false,
-            "boeuf/gibier": false,
+            "boeuf\/gibier": false,
             "poisson": false,
             "veggie": false
         },
-        "specifique":{
+        "specifique": {
             "sans cereale": false,
             "hypoallergenique": false,
             "digestion sensible": false
@@ -500,23 +500,23 @@
         "image": "os a macher bio.png",
         "new": false,
         "description": "Hygiène dentaire naturelle.",
-        "vente": 0,
-        "prix": 3.50
+        "vente": 2,
+        "prix": 3.5
     },
-    "patee fondante d'agneau au lait de chevre":{
+    "patee fondante d'agneau au lait de chevre": {
         "name": "Pâtée Fondante d'Agneau au Lait de Chèvre",
-        "age":{
+        "age": {
             "junior": true,
             "adulte": false,
             "senior": false
         },
-        "saveur":{
+        "saveur": {
             "volaille": false,
-            "boeuf/gibier": true,
+            "boeuf\/gibier": true,
             "poisson": false,
             "veggie": false
         },
-        "specifique":{
+        "specifique": {
             "sans cereale": false,
             "hypoallergenique": true,
             "digestion sensible": false
@@ -525,22 +525,22 @@
         "new": true,
         "description": "Une transition parfaite après le sevrage, ultra-douce et réconfortante.",
         "vente": 0,
-        "prix": 14.50
+        "prix": 14.5
     },
-    "perle de l'ocean":{
+    "perle de l'ocean": {
         "name": "Perle de l'Océan",
-        "age":{
+        "age": {
             "junior": false,
             "adulte": true,
             "senior": false
         },
-        "saveur":{
+        "saveur": {
             "volaille": false,
-            "boeuf/gibier": false,
+            "boeuf\/gibier": false,
             "poisson": true,
             "veggie": false
         },
-        "specifique":{
+        "specifique": {
             "sans cereale": false,
             "hypoallergenique": false,
             "digestion sensible": true
@@ -549,22 +549,22 @@
         "new": false,
         "description": "Allie saumon fumé et graines de chia, idéal pour favoriser une digestion douce.",
         "vente": 0,
-        "prix": 28.90
+        "prix": 28.9
     },
-    "porc iberique et pommes":{
+    "porc iberique et pommes": {
         "name": "Porc Ibérique & Pommes",
-        "age":{
+        "age": {
             "junior": false,
             "adulte": true,
             "senior": false
         },
-        "saveur":{
+        "saveur": {
             "volaille": false,
-            "boeuf/gibier": true,
+            "boeuf\/gibier": true,
             "poisson": false,
             "veggie": false
         },
-        "specifique":{
+        "specifique": {
             "sans cereale": false,
             "hypoallergenique": false,
             "digestion sensible": false
@@ -573,22 +573,22 @@
         "new": false,
         "description": "Un goût irrésistible qui séduira même les chiens les plus difficiles.",
         "vente": 0,
-        "prix": 14.00
+        "prix": 14
     },
-    "recette vegetale potiron":{
+    "recette vegetale potiron": {
         "name": "Recette Végétale Potiron",
-        "age":{
+        "age": {
             "junior": false,
             "adulte": true,
             "senior": false
         },
-        "saveur":{
+        "saveur": {
             "volaille": false,
-            "boeuf/gibier": false,
+            "boeuf\/gibier": false,
             "poisson": false,
             "veggie": true
         },
-        "specifique":{
+        "specifique": {
             "sans cereale": false,
             "hypoallergenique": false,
             "digestion sensible": false
@@ -597,22 +597,22 @@
         "new": false,
         "description": "Quinoa, potiron et courgettes. 100% végétarien et équilibré.",
         "vente": 0,
-        "prix": 12.00
+        "prix": 12
     },
-    "saumon et patate douce":{
+    "saumon et patate douce": {
         "name": "Saumon & Patate Douce",
-        "age":{
+        "age": {
             "junior": false,
             "adulte": true,
             "senior": false
         },
-        "saveur":{
+        "saveur": {
             "volaille": false,
-            "boeuf/gibier": false,
+            "boeuf\/gibier": false,
             "poisson": true,
             "veggie": false
         },
-        "specifique":{
+        "specifique": {
             "sans cereale": false,
             "hypoallergenique": false,
             "digestion sensible": false
@@ -620,23 +620,23 @@
         "image": "saumon et patate douce.png",
         "new": false,
         "description": "Idéal pour un poil brillant.",
-        "vente": 0,
-        "prix": 14.90
+        "vente": 1,
+        "prix": 14.9
     },
-    "terrine de cerf sauvage":{
+    "terrine de cerf sauvage": {
         "name": "Terrine de Cerf Sauvage",
-        "age":{
+        "age": {
             "junior": false,
             "adulte": true,
             "senior": false
         },
-        "saveur":{
+        "saveur": {
             "volaille": false,
-            "boeuf/gibier": true,
+            "boeuf\/gibier": true,
             "poisson": false,
             "veggie": false
         },
-        "specifique":{
+        "specifique": {
             "sans cereale": false,
             "hypoallergenique": false,
             "digestion sensible": false
@@ -644,7 +644,7 @@
         "image": "terrine de cerf sauvage.png",
         "new": false,
         "description": "Viande giboyeuse et myrtilles antioxydantes. Un vrai festin.",
-        "vente": 0,
-        "prix": 18.50
+        "vente": 1,
+        "prix": 18.5
     }
 }

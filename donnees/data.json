@@ -28,9 +28,9 @@
         "numero_fidelite": 2,
         "role": {
             "livreur": true,
-            "admin": false,
-            "bloque": false,
-            "restaurateur": false
+            "admin": true,
+            "bloque": true,
+            "restaurateur": true
         }
     },
     "Matlec2206@gmail.com": {
