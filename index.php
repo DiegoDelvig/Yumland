@@ -16,10 +16,10 @@
         if($plat["vente"]>=$plat1["vente"] && $plat["prix"]>$plat1["prix"]){
             $plat1=$plat;
         }
-        else if($plat["vente"]>=$plat2["vente"] && $plat["prix"]>$plat2["prix"] && $plat!=$plat1){
+        else if(($plat["vente"]>=$plat2["vente"] && $plat["prix"]>$plat2["prix"] && $plat!=$plat1) || $plat2==$plat1){
             $plat2=$plat;
         }
-        else if($plat["vente"]>=$plat3["vente"] && $plat["prix"]>$plat3["prix"] && $plat!=$plat1 && $plat!=$plat2){
+        else if(($plat["vente"]>=$plat3["vente"] && $plat["prix"]>$plat3["prix"] && $plat!=$plat1 && $plat!=$plat2) || $plat3==$plat1 || $plat3==$plat2){
             $plat3=$plat;
         }
     }
