@@ -2,7 +2,7 @@
 
 > **La gastronomie canine livrée dans sa gamelle**
 
-Plateforme de commande en ligne de croquettes premium pour chiens, avec gestion des clients, livreurs et administrateurs.
+Plateforme de commande en ligne de croquettes premium pour chiens, avec gestion des clients, livreurs et administrateurs. 
 
 ---
 
