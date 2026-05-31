@@ -11,7 +11,13 @@ Plateforme de commande en ligne de croquettes premium pour chiens, avec gestion 
 ### Pour lancer le projet en local, exécutez simplement :
 
 ```bash
+chmod +x start-local.sh
 ./start-local.sh
+```
+ou 
+
+```bash
+bash start-local.sh
 ```
 
 **C'est tout ce que vous devez faire pour démarrer l'application !**
