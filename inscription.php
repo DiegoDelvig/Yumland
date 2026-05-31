@@ -1,40 +1,89 @@
 <?php 
     error_reporting(0);
-    if(empty($_REQUEST['nname'])||empty($_REQUEST['nfname'])||empty($_REQUEST['nadr'])||empty($_REQUEST['ntel'])||empty($_REQUEST['nemail'])||empty($_REQUEST['ncode'])){
-    }
-    else{
-        $file= "donnees/data.json";
-        $commande="donnees/commande_passe.json";
-        if(file_exists($file)){
-            $client_passe=file_get_contents($file);
-            $data=json_decode($client_passe, true);
-            $dernier_client=end($data);
-            $num=$dernier_client['numero_fidelite']+1;
-        }
-        else{
-            $data=[];
-            $num=1;
-        }
-        if(file_exists($commande)){
-            $commande_passe=file_get_contents($commande);
-            $data_commande=json_decode($commande_passe, true);
+    $message = "";
+    $error = "";
 
+    if ($_SERVER["REQUEST_METHOD"] === "POST") {
+        // Vérif des inputs demandés
+        $required = ["nname", "nfname", "nadr", "ntel", "nemail", "ncode"];
+        $missing = false;
+        foreach ($required as $field) {
+            if (empty($_POST[$field])) {
+                $missing = true;
+                break;
+            }
         }
-        $name=$_POST['nname'];
-        $fname=$_POST['nfname'];
-        $adr=$_POST['nadr'];
-        $tel=$_POST['ntel'];
-        $infocomp=$_POST['ninfocomp'];
-        $email=$_POST['nemail'];
-        $code=$_POST['ncode'];
-        $new_user=array('name' => $name, 'fname'=>$fname, 'adr'=>$adr, 'tel'=>$tel, 'infocomp'=>$infocomp, 'email'=>$email, 'code'=>password_hash($code, PASSWORD_DEFAULT), 'point_fidelite'=>0, 'numero_fidelite'=>$num, 'role'=>array('livreur'=>false,'admin'=>false,'bloque'=>false, 'restaurateur'=>false));
-        $data[$email]=$new_user;
-        $vide=[];
-        $data_commande[$email]=(object) $vide;
-        file_put_contents("donnees/data.json", json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
-        file_put_contents("donnees/commande.json", json_encode($data_commande, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
-        header("Location: login.php");
-        exit;
+        if ($missing) {
+            $error = "Veuillez remplir tous les champs obligatoires.";
+        } else {
+            $file = "donnees/data.json";
+            $commande = "donnees/commande.json";
+            
+            // Charger les clients 
+            if (file_exists($file)) {
+                $client_passe = file_get_contents($file);
+                $data = json_decode($client_passe, true);
+
+                if (!is_array($data)) { $data = []; }
+                $dernier_client = end($data);
+                $num = !empty($dernier_client["numero_fidelite"]) ? $dernier_client["numero_fidelite"] + 1 : 1;
+            } else {
+                $data = [];
+                $num = 1; 
+            }
+                
+
+            $name = trim($_POST["nname"]);
+            $fname = trim($_POST["nfname"]);
+            $adr = trim($_POST["nadr"]);
+            $tel = trim($_POST["ntel"]);
+            $infocomp = trim($_POST["ninfocomp"]);
+            $email = trim($_POST["nemail"]);
+            $code = trim($_POST["ncode"]);
+
+            // Vérif email existe
+            if (isset($data[$email])) {
+                $error = "Un compte existe déjà pour cette adresse e-mail.";
+            } else {
+                $new_user = array(
+                    "name" => $name,
+                    "fname" => $fname,
+                    "adr" => $adr,
+                    "tel" => $tel,
+                    "infocomp" => $infocomp,
+                    "email" => $email,
+                    "code" => password_hash($code, PASSWORD_DEFAULT),
+                    "point_fidelite" => 0,
+                    "numero_fidelite" => $num,
+                    "role" => array("livreur"=>false, "admin"=>false, "bloque"=>false, "restaurateur"=>false)
+                );
+                $data[$email] = $new_user;
+
+                // Charger/initialiser les commandes
+                if (file_exists($commande)) {
+                    $commande_passe = file_get_contents($commande);
+                    $data_commande = json_decode($commande_passe, true);
+
+                    if (!is_array($data_commande)) {
+                        $data_commande = [];
+                    }
+                    $data_commande[$email] = (object) [];
+
+                    // Sauv. les fichiers
+                    $sauv1 = file_put_contents("donnees/data.json", json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+                    $sauv2 = file_put_contents("donnees/commande.json", json_encode($data_commande, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+                    
+                    if ($sauv1 === false || $sauv2 === false) {
+                        $error = "Une erreur est survenue lors de l'enregistrement. Veuillez réessayer.";
+                    } else {
+                        $message = "Inscription réussie. Vous pouvez maintenant vous connecter.";
+
+                        // Vider POST
+                        $_POST = array();
+                    }
+                }
+            }
+        }
     }
 ?>
 <!DOCTYPE html>
@@ -68,6 +117,12 @@
         </nav>
         </header>
         <h1>INSCRIPTION</h1>
+        <?php if(!empty($message)): ?>
+            <div class="message success" role="alert"><a class="message-link" href="login.php"><?=htmlspecialchars($message)?></a></div>
+        <?php endif; ?>
+        <?php if(!empty($error)): ?>
+            <div class="message error" role="alert"><?=htmlspecialchars($error)?></div>
+        <?php endif; ?>
         <form action="" method="post" target="_top" id="formulaire" name="connexion">
             <div class="rect_bleu">
                 <img class="logo_login" src="assets/Logo projet.png" alt="logo de notre site de vente">
