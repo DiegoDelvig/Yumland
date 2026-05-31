@@ -1,10 +1,11 @@
 <?php 
+    session_start();
     error_reporting(0);
-    if(!isset($_COOKIE["client"])){
+    if(!isset($_SESSION['client'])){
         header("Location: index.php");
         exit;
     }
-    $client=json_decode($_COOKIE["client"], true);
+    $client=$_SESSION['client'];
     $mail=$client['email'];   
     $file=file_get_contents("donnees/data.json");
     $data=json_decode($file, true);

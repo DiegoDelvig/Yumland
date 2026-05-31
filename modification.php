@@ -1,12 +1,12 @@
 <?php
+session_start();
 error_reporting(0);
-$client = json_decode($_COOKIE["client"], true);
-if (!isset($_COOKIE["client"])) {
+if (!isset($_SESSION['client'])) {
     header("Location: index.php");
     exit();
 }
 
-$client = json_decode($_COOKIE["client"], true);
+$client = $_SESSION['client'];
 $file = file_get_contents("donnees/data.json");
 $data = json_decode($file, true);
 
@@ -14,7 +14,7 @@ if (
     isset($data[$client["email"]]) &&
     $data[$client["email"]]["role"]["bloque"] == true
 ) {
-    setcookie("client", "", time() - 3600);
+    unset($_SESSION['client']);
     header("Location: index.php?msg=bloque");
     exit();
 }
@@ -57,8 +57,8 @@ if (
         "donnees/data.json",
         json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE),
     );
-    setcookie("client", json_encode($data[$client["email"]]), time() - 3600);
-    setcookie("client", json_encode($data[$client["email"]]), time() + 3600);
+    $_SESSION['client'] = $data[$client["email"]];
+    session_regenerate_id(true);
     header("Location: profil.php");
     exit();
 }

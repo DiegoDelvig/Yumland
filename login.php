@@ -1,4 +1,5 @@
 <?php 
+    session_start();
     error_reporting(0);
     if(empty($_REQUEST['nemail'])){
     }
@@ -23,7 +24,8 @@
                         $panier_data="donnees/panier_$mail.json";
                         file_put_contents($panier_data, json_encode($panier, JSON_PRETTY_PRINT));
                     }
-                    setcookie("client", json_encode($data[$mail]), time()+3600);
+                    $_SESSION['client'] = $data[$mail];
+                    session_regenerate_id(true);
                     header("Location: index.php");
                     exit;
                 }

@@ -1,41 +1,26 @@
 <?php
-if (!isset($_COOKIE["client"])) {
+session_start();
+if (!isset($_SESSION['client'])) {
     header("Location: index.php");
     exit();
 }
 
-$client = json_decode($_COOKIE["client"], true);
+$client = $_SESSION['client'];
 $file = file_get_contents("donnees/data.json");
 $data = json_decode($file, true);
 
-if (
-    isset($data[$client["email"]]) &&
-    $data[$client["email"]]["role"]["bloque"] == true
-) {
-    setcookie("client", "", time() - 3600);
+if (isset($data[$client["email"]]) && $data[$client["email"]]["role"]["bloque"] == true) {
+    unset($_SESSION['client']);
     header("Location: index.php?msg=bloque");
     exit();
 }
 
-$client = json_decode($_COOKIE["client"], true);
-$file = file_get_contents("donnees/data.json");
-$data = json_decode($file, true);
-
-if (
-    isset($data[$client["email"]]) &&
-    $data[$client["email"]]["role"]["bloque"] == true
-) {
-    setcookie("client", "", time() - 3600);
-    header("Location: index.php?msg=bloque");
-    exit();
-}
-
-if (isset($_COOKIE["admin"])) {
-    setcookie("admin", json_encode($data[$mail]), time() - 3600);
+if (isset($_SESSION['admin'])) {
+    unset($_SESSION['admin']);
     header("Location: admin.php");
     exit();
 }
-$client = json_decode($_COOKIE["client"], true);
+$client = $_SESSION["client"]
 $file = file_get_contents("donnees/data.json");
 $data = json_decode($file, true);
 
@@ -164,7 +149,7 @@ foreach ($data as $pers) {
         }
     }
     if (isset($_REQUEST["profil_" . $pers["numero_fidelite"]])) {
-        setcookie("admin", json_encode($data[$pers["email"]]), time() + 3600);
+        $_SESSION["admin"] = $data[$pers["email"]];
         header("Location: profil.php");
         exit();
     }
@@ -254,12 +239,12 @@ foreach ($data as $pers) {
                 <li><a href="menu.php">La Carte</a></li>
                 <li><a href="admin.php" class="active">Admin</a></li>
                 <li><button id="btn-theme" onclick="changerTheme();">🌙</button></li>
-                <li><a href="<?php if (isset($_COOKIE["client"])) {
+                <li><a href="<?php if (isset($_SESSION['client'])) {
                     echo "profil.php";
                 } else {
                     echo "login.php";
                 } ?>" class="btn">
-                        <?php if (isset($_COOKIE["client"])) {
+                        <?php if (isset($_SESSION['client'])) {
                             echo "Profil";
                         } else {
                             echo "Connexion";

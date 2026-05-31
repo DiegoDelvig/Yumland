@@ -1,13 +1,20 @@
 <?php 
+    session_start();
     error_reporting(0);
-    $client=json_decode($_COOKIE["client"], true);   
-    $mail = $client["email"];
+    if(!isset($_SESSION['client'])){
+        // Pas connecté
+        $client = null;
+    } else {
+        $client = $_SESSION['client'];
+        $mail = $client["email"];
+    }
     $file=file_get_contents("donnees/data.json");
     $data=json_decode($file, true);
     $plats=json_decode(file_get_contents("donnees/plat.json"), true);
-    if($data[$client['email']]['role']['bloque']==true){
-        setcookie("client", json_encode($data[$mail]), time()-3600);  
+    if(isset($client) && $data[$client['email']]['role']['bloque']==true){
+        unset($_SESSION['client']);
         header("Location: index.php");
+        exit;
     } 
     $plat1=$plats["agneau roti aux herbes"];
     $plat2=$plats["agneau roti aux herbes"];
@@ -49,9 +56,9 @@
             <li><a href="index.php" class="active">Accueil</a></li>
             <li><a href="menu.php">La Carte</a></li>
             <li><button id="btn-theme" onclick="changerTheme();">🌙</button></li>
-            <li><a href="<?php if(isset($_COOKIE["client"])){ echo "profil.php"; } else{ echo "login.php"; }  ?>" class="btn">
+            <li><a href="<?php if(isset($_SESSION['client'])){ echo "profil.php"; } else{ echo "login.php"; }  ?>" class="btn">
                 <?php  
-                    if(isset($_COOKIE["client"])){
+                    if(isset($_SESSION['client'])){
                         echo "Profil";
                     }
                     else{

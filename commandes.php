@@ -1,12 +1,13 @@
 <?php
+session_start();
 error_reporting(0);
 
-if (!isset($_COOKIE["client"])) {
+if (!isset($_SESSION['client'])) {
     header("Location: index.php");
     exit();
 }
 
-$client = json_decode($_COOKIE["client"], true);
+$client = $_SESSION['client'];
 $file = file_get_contents("donnees/data.json");
 $data = json_decode($file, true);
 
@@ -14,12 +15,11 @@ if (
     isset($data[$client["email"]]) &&
     $data[$client["email"]]["role"]["bloque"] == true
 ) {
-    setcookie("client", "", time() - 3600);
+    unset[$_SESSION["client"]];
     header("Location: index.php?msg=bloque");
     exit();
 }
 
-$client = json_decode($_COOKIE["client"], true);
 $liste_client_data = file_get_contents("donnees/data.json");
 $liste_client = json_decode($liste_client_data, true);
 $commande_data = file_get_contents("donnees/commande.json");
@@ -27,6 +27,7 @@ $commande = json_decode($commande_data, true);
 
 if ($liste_client[$client["email"]]["role"]["restaurateur"] == false) {
     header("Location: profil.php");
+    exit();
 }
 function aff_num_cmd_ou_fidelite($num, $cmd_ou_fidelite)
 {
@@ -171,12 +172,12 @@ if (!empty($commande)) {
                 <li><a href="index.php">Voir le site</a></li>
                 <li><a href="commandes.php" class="active">Commandes</a></li>
                 <li><button id="btn-theme" onclick="changerTheme();">🌙</button></li>
-                <li><a href="<?php if (isset($_COOKIE["client"])) {
+                <li><a href="<?php if (isset($_SESSION['client'])) {
                     echo "profil.php";
                 } else {
                     echo "login.php";
                 } ?>" class="btn">
-                        <?php if (isset($_COOKIE["client"])) {
+                        <?php if (isset($_SESSION['client'])) {
                             echo "Profil";
                         } else {
                             echo "Connexion";

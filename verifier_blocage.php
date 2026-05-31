@@ -1,10 +1,12 @@
 <?php
-if (!isset($_COOKIE["client"])) {
+session_start();
+if (!isset($_SESSION['client'])) {
     header("Content-Type: application/json");
     echo json_encode(["bloque" => false]);
+    exit();
 }
 
-$client = json_decode($_COOKIE["client"], true);
+$client = $_SESSION['client'];
 $file = file_get_contents("donnees/data.json");
 $data = json_decode($file, true);
 
@@ -12,7 +14,7 @@ if (
     isset($data[$client["email"]]) &&
     $data[$client["email"]]["role"]["bloque"] == true
 ) {
-    setcookie("client", "", time() - 3600);
+    unset($_SESSION['client']);
     header("Content-Type: application/json");
     echo json_encode(["bloque" => true, "message" => "Vous avez été bloqué"]);
     exit();

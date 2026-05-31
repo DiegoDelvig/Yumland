@@ -1,12 +1,13 @@
 <?php
 header("Content-Type: application/json");
 
-if (!isset($_COOKIE["client"])) {
+session_start();
+if (!isset($_SESSION['client'])) {
     echo json_encode(["success" => false, "message" => "Non authentifié"]);
     exit();
 }
 
-$client = json_decode($_COOKIE["client"], true);
+$client = $_SESSION['client'];
 $file = file_get_contents("donnees/data.json");
 $data = json_decode($file, true);
 
