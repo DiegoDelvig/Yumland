@@ -195,6 +195,7 @@ if (!empty($commande_en_cours)) {
                     !isset($_COOKIE["admin"])
                 ) { ?>
                     <li><a href="commandes.php">Commande</a></li>
+                    <li><a href="modification_carte.php">Carte 📝</a></li>
                 <?php } ?>
                 <?php if (
                     isset($client["role"]["livreur"]) &&
