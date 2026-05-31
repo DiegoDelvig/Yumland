@@ -7,7 +7,7 @@ if (!isset($_COOKIE["client"])) {
 }
 
 $client = json_decode($_COOKIE["client"], true);
-$file = file_get_contents(DATA_DIR . '/data.json');
+$file = file_get_contents("donnees/data.json");
 $data = json_decode($file, true);
 
 if (
@@ -20,10 +20,9 @@ if (
 }
 
 $client = json_decode($_COOKIE["client"], true);
-require_once __DIR__ . '/config.php';
-$liste_client_data = file_get_contents(DATA_DIR . '/data.json');
+$liste_client_data = file_get_contents("donnees/data.json");
 $liste_client = json_decode($liste_client_data, true);
-$commande_data = file_get_contents(DATA_DIR . '/commande.json');
+$commande_data = file_get_contents("donnees/commande.json");
 $commande = json_decode($commande_data, true);
 
 if ($liste_client[$client["email"]]["role"]["restaurateur"] == false) {
@@ -115,7 +114,7 @@ if (!empty($commande)) {
                 "cuisinee"
             ] = true;
             file_put_contents(
-                DATA_DIR . '/commande.json',
+                "donnees/commande.json",
                 json_encode($commande, JSON_PRETTY_PRINT),
             );
             header("Location: commandes.php");
@@ -137,7 +136,7 @@ if (!empty($commande)) {
                     "livreur"
                 ] = $livreur_email;
                 file_put_contents(
-                    DATA_DIR . '/commande.json',
+                    "donnees/commande.json",
                     json_encode($commande, JSON_PRETTY_PRINT),
                 );
                 header("Location: commandes.php");

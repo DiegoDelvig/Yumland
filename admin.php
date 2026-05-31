@@ -5,8 +5,7 @@ if (!isset($_COOKIE["client"])) {
 }
 
 $client = json_decode($_COOKIE["client"], true);
-require_once __DIR__ . '/config.php';
-$file = file_get_contents(DATA_DIR . '/data.json');
+$file = file_get_contents("donnees/data.json");
 $data = json_decode($file, true);
 
 if (
@@ -19,7 +18,7 @@ if (
 }
 
 $client = json_decode($_COOKIE["client"], true);
-$file = file_get_contents(DATA_DIR . '/data.json');
+$file = file_get_contents("donnees/data.json");
 $data = json_decode($file, true);
 
 if (
@@ -37,7 +36,7 @@ if (isset($_COOKIE["admin"])) {
     exit();
 }
 $client = json_decode($_COOKIE["client"], true);
-$file = file_get_contents(DATA_DIR . '/data.json');
+$file = file_get_contents("donnees/data.json");
 $data = json_decode($file, true);
 
 if ($data[$client["email"]]["role"]["admin"] == false) {
@@ -92,7 +91,7 @@ foreach ($data as $pers) {
         if ($data[$pers["email"]]["role"]["bloque"] == true) {
             $data[$pers["email"]]["role"]["bloque"] = false;
             file_put_contents(
-                DATA_DIR . '/data.json',
+                "donnees/data.json",
                 json_encode($data, JSON_PRETTY_PRINT),
             );
             header("Location: admin.php");
@@ -100,7 +99,7 @@ foreach ($data as $pers) {
         } else {
             $data[$pers["email"]]["role"]["bloque"] = true;
             file_put_contents(
-                DATA_DIR . '/data.json',
+                "donnees/data.json",
                 json_encode($data, JSON_PRETTY_PRINT),
             );
             header("Location: admin.php");
@@ -111,7 +110,7 @@ foreach ($data as $pers) {
         if ($data[$pers["email"]]["role"]["restaurateur"] == false) {
             $data[$pers["email"]]["role"]["restaurateur"] = true;
             file_put_contents(
-                DATA_DIR . '/data.json',
+                "donnees/data.json",
                 json_encode($data, JSON_PRETTY_PRINT),
             );
             header("Location: admin.php");
@@ -119,7 +118,7 @@ foreach ($data as $pers) {
         } else {
             $data[$pers["email"]]["role"]["restaurateur"] = false;
             file_put_contents(
-                DATA_DIR . '/data.json',
+                "donnees/data.json",
                 json_encode($data, JSON_PRETTY_PRINT),
             );
             header("Location: admin.php");
@@ -130,7 +129,7 @@ foreach ($data as $pers) {
         if ($data[$pers["email"]]["role"]["admin"] == false) {
             $data[$pers["email"]]["role"]["admin"] = true;
             file_put_contents(
-                DATA_DIR . '/data.json',
+                "donnees/data.json",
                 json_encode($data, JSON_PRETTY_PRINT),
             );
             header("Location: admin.php");
@@ -138,7 +137,7 @@ foreach ($data as $pers) {
         } else {
             $data[$pers["email"]]["role"]["admin"] = false;
             file_put_contents(
-                DATA_DIR . '/data.json',
+                "donnees/data.json",
                 json_encode($data, JSON_PRETTY_PRINT),
             );
             header("Location: admin.php");
@@ -149,7 +148,7 @@ foreach ($data as $pers) {
         if ($data[$pers["email"]]["role"]["livreur"] == false) {
             $data[$pers["email"]]["role"]["livreur"] = true;
             file_put_contents(
-                DATA_DIR . '/data.json',
+                "donnees/data.json",
                 json_encode($data, JSON_PRETTY_PRINT),
             );
             header("Location: admin.php");
@@ -157,7 +156,7 @@ foreach ($data as $pers) {
         } else {
             $data[$pers["email"]]["role"]["livreur"] = false;
             file_put_contents(
-                DATA_DIR . '/data.json',
+                "donnees/data.json",
                 json_encode($data, JSON_PRETTY_PRINT),
             );
             header("Location: admin.php");
@@ -170,15 +169,15 @@ foreach ($data as $pers) {
         exit();
     }
     if (isset($_REQUEST["supprimer_" . $pers["numero_fidelite"]])) {
-        $commande_data = file_get_contents(DATA_DIR . '/commande.json');
+        $commande_data = file_get_contents("donnees/commande.json");
         $commande = json_decode($commande_data, true);
         $commande_passees_data = file_get_contents(
-            DATA_DIR . '/commande_passe.json',
+            "donnees/commande_passe.json",
         );
         $commande_passees = json_decode($commande_passees_data, true);
-        if (file_exists(DATA_DIR . '/client_spprimes.json')) {
+        if (file_exists("donnees/client_spprimes.json")) {
             $client_supp_end = json_decode(
-                file_get_contents(DATA_DIR . '/client_spprimes.json'),
+                file_get_contents("donnees/client_spprimes.json"),
                 true,
             );
         } else {
@@ -201,22 +200,22 @@ foreach ($data as $pers) {
             }
         }
         file_put_contents(
-            DATA_DIR . '/client_spprimes.json',
+            "donnees/client_spprimes.json",
             json_encode(
                 $client_supp_end,
                 JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE,
             ),
         );
         file_put_contents(
-            DATA_DIR . '/data.json',
+            "donnees/data.json",
             json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE),
         );
         file_put_contents(
-            DATA_DIR . '/commande.json',
+            "donnees/commande.json",
             json_encode($commande, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE),
         );
         file_put_contents(
-            DATA_DIR . '/commande_passe.json',
+            "donnees/commande_passe.json",
             json_encode(
                 $commande_passees,
                 JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE,

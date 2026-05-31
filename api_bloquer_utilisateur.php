@@ -1,5 +1,4 @@
 <?php
-require_once __DIR__ . '/config.php';
 header("Content-Type: application/json");
 
 if (!isset($_COOKIE["client"])) {
@@ -8,7 +7,7 @@ if (!isset($_COOKIE["client"])) {
 }
 
 $client = json_decode($_COOKIE["client"], true);
-$file = file_get_contents(DATA_DIR . '/data.json');
+$file = file_get_contents("donnees/data.json");
 $data = json_decode($file, true);
 
 if ($data[$client["email"]]["role"]["admin"] != true) {
@@ -30,7 +29,7 @@ $nouveau_statut = !$data[$email_a_bloquer]["role"]["bloque"];
 $data[$email_a_bloquer]["role"]["bloque"] = $nouveau_statut;
 
 file_put_contents(
-    DATA_DIR . '/data.json',
+    "donnees/data.json",
     json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE),
 );
 

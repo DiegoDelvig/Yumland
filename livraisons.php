@@ -1,5 +1,4 @@
 <?php
-require_once __DIR__ . '/config.php';
 error_reporting(0);
 if (!isset($_COOKIE["client"])) {
     header("Location: index.php");
@@ -7,7 +6,7 @@ if (!isset($_COOKIE["client"])) {
 }
 
 $client = json_decode($_COOKIE["client"], true);
-$file = file_get_contents(DATA_DIR . '/data.json');
+$file = file_get_contents("donnees/data.json");
 $data = json_decode($file, true);
 
 if (
@@ -19,9 +18,9 @@ if (
     exit();
 }
 $client = json_decode($_COOKIE["client"], true);
-$liste_client_data = file_get_contents(DATA_DIR . '/data.json');
+$liste_client_data = file_get_contents("donnees/data.json");
 $liste_client = json_decode($liste_client_data, true);
-$commande_data = file_get_contents(DATA_DIR . '/commande.json');
+$commande_data = file_get_contents("donnees/commande.json");
 $commande = json_decode($commande_data, true);
 
 if ($liste_client[$client["email"]]["role"]["livreur"] == false) {
@@ -96,7 +95,7 @@ function aff_num_cmd_sans_echo($num)
     }
 }
 if (isset($_REQUEST["button"])) {
-    $file_data = file_get_contents(DATA_DIR . '/commande_passe.json');
+    $file_data = file_get_contents("donnees/commande_passe.json");
     $file = json_decode($file_data, true);
     $mail = $cmd["mail"];
     $new_tab = [
@@ -108,16 +107,16 @@ if (isset($_REQUEST["button"])) {
     ];
     $file[$mail][aff_num_cmd_sans_echo($cmd["num"])] = $new_tab;
     file_put_contents(
-        DATA_DIR . '/data.json',
+        "donnees/data.json",
         json_encode($liste_client, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE),
     );
     unset($commande[aff_num_cmd_sans_echo($cmd["num"])]);
     file_put_contents(
-        DATA_DIR . '/commande_passe.json',
+        "donnees/commande_passe.json",
         json_encode($file, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE),
     );
     file_put_contents(
-        DATA_DIR . '/commande.json',
+        "donnees/commande.json",
         json_encode($commande, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE),
     );
     header("Location: livraisons.php");

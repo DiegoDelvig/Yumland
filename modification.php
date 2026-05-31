@@ -1,5 +1,4 @@
 <?php
-require_once __DIR__ . '/config.php';
 error_reporting(0);
 $client = json_decode($_COOKIE["client"], true);
 if (!isset($_COOKIE["client"])) {
@@ -8,7 +7,7 @@ if (!isset($_COOKIE["client"])) {
 }
 
 $client = json_decode($_COOKIE["client"], true);
-$file = file_get_contents(DATA_DIR . '/data.json');
+$file = file_get_contents("donnees/data.json");
 $data = json_decode($file, true);
 
 if (
@@ -26,7 +25,7 @@ if (
     empty($_REQUEST["ntel"])
 ) {
 } else {
-    $file = DATA_DIR . '/data.json';
+    $file = "donnees/data.json";
     if (file_exists($file)) {
         $client_passe = file_get_contents($file);
         $data = json_decode($client_passe, true);
@@ -55,7 +54,7 @@ if (
     ];
     $data[$client["email"]] = $new_user;
     file_put_contents(
-        DATA_DIR . '/data.json',
+        "donnees/data.json",
         json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE),
     );
     setcookie("client", json_encode($data[$client["email"]]), time() - 3600);
