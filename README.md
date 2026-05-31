@@ -265,10 +265,10 @@ Yumland/
 
 | Langage | Pourcentage |
 |---------|------------|
-| **PHP** | 62.4% |
-| **CSS** | 26.8% |
-| **JavaScript** | 10% |
-| **Hack** | 0.8% |
+| **PHP** | 67.9% |
+| **CSS** | 22.1% |
+| **JavaScript** | 9.4% |
+| **Other** | 0.6% |
 
 Le projet est principalement basé sur **PHP pour le backend** avec une interface **CSS/JavaScript** côté client pour une expérience utilisateur riche et interactive.
 
@@ -283,7 +283,7 @@ Le projet est principalement basé sur **PHP pour le backend** avec une interfac
 - **Google Maps API** : Navigation et itinéraires en temps réel
 
 ### Backend
-- **PHP** : Traitement serveur (62.4% du code)
+- **PHP** : Traitement serveur (67.9% du code)
 - **Sessions PHP** : Authentification et gestion utilisateur
 - **Cookies** : Persistance des sessions
 - **JSON** : Stockage des données (fichiers plats)
