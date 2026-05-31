@@ -14,7 +14,6 @@ if (isset($_COOKIE["client"])) {
     }
 }
 
-// Chargement des données
 $client = isset($_COOKIE["client"]) ? json_decode($_COOKIE["client"], true) : null;
 $mail = $client ? $client["email"] : null;
 
@@ -26,13 +25,10 @@ $menu = json_decode($menu_data, true);
 
 $file = file_get_contents("donnees/data.json");
 $data = json_decode($file, true);
-
-// Gestion de l'ajout au panier
 if (isset($_COOKIE["client"])) {
     $commande_data = file_get_contents("donnees/panier_$mail.json");
     $commande = json_decode($commande_data, true);
 
-    // Ajout d'un plat
     foreach ($plat as $index => $detail) {
         $btn_name = "btn_plus_" . str_replace(" ", "_", $index);
         
@@ -112,7 +108,6 @@ if (isset($_COOKIE["client"])) {
             let isCroissant = document.querySelector("input[name='croissant']").checked;
             let isDecroissant = document.querySelector("input[name='decroissant']").checked;
 
-            // 1. Filtrage classique (masquage)
             for (let filtre of filtres) {
                 let nomFiltre = filtre.name;
 
@@ -146,7 +141,6 @@ if (isset($_COOKIE["client"])) {
                 }
             }
 
-            // 2. Logique de tri par prix
             function extrairePrix(element) {
                 let textePrix = element.querySelector(".prix").innerText;
                 textePrix = textePrix.replace("€", "").replace(/\s/g, "").replace(",", ".");
@@ -177,7 +171,6 @@ if (isset($_COOKIE["client"])) {
                 });
             }
 
-            // Cases Croissant/Décroissant exclusives
             const cbCroissant = document.querySelector("input[name='croissant']");
             const cbDecroissant = document.querySelector("input[name='decroissant']");
 
