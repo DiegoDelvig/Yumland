@@ -6,8 +6,21 @@ Plateforme de commande en ligne de croquettes premium pour chiens, avec gestion 
 
 ---
 
+## ⚡ 🚀 DÉMARRAGE RAPIDE (TRÈS IMPORTANT) 🚀 ⚡
+
+### Pour lancer le projet en local, exécutez simplement :
+
+```bash
+./start-local.sh
+```
+
+**C'est tout ce que vous devez faire pour démarrer l'application !**
+
+---
+
 ## 📋 Table des matières
 
+- [Démarrage Rapide](#-démarrage-rapide-très-important--)
 - [À propos](#-à-propos)
 - [Caractéristiques](#-caractéristiques)
 - [Architecture](#-architecture)
