@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/config.php';
 error_reporting(0);
 if (!isset($_COOKIE["client"])) {
     header("Location: index.php");
@@ -6,7 +7,7 @@ if (!isset($_COOKIE["client"])) {
 }
 
 $client = json_decode($_COOKIE["client"], true);
-$file = file_get_contents("donnees/data.json");
+$file = file_get_contents(DATA_DIR . '/data.json');
 $data = json_decode($file, true);
 
 if (
@@ -19,11 +20,11 @@ if (
 }
 $client = json_decode($_COOKIE["client"], true);
 $mail = $client["email"];
-$file = file_get_contents("donnees/data.json");
+$file = file_get_contents(DATA_DIR . '/data.json');
 $data = json_decode($file, true);
-$commande_data = file_get_contents("donnees/commande_passe.json");
+$commande_data = file_get_contents(DATA_DIR . '/commande_passe.json');
 $commande = json_decode($commande_data, true);
-$plat_data = file_get_contents("donnees/plat.json");
+$plat_data = file_get_contents(DATA_DIR . '/plat.json');
 $pla = json_decode($plat_data, true);
 foreach ($commande[$mail] as $id => $cmd_client) {
     if ($cmd_client["note"]["etat"] == false) {
@@ -32,7 +33,7 @@ foreach ($commande[$mail] as $id => $cmd_client) {
     } elseif ($cmd_client["note"]["note"] == 0) {
         $commande[$mail][$id]["note"]["etat"] = false;
         file_put_contents(
-            "donnees/commande_passe.json",
+            DATA_DIR . '/commande_passe.json',
             json_encode($commande, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE),
         );
         header("Location: notation.php");
@@ -76,7 +77,7 @@ if (isset($_REQUEST["submit_btn"])) {
     }
     $commande[$mail][$id_cmd]["note"]["etat"] = true;
     file_put_contents(
-        "donnees/commande_passe.json",
+        DATA_DIR . '/commande_passe.json',
         json_encode($commande, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE),
     );
     header("Location: profil.php");

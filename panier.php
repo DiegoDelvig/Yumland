@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/config.php';
 error_reporting(0);
 
 if (!isset($_COOKIE["client"])) {
@@ -7,7 +8,7 @@ if (!isset($_COOKIE["client"])) {
 }
 
 $client = json_decode($_COOKIE["client"], true);
-$file = file_get_contents("donnees/data.json");
+$file = file_get_contents(DATA_DIR . '/data.json');
 $data = json_decode($file, true);
 
 if (
@@ -20,18 +21,18 @@ if (
 }
 
 $client = json_decode($_COOKIE["client"], true);
-$file = file_get_contents("donnees/data.json");
+$file = file_get_contents(DATA_DIR . '/data.json');
 $data = json_decode($file, true);
 
 $client = json_decode($_COOKIE["client"], true);
 $mail = $client["email"];
-$file = file_get_contents("donnees/data.json");
+$file = file_get_contents(DATA_DIR . '/data.json');
 $data = json_decode($file, true);
-$commande_data = file_get_contents("donnees/panier_$mail.json");
+$commande_data = file_get_contents(DATA_DIR . '/panier_' . $mail . '.json');
 $commande = json_decode($commande_data, true);
-$plat_data = file_get_contents("donnees/plat.json");
+$plat_data = file_get_contents(DATA_DIR . '/plat.json');
 $plat = json_decode($plat_data, true);
-$menu_data = file_get_contents("donnees/menu.json");
+$menu_data = file_get_contents(DATA_DIR . '/menu.json');
 $menu_dispo = json_decode($menu_data, true);
 
 foreach ($commande["plats"] as $id => $detail) {
@@ -40,7 +41,7 @@ foreach ($commande["plats"] as $id => $detail) {
             $commande["total"] - $detail["prix"] * $detail["quantite"];
         unset($commande["plats"][$id]);
         file_put_contents(
-            "donnees/panier_$mail.json",
+            DATA_DIR . '/panier_' . $mail . '.json',
             json_encode($commande, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE),
         );
         header("Location: panier.php");
@@ -49,7 +50,7 @@ foreach ($commande["plats"] as $id => $detail) {
         $commande["total"] = round($commande["total"] + $detail["prix"], 2);
         $commande["plats"][$id]["quantite"]++;
         file_put_contents(
-            "donnees/panier_$mail.json",
+            DATA_DIR . '/panier_' . $mail . '.json',
             json_encode($commande, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE),
         );
         header("Location: panier.php");
@@ -59,7 +60,7 @@ foreach ($commande["plats"] as $id => $detail) {
             $commande["total"] = round($commande["total"] - $detail["prix"], 2);
             $commande["plats"][$id]["quantite"]--;
             file_put_contents(
-                "donnees/panier_$mail.json",
+                DATA_DIR . '/panier_' . $mail . '.json',
                 json_encode(
                     $commande,
                     JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE,
@@ -76,7 +77,7 @@ foreach ($commande["menus"] as $id_m => $detail_m) {
             $commande["total"] - $detail_m["prix"] * $detail_m["quantite"];
         unset($commande["menus"][$id_m]);
         file_put_contents(
-            "donnees/panier_$mail.json",
+            DATA_DIR . '/panier_' . $mail . '.json',
             json_encode($commande, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE),
         );
         header("Location: panier.php");
@@ -85,7 +86,7 @@ foreach ($commande["menus"] as $id_m => $detail_m) {
         $commande["total"] = round($commande["total"] + $detail_m["prix"], 2);
         $commande["menus"][$id_m]["quantite"]++;
         file_put_contents(
-            "donnees/panier_$mail.json",
+            DATA_DIR . '/panier_' . $mail . '.json',
             json_encode($commande, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE),
         );
         header("Location: panier.php");
@@ -98,7 +99,7 @@ foreach ($commande["menus"] as $id_m => $detail_m) {
             );
             $commande["menus"][$id_m]["quantite"]--;
             file_put_contents(
-                "donnees/panier_$mail.json",
+                DATA_DIR . '/panier_' . $mail . '.json',
                 json_encode(
                     $commande,
                     JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE,
@@ -117,7 +118,7 @@ if (isset($_REQUEST["mode_temps"])) {
             ? $_REQUEST["date_prevue"]
             : "maintenant";
     file_put_contents(
-        "donnees/panier_$mail.json",
+        DATA_DIR . '/panier_' . $mail . '.json',
         json_encode($commande, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE),
     );
 }
@@ -129,7 +130,7 @@ if ($data[$client["email"]]["point_fidelite"] > 299) {
 }
 
 file_put_contents(
-    "donnees/panier_$mail.json",
+    DATA_DIR . '/panier_' . $mail . '.json',
     json_encode($commande, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE),
 );
 

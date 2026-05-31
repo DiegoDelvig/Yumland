@@ -1,9 +1,10 @@
 <?php 
     error_reporting(0);
-    if(empty($_REQUEST['nemail'])){
-    }
-    else{
-        $file= "donnees/data.json";
+    require_once __DIR__ . '/config.php';
+        if(empty($_REQUEST['nemail'])){
+        }
+        else{
+            $file= DATA_DIR . '/data.json';
         if(file_exists($file)){
             $data=file_get_contents($file);
             $data=json_decode($data, true);
@@ -11,8 +12,8 @@
             if(isset($data[$mail])){
                 $mdp=$_REQUEST['ncode'];
                 if(password_verify($mdp, $data[$mail]['code']) && $data[$mail]['role']['bloque']!=true){
-                    if(!file_exists("donnees/panier_$mail.json")){
-                        $panier_passe_data =file_get_contents("donnees/panier.json");
+                    if(!file_exists(DATA_DIR . '/panier_' . $mail . '.json')){
+                        $panier_passe_data =file_get_contents(DATA_DIR . '/panier.json');
                         $panier_passe = json_decode($panier_passe_data, true); 
                         if(isset($panier_passe[$mail])){
                             $panier=$panier_passe[$mail];
@@ -20,7 +21,7 @@
                         else{
                             $panier=array("total"=>0, "reduction"=>false);
                         }
-                        $panier_data="donnees/panier_$mail.json";
+                        $panier_data=DATA_DIR . '/panier_' . $mail . '.json';
                         file_put_contents($panier_data, json_encode($panier, JSON_PRETTY_PRINT));
                     }
                     setcookie("client", json_encode($data[$mail]), time()+3600);

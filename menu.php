@@ -1,10 +1,11 @@
 <?php
+require_once __DIR__ . '/config.php';
 error_reporting(0);
 
 // On vérifie le blocage UNIQUEMENT si l'utilisateur est connecté
 if (isset($_COOKIE["client"])) {
     $client = json_decode($_COOKIE["client"], true);
-    $file = file_get_contents("donnees/data.json");
+    $file = file_get_contents(DATA_DIR . '/data.json');
     $data = json_decode($file, true);
 
     if (
@@ -19,15 +20,15 @@ if (isset($_COOKIE["client"])) {
 
 $client = json_decode($_COOKIE["client"], true);
 $mail = $client["email"];
-$plat_data = file_get_contents("donnees/plat.json");
+$plat_data = file_get_contents(DATA_DIR . '/plat.json');
 $plat = json_decode($plat_data, true);
-$menu_data = file_get_contents("donnees/menu.json");
+$menu_data = file_get_contents(DATA_DIR . '/menu.json');
 $menu = json_decode($menu_data, true);
-$file = file_get_contents("donnees/data.json");
+$file = file_get_contents(DATA_DIR . '/data.json');
 $data = json_decode($file, true);
 
 if (isset($_COOKIE["client"])) {
-    $commande_data = file_get_contents("donnees/panier_$mail.json");
+    $commande_data = file_get_contents(DATA_DIR . '/panier_' . $mail . '.json');
     $commande = json_decode($commande_data, true);
     foreach ($plat as $index => $detail) {
         if (isset($_REQUEST["btn_plus_" . str_replace(" ", "_", $index)])) {
@@ -40,7 +41,7 @@ if (isset($_COOKIE["client"])) {
                 $commande["plats"][$index]["name"] = $detail["name"];
             }
             file_put_contents(
-                "donnees/panier_$mail.json",
+                DATA_DIR . '/panier_' . $mail . '.json',
                 json_encode(
                     $commande,
                     JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE,
@@ -66,7 +67,7 @@ if (isset($_COOKIE["client"])) {
                 ];
             }
             file_put_contents(
-                "donnees/panier_$mail.json",
+                DATA_DIR . '/panier_' . $mail . '.json',
                 json_encode(
                     $commande,
                     JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE,
@@ -186,7 +187,7 @@ if (isset($_COOKIE["client"])) {
     <form method="POST" action="menu.php">
         <div class="grille-menus">
             <?php
-            $menu_data = file_get_contents("donnees/menu.json");
+            $menu_data = file_get_contents(DATA_DIR . '/menu.json');
             $menu = json_decode($menu_data, true);
 
             foreach ($menu as $cle => $detail_menu) { ?>

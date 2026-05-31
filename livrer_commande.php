@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/config.php';
 error_reporting(0);
 if (!isset($_COOKIE["client"])) {
     header("Location: index.php");
@@ -6,7 +7,7 @@ if (!isset($_COOKIE["client"])) {
 }
 
 $client = json_decode($_COOKIE["client"], true);
-$file = file_get_contents("donnees/data.json");
+$file = file_get_contents(DATA_DIR . '/data.json');
 $data = json_decode($file, true);
 
 if (
@@ -17,10 +18,10 @@ if (
     header("Location: index.php?msg=bloque");
     exit();
 }
-$commande_data = file_get_contents("donnees/commande.json");
+$commande_data = file_get_contents(DATA_DIR . '/commande.json');
 $commande = json_decode($commande_data, true);
 
-$commande_passe_data = file_get_contents("donnees/commande_passe.json");
+$commande_passe_data = file_get_contents(DATA_DIR . '/commande_passe.json');
 $commande_passe = json_decode($commande_passe_data, true);
 
 function aff_num_cmd_sans_echo($num)
@@ -65,14 +66,14 @@ if ($cmd != null) {
     unset($commande[aff_num_cmd_sans_echo($cmd["num"])]);
 
     file_put_contents(
-        "donnees/commande_passe.json",
+        DATA_DIR . '/commande_passe.json',
         json_encode(
             $commande_passe,
             JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE,
         ),
     );
     file_put_contents(
-        "donnees/commande.json",
+        DATA_DIR . '/commande.json',
         json_encode($commande, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE),
     );
 

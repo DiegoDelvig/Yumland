@@ -1,4 +1,5 @@
 <?php 
+require_once __DIR__ . '/config.php';
     error_reporting(0);
     if(!isset($_COOKIE["client"])){
         header("Location: index.php");
@@ -6,15 +7,15 @@
     }
     $client=json_decode($_COOKIE["client"], true);
     $mail=$client['email'];   
-    $file=file_get_contents("donnees/data.json");
+    $file=file_get_contents(DATA_DIR . '/data.json');
     $data=json_decode($file, true);
-    $commande_data =file_get_contents("donnees/panier_$mail.json");
+    $commande_data =file_get_contents(DATA_DIR . '/panier_' . $mail . '.json');
     $commande = json_decode($commande_data, true); 
-    $cmd_data=file_get_contents("donnees/commande_passe.json");
+    $cmd_data=file_get_contents(DATA_DIR . '/commande_passe.json');
     $cmd=json_decode($cmd_data, true);
-    $new_cmd_data=file_get_contents("donnees/commande.json");
+    $new_cmd_data=file_get_contents(DATA_DIR . '/commande.json');
     $new_cmd=json_decode($new_cmd_data, true);
-    $panier_data=file_get_contents("donnees/panier.json");
+    $panier_data=file_get_contents(DATA_DIR . '/panier.json');
     $panier=json_decode($panier_data, true);
     function aff_num_cmd($num){
         if($num<10){
@@ -94,11 +95,11 @@
         foreach($new_cmd[aff_num_cmd($num)]['menus'] as $id => $name){
             $new_cmd[aff_num_cmd($num)]['menus'][$id]['note'] = 0;
         }
-        file_put_contents("donnees/data.json", json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
-        file_put_contents("donnees/commande.json", json_encode($new_cmd, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
-        unlink("donnees/panier_$mail.json");
+        file_put_contents(DATA_DIR . '/data.json', json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+        file_put_contents(DATA_DIR . '/commande.json', json_encode($new_cmd, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+        unlink(DATA_DIR . '/panier_' . $mail . '.json');
         unset($panier[$mail]);
-        file_put_contents("donnees/panier.json", json_encode($panier, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+        file_put_contents(DATA_DIR . '/panier.json', json_encode($panier, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
         header("Location: confirmation.php");
         exit;
     }

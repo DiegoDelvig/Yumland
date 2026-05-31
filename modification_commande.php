@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/config.php';
 session_start();
 error_reporting(0);
 if (!isset($_COOKIE["client"])) {
@@ -7,7 +8,7 @@ if (!isset($_COOKIE["client"])) {
 }
 
 $client = json_decode($_COOKIE["client"], true);
-$file = file_get_contents("donnees/data.json");
+$file = file_get_contents(DATA_DIR . '/data.json');
 $data = json_decode($file, true);
 
 if (
@@ -21,7 +22,7 @@ if (
 
 $client = json_decode($_COOKIE["client"], true);
 $mail = $client["email"];
-$file = file_get_contents("donnees/data.json");
+$file = file_get_contents(DATA_DIR . '/data.json');
 $data = json_decode($file, true);
 
 $id_cmd_actuelle = isset($_REQUEST["cmd"]) ? $_REQUEST["cmd"] : "";
@@ -38,13 +39,13 @@ if (isset($_POST["valider_modification_negative"])) {
         $data[$mail]["point_fidelite"] += $points_compensation;
 
         file_put_contents(
-            "donnees/data.json",
+            DATA_DIR . '/data.json',
             json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE),
         );
         setcookie("client", json_encode($data[$mail]), time() + 3600);
     }
 
-    $commande_data = file_get_contents("donnees/commande.json");
+    $commande_data = file_get_contents(DATA_DIR . '/commande.json');
     $cmd_temp = json_decode($commande_data, true);
 
     if (
@@ -53,7 +54,7 @@ if (isset($_POST["valider_modification_negative"])) {
     ) {
         unset($cmd_temp[$id_cmd_actuelle]);
         file_put_contents(
-            "donnees/commande.json",
+            DATA_DIR . '/commande.json',
             json_encode($cmd_temp, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE),
         );
     }
@@ -63,7 +64,7 @@ if (isset($_POST["valider_modification_negative"])) {
     exit();
 }
 
-$commande_data = file_get_contents("donnees/commande.json");
+$commande_data = file_get_contents(DATA_DIR . '/commande.json');
 $commande = json_decode($commande_data, true);
 $cmd_total = $commande;
 
@@ -90,9 +91,9 @@ if (!isset($_SESSION["montant_initial_" . $id_cmd_actuelle])) {
 
 $ma_commande = $commande[$id_cmd_actuelle];
 
-$plat_data = file_get_contents("donnees/plat.json");
+$plat_data = file_get_contents(DATA_DIR . '/plat.json');
 $plat = json_decode($plat_data, true);
-$menu_data = file_get_contents("donnees/menu.json");
+$menu_data = file_get_contents(DATA_DIR . '/menu.json');
 $menu_dispo = json_decode($menu_data, true);
 
 if (isset($ma_commande["plats"])) {
@@ -105,7 +106,7 @@ if (isset($ma_commande["plats"])) {
             );
             unset($cmd_total[$id_cmd_actuelle]["plats"][$id]);
             file_put_contents(
-                "donnees/commande.json",
+                DATA_DIR . '/commande.json',
                 json_encode(
                     $cmd_total,
                     JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE,
@@ -122,7 +123,7 @@ if (isset($ma_commande["plats"])) {
             );
             $cmd_total[$id_cmd_actuelle]["plats"][$id]["quantite"]++;
             file_put_contents(
-                "donnees/commande.json",
+                DATA_DIR . '/commande.json',
                 json_encode(
                     $cmd_total,
                     JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE,
@@ -140,7 +141,7 @@ if (isset($ma_commande["plats"])) {
                 );
                 $cmd_total[$id_cmd_actuelle]["plats"][$id]["quantite"]--;
                 file_put_contents(
-                    "donnees/commande.json",
+                    DATA_DIR . '/commande.json',
                     json_encode(
                         $cmd_total,
                         JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE,
@@ -166,7 +167,7 @@ if (isset($ma_commande["menus"])) {
             );
             unset($cmd_total[$id_cmd_actuelle]["menus"][$id_m]);
             file_put_contents(
-                "donnees/commande.json",
+                DATA_DIR . '/commande.json',
                 json_encode(
                     $cmd_total,
                     JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE,
@@ -185,7 +186,7 @@ if (isset($ma_commande["menus"])) {
             );
             $cmd_total[$id_cmd_actuelle]["menus"][$id_m]["quantite"]++;
             file_put_contents(
-                "donnees/commande.json",
+                DATA_DIR . '/commande.json',
                 json_encode(
                     $cmd_total,
                     JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE,
@@ -203,7 +204,7 @@ if (isset($ma_commande["menus"])) {
                 );
                 $cmd_total[$id_cmd_actuelle]["menus"][$id_m]["quantite"]--;
                 file_put_contents(
-                    "donnees/commande.json",
+                    DATA_DIR . '/commande.json',
                     json_encode(
                         $cmd_total,
                         JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE,
@@ -226,7 +227,7 @@ if (isset($_REQUEST["mode_temps"])) {
             ? $_REQUEST["date_prevue"]
             : "maintenant";
     file_put_contents(
-        "donnees/commande.json",
+        DATA_DIR . '/commande.json',
         json_encode($cmd_total, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE),
     );
 }

@@ -1,4 +1,5 @@
-<?php 
+<?php
+require_once __DIR__ . '/config.php';
     error_reporting(0);
     $message = "";
     $error = "";
@@ -16,8 +17,8 @@
         if ($missing) {
             $error = "Veuillez remplir tous les champs obligatoires.";
         } else {
-            $file = "donnees/data.json";
-            $commande = "donnees/commande.json";
+            $file = DATA_DIR . '/data.json';
+            $commande = DATA_DIR . '/commande.json';
             
             // Charger les clients 
             if (file_exists($file)) {
@@ -70,8 +71,8 @@
                     $data_commande[$email] = (object) [];
 
                     // Sauv. les fichiers
-                    $sauv1 = file_put_contents("donnees/data.json", json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
-                    $sauv2 = file_put_contents("donnees/commande.json", json_encode($data_commande, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+                    $sauv1 = file_put_contents(DATA_DIR . '/data.json', json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+                    $sauv2 = file_put_contents(DATA_DIR . '/commande.json', json_encode($data_commande, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
                     
                     if ($sauv1 === false || $sauv2 === false) {
                         $error = "Une erreur est survenue lors de l'enregistrement. Veuillez réessayer.";
@@ -99,7 +100,7 @@
         <script src="js/validation.js" defer></script>
         <script src="js/inscription.js" defer></script>
         <title>Inscription - Les Croquettes du Chef</title>
-        
+
     </head>
     <body>
         <header>
@@ -126,7 +127,7 @@
         <form action="" method="post" target="_top" id="formulaire" name="connexion">
             <div class="rect_bleu">
                 <img class="logo_login" src="assets/Logo projet.png" alt="logo de notre site de vente">
-                
+
                 <input type="text" name="nname" id="idname" class="login_case_name" placeholder="   Prénom" maxlength="50">
                 <span class="compteur" id="compteur_idname">0 / 50 caractères</span>
                 <span class="erreur_champ" id="erreur_idname"></span>
@@ -169,13 +170,3 @@
     </footer>
     </body>
 </html>
-
-
-
-
-
-
-
-
-
-
