@@ -20,7 +20,7 @@ if (isset($_SESSION['admin'])) {
     header("Location: admin.php");
     exit();
 }
-$client = $_SESSION["client"]
+$client = $_SESSION["client"];
 $file = file_get_contents("donnees/data.json");
 $data = json_decode($file, true);
 
