@@ -31,6 +31,8 @@ if(file_exists("donnees/panier_$mail.json")){
 
 session_unset();
 session_destroy();
+// Clear the legacy client cookie as well
+setcookie("client", "", time() - 3600, "/");
 
 header("Location: index.php");
 exit;

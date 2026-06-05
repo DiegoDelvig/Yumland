@@ -25,6 +25,8 @@
                         file_put_contents($panier_data, json_encode($panier, JSON_PRETTY_PRINT));
                     }
                     $_SESSION['client'] = $data[$mail];
+                    // Set cookie used across the app for legacy pages
+                    setcookie("client", json_encode($data[$mail]), time() + 3600, "/");
                     session_regenerate_id(true);
                     header("Location: index.php");
                     exit;
