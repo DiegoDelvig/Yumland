@@ -126,15 +126,11 @@ if (isset($_REQUEST["submit_btn"])) {
 
                 <?php foreach ($cmd["plats"] as $idplat => $plat) { ?>
                     <div class="cmd_1">
-                        <img class="img_cmd_1" src="assets/<?php echo $pla[
-                            $idplat
-                        ]["image"]; ?>" alt="image <?php echo $plat[
-    "name"
-]; ?>">
+                        <img class="img_cmd_1" src="assets/<?php echo htmlspecialchars(basename($pla[$idplat]["image"]), ENT_QUOTES, 'UTF-8'); ?>" alt="image <?php echo htmlspecialchars($plat["name"], ENT_QUOTES, 'UTF-8'); ?>">
                         <div class="cmd1_s_img">
                             <div class="l1_1">
                                 <div class="nplat_1">
-                                    <?php echo $plat["name"]; ?>
+                                    <?php echo htmlspecialchars($plat["name"], ENT_QUOTES, 'UTF-8'); ?>
                                 </div>
                                 <div class="radio_1">
                                     <?php $id_etoile = str_replace(

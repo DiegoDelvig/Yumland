@@ -39,7 +39,7 @@ function aff_num_cmd_ou_fidelite($num, $cmd_ou_fidelite)
         } elseif ($num < 1000) {
             echo "0" . $num;
         } else {
-            echo $num;
+            echo htmlspecialchars($num, ENT_QUOTES, 'UTF-8');
         }
     } else {
         if ($num < 10) {
@@ -57,7 +57,7 @@ function aff_num_cmd_ou_fidelite($num, $cmd_ou_fidelite)
         } elseif ($num < 100000000) {
             echo "0" . $num;
         } else {
-            echo $num;
+            echo htmlspecialchars($num, ENT_QUOTES, 'UTF-8');
         }
     }
 }
@@ -195,7 +195,7 @@ if (!empty($commande)) {
 
             <section class="colonne-commandes a-preparer">
                 <div class="en-tete-colonne">
-                    <h2>🔥 À Préparer (<?php echo $nb_cmd_cuisine; ?>)</h2>
+                    <h2>🔥 À Préparer (<?php echo htmlspecialchars($nb_cmd_cuisine); ?>)</h2>
                 </div>
                 <div class="liste-commandes">
                     <?php
@@ -214,18 +214,18 @@ if (!empty($commande)) {
                                             echo "timer";
                                         } else {
                                             echo "timer alert";
-                                        } ?>">🕒 <?php echo $detail[
+                                        } ?>">🕒 <?php echo htmlspecialchars($detail[
     "temps"
-]; ?> min</span>
+]); ?> min</span>
                                     </div>
                                     <div class="infos-client">
-                                        <strong>Client : </strong><?php echo $liste_client[
+                                        <strong>Client : </strong><?php echo htmlspecialchars($liste_client[
                                             $detail["mail"]
                                         ]["name"] .
                                             " " .
                                             $liste_client[$detail["mail"]][
                                                 "fname"
-                                            ]; ?>
+                                            ]); ?>
                                     </div>
                                     <ul class="liste-articles">
                                         <?php foreach (
@@ -239,9 +239,9 @@ if (!empty($commande)) {
                                                 continue;
                                             } ?>
                                             <li>
-                                                <?php echo $plat["quantite"] .
+                                                <?php echo htmlspecialchars($plat["quantite"] .
                                                     "x " .
-                                                    $plat["name"]; ?>
+                                                    $plat["name"]); ?>
                                             </li>
                                         <?php
                                         } ?>
@@ -256,9 +256,9 @@ if (!empty($commande)) {
                                                 continue;
                                             } ?>
                                             <li>
-                                                <?php echo $plat["quantite"] .
+                                                <?php echo htmlspecialchars($plat["quantite"] .
                                                     "x " .
-                                                    $plat["name"]; ?>
+                                                    $plat["name"], ENT_QUOTES, 'UTF-8'); ?>
                                             </li>
                                         <?php
                                         } ?>
@@ -286,7 +286,7 @@ if (!empty($commande)) {
                                                             $livreurs
                                                             as $email => $nom
                                                         ): ?>
-                                                            <option value="<?php echo $email; ?>"
+                                                            <option value="<?php echo htmlspecialchars($email, ENT_QUOTES, 'UTF-8'); ?>"
                                                                 <?php if (
                                                                     $detail[
                                                                         "livreur"
@@ -294,7 +294,7 @@ if (!empty($commande)) {
                                                                 ) {
                                                                     echo "selected";
                                                                 } ?>>
-                                                                    <?php echo $nom; ?>
+                                                                    <?php echo htmlspecialchars($nom, ENT_QUOTES, 'UTF-8'); ?>
                                                                 </option>
                                                             <?php endforeach; ?>
                                                         </select>
@@ -339,18 +339,10 @@ if (!empty($commande)) {
                                         <span class="status-badge">🛵 En route</span>
                                     </div>
                                     <div class="infos-client">
-                                        <strong>Livreur : </strong><?php echo $liste_client[
-                                            $detail["livreur"]
-                                        ]["name"] .
-                                            " " .
-                                            $liste_client[$detail["livreur"]][
-                                                "fname"
-                                            ]; ?>
+                                        <strong>Livreur : </strong><?php echo htmlspecialchars($liste_client[$detail["livreur"]]["name"] . " " . $liste_client[$detail["livreur"]]["fname"], ENT_QUOTES, 'UTF-8'); ?>
                                     </div>
                                     <div class="adresse-livraison">
-                                        📍 <?php echo $liste_client[
-                                            $detail["mail"]
-                                        ]["adr"]; ?>
+                                        📍 <?php echo htmlspecialchars($liste_client[$detail["mail"]]["adr"], ENT_QUOTES, 'UTF-8'); ?>
                                     </div>
                                     <div class="actions-commande">
                                         <button name="<?php aff_num_cmd_ou_fidelite(

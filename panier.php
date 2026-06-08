@@ -200,13 +200,9 @@ function conjugaison($sing, $plur, $val)
             <section class="contenu-profil">
                 <?php foreach ($commande["plats"] as $id => $detail) { ?>
                     <div class="carte-info">
-                        <img class="img_cmd" src="assets/<?php echo $plat[$id][
-                            "image"
-                        ]; ?>" alt="">
+                        <img class="img_cmd" src="assets/<?php echo htmlspecialchars(basename($plat[$id]["image"]), ENT_QUOTES, 'UTF-8'); ?>" alt="">
                         <div class="clm_1">
-                            <h2 class="name"><?php echo $plat[$id][
-                                "name"
-                            ]; ?></h2>
+                            <h2 class="name"><?php echo htmlspecialchars($plat[$id]["name"], ENT_QUOTES, 'UTF-8'); ?></h2>
                             <p class="name"><small>Plat individuel</small></p>
                         </div>
                         <div class="clm_2">
@@ -249,9 +245,7 @@ function conjugaison($sing, $plur, $val)
                     foreach ($commande["menus"] as $id_m => $detail_m) { ?>
                         <div class="carte-info">
                             <div class="clm_1">
-                                <h2 class="name">🎁 <?php echo $detail_m[
-                                    "name"
-                                ]; ?></h2>
+                                <h2 class="name">🎁 <?php echo htmlspecialchars($detail_m["name"], ENT_QUOTES, 'UTF-8'); ?></h2>
                                 <p class="name"><small>
                                     <?php if (
                                         isset($detail_m["plats"]) &&
@@ -261,8 +255,8 @@ function conjugaison($sing, $plur, $val)
                                             $plat,
                                         ) {
                                             return isset($plat[$p])
-                                                ? $plat[$p]["name"]
-                                                : ucfirst($p);
+                                                ? htmlspecialchars($plat[$p]["name"], ENT_QUOTES, 'UTF-8')
+                                                : htmlspecialchars(ucfirst($p), ENT_QUOTES, 'UTF-8');
                                         }, $detail_m["plats"]);
                                         echo implode(", ", $noms);
                                     } else {
@@ -327,7 +321,7 @@ function conjugaison($sing, $plur, $val)
 
                     <?php foreach ($commande["plats"] as $id => $detail) { ?>
                         <div class="commande">
-                            <p><?php echo $detail["name"] .
+                            <p><?php echo htmlspecialchars($detail["name"], ENT_QUOTES, 'UTF-8') .
                                 " x" .
                                 $detail["quantite"]; ?></p>
                             <p class="prix_recap"><?php echo number_format(
@@ -342,7 +336,7 @@ function conjugaison($sing, $plur, $val)
                     <?php if (isset($commande["menus"])) {
                         foreach ($commande["menus"] as $id_m => $detail_m) { ?>
                             <div class="commande">
-                                <p><?php echo $detail_m["name"] .
+                                <p><?php echo htmlspecialchars($detail_m["name"], ENT_QUOTES, 'UTF-8') .
                                     " x" .
                                     $detail_m["quantite"]; ?></p>
                                 <p class="prix_recap"><?php echo number_format(
@@ -378,11 +372,11 @@ function conjugaison($sing, $plur, $val)
                     </div>
 
                     <form action='https://www.plateforme-smc.fr/cybank/index.php' method='POST'>
-                        <input type='hidden' name='transaction' value='<?php echo $transac; ?>'>
-                        <input type='hidden' name='montant' value='<?php echo $montant; ?>'>
-                        <input type='hidden' name='vendeur' value='<?php echo $vendeur; ?>'>
-                        <input type='hidden' name='retour' value='<?php echo $retour; ?>'>
-                        <input type='hidden' name='control' value='<?php echo $control; ?>'>
+                        <input type='hidden' name='transaction' value='<?php echo htmlspecialchars($transac, ENT_QUOTES, 'UTF-8'); ?>'>
+                        <input type='hidden' name='montant' value='<?php echo htmlspecialchars($montant, ENT_QUOTES, 'UTF-8'); ?>'>
+                        <input type='hidden' name='vendeur' value='<?php echo htmlspecialchars($vendeur, ENT_QUOTES, 'UTF-8'); ?>'>
+                        <input type='hidden' name='retour' value='<?php echo htmlspecialchars($retour, ENT_QUOTES, 'UTF-8'); ?>'>
+                        <input type='hidden' name='control' value='<?php echo htmlspecialchars($control, ENT_QUOTES, 'UTF-8'); ?>'>
                         <input class="bouton-recommande" type='submit' value="Paiement">
                     </form>
                 </div>

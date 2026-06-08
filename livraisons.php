@@ -175,26 +175,17 @@ if (isset($_REQUEST["button"])) {
                     1,
                 ); ?></h3>
                 <div class="bloc-blanc">
-                    <p><u>ADRESSE</u> : <b><?php echo strtoupper(
-                        $liste_client[$cmd["mail"]]["adr"],
-                    ); ?></b></p>
-                    <p><u>NOM</u> : <b><?php echo strtoupper(
-                        $liste_client[$cmd["mail"]]["fname"],
-                    ); ?></b></p>
-                    <p><u>PRÉNOM</u> : <b><?php echo strtoupper(
-                        $liste_client[$cmd["mail"]]["name"],
-                    ); ?></b></p>
-                    <p><u>MAIL</u> : <b><?php echo $liste_client[$cmd["mail"]][
+                    <p><u>ADRESSE</u> : <b><?php echo strtoupper(htmlspecialchars($liste_client[$cmd["mail"]]["adr"], ENT_QUOTES, 'UTF-8')); ?></b></p>
+                    <p><u>NOM</u> : <b><?php echo strtoupper(htmlspecialchars($liste_client[$cmd["mail"]]["fname"], ENT_QUOTES, 'UTF-8')); ?></b></p>
+                    <p><u>PRÉNOM</u> : <b><?php echo strtoupper(htmlspecialchars($liste_client[$cmd["mail"]]["name"], ENT_QUOTES, 'UTF-8')); ?></b></p>
+                    <p><u>MAIL</u> : <b><?php echo htmlspecialchars($liste_client[$cmd["mail"]][
                         "email"
-                    ]; ?></b></p>
-                    <p><u><?php echo "TELEPHONE"; ?></u> : <b><?php echo strtoupper(
-    $liste_client[$cmd["mail"]]["tel"],
-); ?></b></p>
+                    ], ENT_QUOTES, 'UTF-8'); ?></b></p>
+                    <p><u><?php echo "TELEPHONE"; ?></u> : <b><?php echo strtoupper(htmlspecialchars($liste_client[$cmd["mail"]]["tel"], ENT_QUOTES, 'UTF-8')); ?></b></p>
                     <?php if (
                         $liste_client[$cmd["mail"]]["infocomp"] != ""
                     ) { ?>
-                        <p><u>INFORMATION COMPLEMENTAIRE</u> :<b><?php echo " " .
-                            $liste_client[$cmd["mail"]]["infocomp"]; ?></b></p>
+                        <p><u>INFORMATION COMPLEMENTAIRE</u> :<b><?php echo " " . htmlspecialchars($liste_client[$cmd["mail"]]["infocomp"], ENT_QUOTES, 'UTF-8'); ?></b></p>
                     <?php } ?>
 
                 </div>

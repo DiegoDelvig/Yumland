@@ -138,8 +138,8 @@
                             <img src="assets/le prestige du chef.png" alt="Croc Premium">
                         </div>
                         <div class="capsule-info">
-                            <h4><?php echo $plat1["name"] ?></h4>
-                            <p><?php echo $plat1["description"] ?></p>
+                            <h4><?php echo htmlspecialchars($plat1["name"], ENT_QUOTES, 'UTF-8'); ?></h4>
+                            <p><?php echo htmlspecialchars($plat1["description"], ENT_QUOTES, 'UTF-8'); ?></p>
                         </div>
                         <div class="capsule-action">
                             <span class="prix"><?php echo number_format($plat1['prix'], 2, ',', ' '); ?>€</span>
@@ -151,8 +151,8 @@
                             <img src="assets/le prestige du chef.png" alt="Croc Premium">
                         </div>
                         <div class="capsule-info">
-                            <h4><?php echo $plat2["name"] ?></h4>
-                            <p><?php echo $plat2["description"] ?></p>
+                            <h4><?php echo htmlspecialchars($plat2["name"], ENT_QUOTES, 'UTF-8'); ?></h4>
+                            <p><?php echo htmlspecialchars($plat2["description"], ENT_QUOTES, 'UTF-8'); ?></p>
                         </div>
                         <div class="capsule-action">
                             <span class="prix"><?php echo number_format($plat2['prix'], 2, ',', ' '); ?>€</span>
@@ -164,8 +164,8 @@
                             <img src="assets/le prestige du chef.png" alt="Croc Premium">
                         </div>
                         <div class="capsule-info">
-                            <h4><?php echo $plat3["name"] ?></h4>
-                            <p><?php echo $plat3["description"]; ?></p>
+                            <h4><?php echo htmlspecialchars($plat3["name"], ENT_QUOTES, 'UTF-8'); ?></h4>
+                            <p><?php echo htmlspecialchars($plat3["description"], ENT_QUOTES, 'UTF-8'); ?></p>
                         </div>
                         <div class="capsule-action">
                             <span class="prix"><?php echo number_format($plat3['prix'], 2, ',', ' '); ?>€</span>

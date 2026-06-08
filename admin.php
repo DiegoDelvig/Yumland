@@ -273,8 +273,8 @@ foreach ($data as $pers) {
     </tr>
     <?php foreach ($data as $pers) { ?>
     <tr>
-        <td><?php echo $pers["email"]; ?></td>
-        <td><?php echo $pers["name"] . " " . $pers["fname"]; ?></td>
+        <td><?php echo htmlspecialchars($pers["email"], ENT_QUOTES, 'UTF-8'); ?></td>
+        <td><?php echo htmlspecialchars($pers["name"]." ".$pers["fname"], ENT_QUOTES, 'UTF-8'); ?></td>
         <td><?php aff_role($pers); ?></td>
         <td>
             <form method="POST" action="admin.php">
@@ -289,9 +289,7 @@ foreach ($data as $pers) {
                                 ) {
                                     echo "bloque";
                                 } ?>"
-                                onclick="bloquerUtilisateur('<?php echo $pers[
-                                    "email"
-                                ]; ?>', this)">
+                                onclick="bloquerUtilisateur(<?php echo json_encode($pers["email"]); ?>, this)">
                             <?php if ($pers["role"]["bloque"] == true) {
                                 echo "🔓 Débloquer";
                             } else {

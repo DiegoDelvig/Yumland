@@ -220,17 +220,17 @@ if (isset($_COOKIE["client"])) {
                     <?php foreach ($menu as $cle => $detail_menu) { ?>
                         <article class="carte-menu">
                             <div class="carte-menu-header">
-                                <h3><?php echo $detail_menu["name"]; ?></h3>
-                                <p class="filtres" name="junior"><?php echo $detail_menu["age"]["junior"]; ?></p>
-                                <p class="filtres" name="adulte"><?php echo $detail_menu["age"]["adulte"]; ?></p>
-                                <p class="filtres" name="senior"><?php echo $detail_menu["age"]["senior"]; ?></p>
-                                <p class="filtres" name="volaille"><?php echo $detail_menu["saveur"]["volaille"]; ?></p>
-                                <p class="filtres" name="boeuf/gibier"><?php echo $detail_menu["saveur"]["boeuf/gibier"]; ?></p>
-                                <p class="filtres" name="poisson"><?php echo $detail_menu["saveur"]["poisson"]; ?></p>
-                                <p class="filtres" name="veggie"><?php echo $detail_menu["saveur"]["veggie"]; ?></p>
-                                <p class="filtres" name="sans cereale"><?php echo $detail_menu["specifique"]["sans cereale"]; ?></p>
-                                <p class="filtres" name="hypoallergenique"><?php echo $detail_menu["specifique"]["hypoallergenique"]; ?></p>
-                                <p class="filtres" name="digestion sensible"><?php echo $detail_menu["specifique"]["digestion sensible"]; ?></p>
+                                <h3><?php echo htmlspecialchars($detail_menu["name"], ENT_QUOTES, 'UTF-8'); ?></h3>
+                                <p class="filtres" name="junior"><?php echo htmlspecialchars($detail_menu["age"]["junior"], ENT_QUOTES, 'UTF-8'); ?></p>
+                                <p class="filtres" name="adulte"><?php echo htmlspecialchars($detail_menu["age"]["adulte"], ENT_QUOTES, 'UTF-8'); ?></p>
+                                <p class="filtres" name="senior"><?php echo htmlspecialchars($detail_menu["age"]["senior"], ENT_QUOTES, 'UTF-8'); ?></p>
+                                <p class="filtres" name="volaille"><?php echo htmlspecialchars($detail_menu["saveur"]["volaille"], ENT_QUOTES, 'UTF-8'); ?></p>
+                                <p class="filtres" name="boeuf/gibier"><?php echo htmlspecialchars($detail_menu["saveur"]["boeuf/gibier"], ENT_QUOTES, 'UTF-8'); ?></p>
+                                <p class="filtres" name="poisson"><?php echo htmlspecialchars($detail_menu["saveur"]["poisson"], ENT_QUOTES, 'UTF-8'); ?></p>
+                                <p class="filtres" name="veggie"><?php echo htmlspecialchars($detail_menu["saveur"]["veggie"], ENT_QUOTES, 'UTF-8'); ?></p>
+                                <p class="filtres" name="sans cereale"><?php echo htmlspecialchars($detail_menu["specifique"]["sans cereale"], ENT_QUOTES, 'UTF-8'); ?></p>
+                                <p class="filtres" name="hypoallergenique"><?php echo htmlspecialchars($detail_menu["specifique"]["hypoallergenique"], ENT_QUOTES, 'UTF-8'); ?></p>
+                                <p class="filtres" name="digestion sensible"><?php echo htmlspecialchars($detail_menu["specifique"]["digestion sensible"], ENT_QUOTES, 'UTF-8'); ?></p>
                             </div>
                             
                             <div class="carte-menu-plats">
@@ -296,26 +296,26 @@ if (isset($_COOKIE["client"])) {
                         <?php foreach ($plat as $index => $detail) { ?>
                             <article class="carte-plat">
                                 <div class="carte-img">
-                                    <img src="assets/<?php echo $detail["image"]; ?>" alt="<?php echo htmlspecialchars($detail["name"]); ?>">
+                                    <img src="assets/<?php echo htmlspecialchars(basename($detail["image"]), ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($detail["name"], ENT_QUOTES, 'UTF-8'); ?>">
                                     <?php if ($detail["new"] == true) { ?>
                                         <span class="etiquette-nouveau">Nouveau</span>
                                     <?php } ?>
                                 </div>
                                 
                                 <div class="carte-contenu">
-                                    <h4><?php echo $detail["name"]; ?></h4>
-                                    <p class="description"><?php echo $detail["description"]; ?></p>
+                                    <h4><?php echo htmlspecialchars($detail["name"], ENT_QUOTES, 'UTF-8'); ?></h4>
+                                    <p class="description"><?php echo htmlspecialchars($detail["description"], ENT_QUOTES, 'UTF-8'); ?></p>
                                     
-                                    <p class="filtres" name="junior"><?php echo $detail["age"]["junior"]; ?></p>
-                                    <p class="filtres" name="adulte"><?php echo $detail["age"]["adulte"]; ?></p>
-                                    <p class="filtres" name="senior"><?php echo $detail["age"]["senior"]; ?></p>
-                                    <p class="filtres" name="volaille"><?php echo $detail["saveur"]["volaille"]; ?></p>
-                                    <p class="filtres" name="boeuf/gibier"><?php echo $detail["saveur"]["boeuf/gibier"]; ?></p>
-                                    <p class="filtres" name="poisson"><?php echo $detail["saveur"]["poisson"]; ?></p>
-                                    <p class="filtres" name="veggie"><?php echo $detail["saveur"]["veggie"]; ?></p>
-                                    <p class="filtres" name="sans cereale"><?php echo $detail["specifique"]["sans cereale"]; ?></p>
-                                    <p class="filtres" name="hypoallergenique"><?php echo $detail["specifique"]["hypoallergenique"]; ?></p>
-                                    <p class="filtres" name="digestion sensible"><?php echo $detail["specifique"]["digestion sensible"]; ?></p>
+                                    <p class="filtres" name="junior"><?php echo htmlspecialchars($detail["age"]["junior"], ENT_QUOTES, 'UTF-8'); ?></p>
+                                    <p class="filtres" name="adulte"><?php echo htmlspecialchars($detail["age"]["adulte"], ENT_QUOTES, 'UTF-8'); ?></p>
+                                    <p class="filtres" name="senior"><?php echo htmlspecialchars($detail["age"]["senior"], ENT_QUOTES, 'UTF-8'); ?></p>
+                                    <p class="filtres" name="volaille"><?php echo htmlspecialchars($detail["saveur"]["volaille"], ENT_QUOTES, 'UTF-8'); ?></p>
+                                    <p class="filtres" name="boeuf/gibier"><?php echo htmlspecialchars($detail["saveur"]["boeuf/gibier"], ENT_QUOTES, 'UTF-8'); ?></p>
+                                    <p class="filtres" name="poisson"><?php echo htmlspecialchars($detail["saveur"]["poisson"], ENT_QUOTES, 'UTF-8'); ?></p>
+                                    <p class="filtres" name="veggie"><?php echo htmlspecialchars($detail["saveur"]["veggie"], ENT_QUOTES, 'UTF-8'); ?></p>
+                                    <p class="filtres" name="sans cereale"><?php echo htmlspecialchars($detail["specifique"]["sans cereale"], ENT_QUOTES, 'UTF-8'); ?></p>
+                                    <p class="filtres" name="hypoallergenique"><?php echo htmlspecialchars($detail["specifique"]["hypoallergenique"], ENT_QUOTES, 'UTF-8'); ?></p>
+                                    <p class="filtres" name="digestion sensible"><?php echo htmlspecialchars($detail["specifique"]["digestion sensible"], ENT_QUOTES, 'UTF-8'); ?></p>
                                     
                                     <div class="carte-footer">
                                         <span class="prix"><?php echo number_format($detail["prix"], 2, ",", " "); ?>€</span>

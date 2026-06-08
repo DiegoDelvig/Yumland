@@ -233,16 +233,16 @@ if (!empty($commande_en_cours)) {
             </div>
             <div class="info-details">
                 <p>NOM :</p>
-                <p><strong><?php echo $client["fname"]; ?></strong></p>
+                <p><strong><?php echo htmlspecialchars($client["fname"], ENT_QUOTES, 'UTF-8'); ?></strong></p>
                 <p>PRÉNOM :</p>
-                <p><strong><?php echo $client["name"]; ?></strong></p>
+                <p><strong><?php echo htmlspecialchars($client["name"], ENT_QUOTES, 'UTF-8'); ?></strong></p>
                 <p>ADRESSE :</p>
-                <p><strong><?php echo $client["adr"]; ?></strong></p>
+                <p><strong><?php echo htmlspecialchars($client["adr"], ENT_QUOTES, 'UTF-8'); ?></strong></p>
                 <p>TÉLÉPHONE :</p>
-                <p><strong><?php echo $client["tel"]; ?></strong></p>
+                <p><strong><?php echo htmlspecialchars($client["tel"], ENT_QUOTES, 'UTF-8'); ?></strong></p>
                 <?php if ($client["infocomp"] != "") { ?>
                     <p>INFOS COMPLÉMENTAIRES :</p>
-                    <p><strong><?php echo $client["infocomp"]; ?></strong></p>
+                    <p><strong><?php echo htmlspecialchars($client["infocomp"], ENT_QUOTES, 'UTF-8'); ?></strong></p>
                 <?php } ?>
             </div>
         </aside>
@@ -324,9 +324,7 @@ if (!empty($commande_en_cours)) {
                                 ) { ?>
                                     <p><?php echo $produit["quantite"] .
                                         "x       -" .
-                                        $produit[
-                                            "name"
-                                        ]; ?> - <?php echo number_format(
+                                        htmlspecialchars($produit["name"], ENT_QUOTES, 'UTF-8'); ?> - <?php echo number_format(
      $produit["quantite"] * $produit["prix"],
      2,
      ",",
@@ -339,9 +337,7 @@ if (!empty($commande_en_cours)) {
                                 ) { ?>
                                     <p><?php echo $produit["quantite"] .
                                         "x       -" .
-                                        $produit[
-                                            "name"
-                                        ]; ?> - <?php echo number_format(
+                                        htmlspecialchars($produit["name"], ENT_QUOTES, 'UTF-8'); ?> - <?php echo number_format(
      $produit["quantite"] * $produit["prix"],
      2,
      ",",
@@ -384,9 +380,7 @@ if (!empty($commande_en_cours)) {
                                 ) { ?>
                                     <p><?php echo $produit["quantite"] .
                                         "x       -" .
-                                        $produit[
-                                            "name"
-                                        ]; ?> - <?php echo number_format(
+                                        htmlspecialchars($produit["name"], ENT_QUOTES, 'UTF-8'); ?> - <?php echo number_format(
      $produit["quantite"] * $produit["prix"],
      2,
      ",",
@@ -399,9 +393,7 @@ if (!empty($commande_en_cours)) {
                                 ) { ?>
                                     <p><?php echo $produit["quantite"] .
                                         "x       -" .
-                                        $produit[
-                                            "name"
-                                        ]; ?> - <?php echo number_format(
+                                        htmlspecialchars($produit["name"], ENT_QUOTES, 'UTF-8'); ?> - <?php echo number_format(
      $produit["quantite"] * $produit["prix"],
      2,
      ",",
@@ -453,9 +445,7 @@ if (!empty($commande_en_cours)) {
                             <?php foreach ($details["plats"] as $produit) { ?>
                                 <p><?php echo $produit["quantite"] .
                                     "x       -" .
-                                    $produit[
-                                        "name"
-                                    ]; ?> - <?php echo number_format(
+                                        htmlspecialchars($produit["name"], ENT_QUOTES, 'UTF-8'); ?> - <?php echo number_format(
      $produit["quantite"] * $produit["prix"],
      2,
      ",",
@@ -465,9 +455,7 @@ if (!empty($commande_en_cours)) {
                             <?php foreach ($details["menus"] as $produit) { ?>
                                 <p><?php echo $produit["quantite"] .
                                     "x       -" .
-                                    $produit[
-                                        "name"
-                                    ]; ?> - <?php echo number_format(
+                                        htmlspecialchars($produit["name"], ENT_QUOTES, 'UTF-8'); ?> - <?php echo number_format(
      $produit["quantite"] * $produit["prix"],
      2,
      ",",
@@ -498,9 +486,7 @@ if (!empty($commande_en_cours)) {
                 <form id="form-edit-profile" class="modal-form">
                     <div class="form-group">
                         <label for="edit-name">NOM *</label>
-                        <input type="text" id="edit-name" name="name" required maxlength="100" value="<?php echo htmlspecialchars(
-                            $client["name"],
-                        ); ?>">
+                        <input type="text" id="edit-name" name="name" required maxlength="100" value="<?php echo htmlspecialchars($client["name"], ENT_QUOTES, 'UTF-8'); ?>">
                         <small class="error-message" id="error-name"></small>
                     </div>
                     <div class="form-group">

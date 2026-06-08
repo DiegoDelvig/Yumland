@@ -108,11 +108,7 @@ function aff_temps($num)
                 <h2>Récapitulatif de commande</h2>
                 <?php foreach ($commande["plats"] as $id => $detail) { ?>
                     <div class="ligne-article">
-                        <span><?php echo $commande["plats"][$id][
-                            "name"
-                        ]; ?> x<?php echo $commande["plats"][$id][
-     "quantite"
- ]; ?></span>
+                        <span><?php echo htmlspecialchars($commande["plats"][$id]["name"], ENT_QUOTES, 'UTF-8'); ?> x<?php echo $commande["plats"][$id]["quantite"]; ?></span>
                         <span><?php echo number_format(
                             $commande["plats"][$id]["prix"],
                             2,
@@ -123,11 +119,7 @@ function aff_temps($num)
                 <?php } ?>
                 <?php foreach ($commande["menus"] as $id => $detail) { ?>
                     <div class="ligne-article">
-                        <span><?php echo $commande["menus"][$id][
-                            "name"
-                        ]; ?> x<?php echo $commande["menus"][$id][
-     "quantite"
- ]; ?></span>
+                        <span><?php echo htmlspecialchars($commande["menus"][$id]["name"], ENT_QUOTES, 'UTF-8'); ?> x<?php echo $commande["menus"][$id]["quantite"]; ?></span>
                         <span><?php echo number_format(
                             $commande["menus"][$id]["prix"],
                             2,
@@ -190,7 +182,7 @@ function aff_temps($num)
                 </div>
                 <div class="ligne-info">
                     <span class="label-info">Adresse</span>
-                    <span><?php echo $client["adr"]; ?></span>
+                    <span><?php echo htmlspecialchars($client["adr"], ENT_QUOTES, 'UTF-8'); ?></span>
                 </div>
             </div>
             <div class="zone-boutons">
