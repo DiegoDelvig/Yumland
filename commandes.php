@@ -15,7 +15,7 @@ if (
     isset($data[$client["email"]]) &&
     $data[$client["email"]]["role"]["bloque"] == true
 ) {
-    unset[$_SESSION["client"]];
+    unset($_SESSION["client"]);
     header("Location: index.php?msg=bloque");
     exit();
 }
